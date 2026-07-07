@@ -1,0 +1,12 @@
+Part,Qty,Designators,Where to get it
+WM8731SEDS/V audio codec,1,IC4,BROKER: Rochester Electronics (genuine EOL stock) / UTSource / eBay — NOT orderable at Mouser
+2.2 Inch 240*320 Dots SPI TFT,1,,From Aliexpress https://www.aliexpress.com/item/32607741715.html?spm=a2g0s.9042311.0.0.68d84c4dK5twhJ
+IPEX Antenna,1,,From Aliexpress https://www.aliexpress.com/item/4001275208954.html
+Potentiometer B10k,4,POT2 POT3 POT4 POT5,Thonk (thonk.co.uk)
+Dual gang potentiometer B100k,1,POT1,Thonk (thonk.co.uk)
+Encoder,1,SW1,see kit guide
+Thonkiconn Jack,14,J1 J2 J3 J4 J5 J6 J7 J8 J9 J10 J11 J12 J13 J14,Thonk (thonk.co.uk)
+SD card reader,1,P1,Thonk (thonk.co.uk)
+2x5 Male header,1,P4,see kit guide
+M3 10mm female-female standoff,5,,see kit guide
+M3 6mm screw,10,,see kit guide
