@@ -8,15 +8,18 @@ personal/non-commercial build.
 
 Go to pcbway.com → *PCB Instant Quote* → *Quick-order PCB*.
 
-- Upload `board/Strampler_redesign_v2_2.brd` (PCBWay accepts native Eagle files;
-  their engineers generate gerbers and confirm in the review step).
+- Upload **`gerbers-main-Strampler_redesign_v2_2.zip`** (RS-274X gerbers +
+  Excellon drills, plotted from the KiCad conversion — PCBWay's uploader
+  rejects raw Eagle .brd files).
 - PCB specs: 2 layers, 1.6 mm FR4, HASL or ENIG (ENIG nicer under the QFN/SSOP),
   any solder-mask colour. Quantity: 5 (their PCB minimum — assemble 2, 3 spares).
 - Tick **Assembly Service**: Turnkey, **Assemble 2**, ONE side (all SMD is on
   the BOTTOM side — 144 bottom / 30 top placements in the CPL; the top-side
   refs are through-hole and NOT for assembly).
 - Upload `BOM-PCBWay-assembly.csv` (40 SMD lines) and
-  `CPL-Strampler_redesign_v2_2.csv` when the assembly form asks.
+  **`CPL-kicad-origin.csv`** when the assembly form asks (this position file
+  is exported from the same KiCad board as the gerbers, so origins match;
+  `CPL-Strampler_redesign_v2_2.csv` is the older Eagle-coordinate version).
 
 ### BOM notes PCBWay must see (paste into the order remarks)
 - **IC4 / WM8731: DO NOT POPULATE.** Obsolete part; customer hand-solders later.
@@ -31,7 +34,7 @@ Go to pcbway.com → *PCB Instant Quote* → *Quick-order PCB*.
 
 ## 2. Panel — bare PCB
 
-Separate quick-order: upload `panel/strampler_panel_v2_2.brd`.
+Separate quick-order: upload **`gerbers-panel-strampler_panel_v2_2.zip`**.
 - 2 layers (it's just FR4 with plating/art), 1.6 mm, **matte black + ENIG**
   is the classic Antumbra look. Qty 5 (minimum).
 - No assembly.
