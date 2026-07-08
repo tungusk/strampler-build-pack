@@ -34,7 +34,13 @@ Go to pcbway.com → *PCB Instant Quote* → *Quick-order PCB*.
 
 ## 2. Panel — bare PCB
 
-Separate quick-order: upload **`gerbers-panel-strampler_panel_v2_2.zip`**.
+Separate quick-order. Two routes, both verified 2026-07:
+- **Preferred: upload the raw Eagle `panel/strampler_panel_v2_2.brd`** via
+  PCBWay's "other formats" option — their CAM engineers plot it with Eagle's
+  own engine (max fidelity for the art-heavy panel; passed audit).
+- Fallback: **`gerbers-panel-strampler_panel_v2_2.zip`** (KiCad-plotted;
+  note the Eagle importer produces unfilled zones — this zip is post-fix,
+  with pours filled and the 34k-rect artwork converted to filled shapes).
 - 2 layers (it's just FR4 with plating/art), 1.6 mm, **matte black + ENIG**
   is the classic Antumbra look. Qty 5 (minimum).
 - No assembly.
