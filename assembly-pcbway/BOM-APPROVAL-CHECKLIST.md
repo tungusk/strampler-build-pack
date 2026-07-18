@@ -30,8 +30,9 @@ actually gates production is which document carries your approval.
 - [x] **WROVER sub correct:** ESP32-WROVER-IE-N8R8, **IPEX variant**
       re-confirmed in the approval reply, accepted @ $7.47.
 - [x] **Codec authenticity decision made:** boards get LCSC-sourced
-      WM8731SEDS/RV; the separate Rochester order (WM8731SEDS/V) stays as
-      the genuine-EOL trusted stock / hedge.
+      WM8731SEDS/RV (the best real source — Rochester has NO stock, see
+      SOURCING-NOTES). Optional hedge: order a few spare /RV from LCSC
+      directly with the sidecar orders.
 
 ## Final engineer pass (Arlo, on the order page, before paying)
 
@@ -53,5 +54,6 @@ Package = the fixed KiCad-plotted gerber zips (`gerbers/` — the
 ## Final gate
 
 - [ ] Pay against the rev 2 BOM / $370.65 quote. Then fire the sidecar
-      orders: Rochester WM8731SEDS/V, Thonk (jacks/pots/SD/knobs ~£50),
-      AliExpress ILI9341 TFT + IPEX antenna, encoder/USB-B/switches.
+      orders: Thonk (jacks/pots/SD/knobs ~£50) or Qingpu direct,
+      AliExpress ILI9341 TFT + IPEX antenna, encoder/USB-B/switches,
+      optionally spare WM8731SEDS/RV from LCSC.
