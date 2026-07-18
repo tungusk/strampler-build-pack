@@ -1,10 +1,19 @@
 # PCBWay BOM approval checklist — pre-payment gate
 
+## ✅ ORDERED 2026-07-17
+
+Paid on quote **T-1N8W1065663A**: subtotal **$430.00** (main-board turnkey
+$370.65 + panel qty 5 matte-black ENIG $59.35) + **$150.00 duty (34.9%,
+DDP)** + DHL freight — **shipped DHL DDP** (duty prepaid, PCBWay's broker
+clears; no carrier surprise invoice). All 5 main boards assembled, codec
+populated. Everything below was verified before payment.
+
+---
+
 Quote **T-1N8W1065663A**, revised **$370.65 / 5 units** (component $284.44 +
 assembly $29.00 + PCB $57.21), all 5 boards assembled, codec populated.
 **BOM rev 2 confirmed 2026-07-16** — full-file diff vs rev 1 showed exactly
-one cell changed (IC4 "DO NOT POPULATE" note removed). Remaining step:
-Arlo's final engineer pass, then approve/pay on the order page.
+one cell changed (IC4 "DO NOT POPULATE" note removed).
 
 ## Why no CSV is needed
 
