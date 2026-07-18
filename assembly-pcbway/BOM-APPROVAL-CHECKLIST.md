@@ -40,15 +40,23 @@ Package = the fixed KiCad-plotted gerber zips (`gerbers/` — the
 `--check-zones` ones), BOM rev 2 as returned by PCBWay, and
 `SOURCING-NOTES.md`.
 
-- [ ] Order page shows the **rev 2** BOM (IC4 populate, no DNP note) — not
-      an earlier revision.
+- [x] **Cart BOM verified = rev 2** (2026-07-17: Arlo re-downloaded the
+      order-cart files to ~/Downloads/Filez; the cart .xls is CELL-IDENTICAL
+      to the confirmed rev 2 — byte diff was .xls metadata only). Full audit
+      re-run on the cart copy: IC4 populated (no DNP anywhere), subs
+      TAJA226M016RNJ / EEE-FK1C102SV in Actual-Purchase, IPEX note on IC5,
+      every line unit×qty×5 exact, component sum $284.44, grand total
+      $370.645. BOM↔CPL cross-check clean (all 141 BOM refs placed; the 33
+      CPL-only refs are the intentional hand-build kit parts).
+- [x] **Cart gerbers verified = the FIXED plots** (same re-download): both
+      main-board zips byte-identical to ours (B.Cu 959KB, pours filled);
+      panel zip differs ONLY in plot timestamp + project name
+      ("panel-final", plotted 16:54 vs our 17:10) — all 9 layers
+      geometry-identical to the audit-passing plot.
 - [ ] Total on the payment page is **$370.65** — the quote UI had a
       price-ratchet bug before; if the number moved, re-quote clean, don't
       pay a drifted figure.
-- [ ] Gerber zips attached to the order are the FIXED KiCad-plotted ones
-      (main board B.Cu ~959KB with GND pours, not the 126KB unfilled plot).
 - [ ] Panel order: matte black, ENIG.
-- [ ] Assembly side = SMD bottom side; CPL is `CPL-Strampler_redesign_v2_2.csv`.
 - [ ] Ship-to address + shipping tier sanity check.
 
 ## Final gate
