@@ -22,7 +22,12 @@ Go to pcbway.com → *PCB Instant Quote* → *Quick-order PCB*.
   `CPL-Strampler_redesign_v2_2.csv` is the older Eagle-coordinate version).
 
 ### BOM notes PCBWay must see (paste into the order remarks)
-- **IC4 / WM8731: DO NOT POPULATE.** Obsolete part; customer hand-solders later.
+- ~~**IC4 / WM8731: DO NOT POPULATE.** Obsolete part; customer hand-solders later.~~
+  **SUPERSEDED — this did NOT happen.** BOM rev 2 (approved 2026-07-16)
+  REMOVED the DNP note: PCBWay populated IC4 = WM8731SEDS/RV @ $17.44/pc,
+  ×5, LCSC-sourced. See `BOM-APPROVAL-CHECKLIST.md`. All 5 boards ship
+  with the codec already soldered — no hand-soldering, no spares needed.
+  (`BOM-PCBWay-assembly.csv` still carries the stale DNP note too.)
 - **IC5: ESP32-WROVER-IE-N8R8** substitutes the discontinued WROVER-IB.
   The **IPEX/-I (external antenna) variant is required** — the module sits
   behind a metal panel; the PCB-antenna variant (non-I) will not work.
