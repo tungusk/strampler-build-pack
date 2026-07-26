@@ -10,12 +10,11 @@
 Total ≈ **$243** — that's the two module-parts orders. Power cables and
 SD cards are still outstanding (see below); neither appears in any BOM.
 
-**Power cables + SD cards: NOT YET ORDERED** — neither is in any BOM.
-Amazon cart holds an ExcelValley 5-pack (10→16 pin) and Lexar microSD,
-but that is a **saved cart, not a placed order**. Arlo is checking **B&H**
-for the cards instead (authorized dealer = counterfeit-proof; Amazon
-commingles inventory, so even "sold by Amazon" is not a guarantee).
-Research + alternatives below.
+**Power cables: ORDERED** (ExcelValley 5-pack, 10→16 pin, Amazon).
+**SD cards: NOT ordered** — deliberately deferred to nearer final
+assembly. Neither item appears in any BOM. Card spec + purchasing notes
+below; **brand matters far less than FAT32 and the seller** — Lexar at
+~40% under SanDisk is a sound buy for this duty cycle.
 
 ## Power cables & SD cards — sourcing notes (for reorders / kit runs)
 
@@ -35,7 +34,38 @@ Alternatives, cheapest-per-cable last:
 ⚠️ Red stripe → **-12V**. Our P4 is a shrouded keyed header so a keyed
 cable can't reverse; only matters if you ever buy unkeyed.
 
-### microSD card
+### microSD card — SPEC (verified against firmware 2026-07-26)
+
+Source of truth: `components/drivers/storage.c` + `sdkconfig.defaults` in
+the firmware repo.
+
+| Spec | Requirement | Why |
+|---|---|---|
+| **Filesystem** | **FAT32 — mandatory** | `CONFIG_FATFS_LFN_NONE=y` and **no exFAT option is enabled**, so FatFS can mount FAT12/16/32 only. An exFAT card will simply fail to mount. |
+| **Pre-formatted** | **Yes — the firmware will NOT format it** | `format_if_mount_failed = false`. A blank/exFAT card gives "Failed to mount filesystem", not a rescue. |
+| **Capacity** | **32 GB recommended. No hard maximum.** | FAT32 is the only real constraint — *not* capacity. 4–32 GB (SDHC) is FAT32 out of the packet; 64 GB+ (SDXC) ships exFAT and must be reformatted, which is fine if you don't mind doing it. See the note below on why bigger still isn't better. |
+| **Filenames** | **8.3 only** | LFN is compiled out. This is *why* every sample id in the system is ≤8 chars. |
+| **Max file size** | FAT32 ceiling is 4 GB; repo documents **≤2 GB** | Moot in practice — samples are megabytes. |
+| **Speed class** | **Any Class 10 / UHS-I** | Bus is **1-bit SDMMC** at `SDMMC_FREQ_HIGHSPEED`; the audio path needs ~**176 KB/s**. Even 1-bit mode has enormous headroom. Paying for V30/A2 buys nothing. |
+| **Contents** | `CONFIG.JSN` from the repo, before first boot | |
+
+**Is there a max size?** No hard limit in the firmware, and none in FAT32
+at any capacity you can buy (its ceiling is ~2 TB at these cluster sizes).
+A 64/128/256 GB card reformatted to FAT32 should mount fine.
+
+**But bigger is still not better here, for two concrete reasons:**
+1. **Nothing above 32 GB has been tested on this hardware.** The only
+   proven configuration is what's in the test unit.
+2. **Directory walks are a known performance hazard in this firmware.**
+   Bench-caught previously: per-index stat probing with a missing
+   extension walks the entire FAT directory per call and starved the
+   capture queue — *1804 dropped chunks*. Browsers already cap at
+   224/512 entries. A bigger volume invites a bigger pool, and the cost
+   lands on the audio path, not on idle time.
+
+And there's nothing to gain: 32 GB ≈ **50 hours** of 44.1 k stereo audio.
+
+### microSD card — purchasing
 **Not yet ordered.** Lexar sits in an Amazon cart; **B&H is the better
 buy** — see the supplier note at the end of this section.
 
