@@ -7,16 +7,21 @@
 - **Mouser — 6 lines, $57.04** (SD holders, tact switches, micro-USB,
   LED, power header, screen connector) — single shipment, all ship-now
 
-Total ≈ **$243** for all five units' completion parts.
+Total ≈ **$243** — that's the two module-parts orders. Power cables and
+SD cards are still outstanding (see below); neither appears in any BOM.
 
-**Power cables + SD cards: ORDERED 2026-07-26 from Amazon** — ExcelValley
-5-pack (10→16 pin) and Lexar microSD. Neither is in any BOM. Research +
-alternatives kept below for a future kit run.
+**Power cables + SD cards: NOT YET ORDERED** — neither is in any BOM.
+Amazon cart holds an ExcelValley 5-pack (10→16 pin) and Lexar microSD,
+but that is a **saved cart, not a placed order**. Arlo is checking **B&H**
+for the cards instead (authorized dealer = counterfeit-proof; Amazon
+commingles inventory, so even "sold by Amazon" is not a guarantee).
+Research + alternatives below.
 
 ## Power cables & SD cards — sourcing notes (for reorders / kit runs)
 
 ### Eurorack power cable, 10-pin (module P4) → 16-pin (bus board)
-**Bought: [ExcelValley 5-pack, 10→16 pin, 25 cm](https://www.amazon.com/ExcelValley-5-Pack-Eurorack-Modular-Synthesizer/dp/B07N8H544N)** (Amazon).
+**Leading pick (in Amazon cart, not yet ordered): [ExcelValley 5-pack,
+10→16 pin, 25 cm](https://www.amazon.com/ExcelValley-5-Pack-Eurorack-Modular-Synthesizer/dp/B07N8H544N)**.
 
 Alternatives, cheapest-per-cable last:
 | Source | Detail |
@@ -31,7 +36,8 @@ Alternatives, cheapest-per-cable last:
 cable can't reverse; only matters if you ever buy unkeyed.
 
 ### microSD card
-**Bought: Lexar** (Amazon). Fine for this workload — see below.
+**Not yet ordered.** Lexar sits in an Amazon cart; **B&H is the better
+buy** — see the supplier note at the end of this section.
 
 **BUY 32 GB, and the reason is the SD spec, not preference:** 4–32 GB is
 **SDHC, which the SD Association defines as FAT32** — exactly what the
@@ -52,8 +58,28 @@ in 2017); photography forums report more early failures than SanDisk, but
 that's sustained-burst camera use, not this. SanDisk Ultra 32 GB
 `SDSQUA4-032G-GN6MA` is the belt-and-braces pick if reordering.
 
+### Where to buy cards — B&H, and the reason is counterfeits
+**[B&H Photo](https://www.bhphotovideo.com/)** (or [Adorama](https://www.adorama.com/)) — **authorized dealers** buying
+direct from the manufacturer, so a counterfeit has no path into their
+stock. SanDisk reckons [~1/3 of memory cards on the market are fake](https://www.pocket-lint.com/beware-of-fake-sd-cards/).
+
+⚠️ **"Sold by Amazon" is NOT the safeguard it looks like** — Amazon
+**commingles inventory** across every seller of an ASIN, so a third-party
+counterfeit [can reach you even buying direct from Amazon](https://www.dpreview.com/forums/threads/buying-sd-cards-from-amazon.4468446/).
+
+⚠️ **Skip "bulk memory card" sites** — checked
+[bulkmemorycards.com](https://bulkmemorycards.com/product-category/microsd-cards/microsd-32gb/):
+SanDisk Ultra 32 GB runs **$12.65–$15.50**, *above* normal retail, and the
+bulk tiers shave only a few percent. No wholesale advantage at our volume.
+
 **Setup:** copy `CONFIG.JSN` from the repo onto each card before first
-boot. **If the Lexar cards are 64 GB+, reformat to FAT32 first.**
+boot. **If the cards are 64 GB+, reformat to FAT32 first.**
+
+**Test every card on arrival, whatever the source.** A fake reports full
+capacity but has less real flash and fails *silently* — you'd discover it
+as corrupted samples months in. On macOS:
+`brew install f3` then `f3write /Volumes/CARD && f3read /Volumes/CARD`.
+~10 min per card, before you commit a library to them.
 
 **⚠️ ON ARRIVAL — do this before soldering the run:** test-fit ONE
 Thonkiconn jack and ONE RD902F dual-gang pot on a bare board with
