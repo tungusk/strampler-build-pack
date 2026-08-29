@@ -53,6 +53,15 @@ on B.Mask (SJ1 is on the bottom); main gerbers regenerated. The fabbed
 takes a blob over the ~0.1 mm mask web. SJ1 joins ESP32 IO19 to TFT
 connector pin 9.
 
+## Panel v2_3 (2026-08-29) — M7 pot holes
+
+`strampler_panel_v2_3.kicad_pcb` is the current panel: v2_2 plus the four
+CV pot holes and POT1's hole resized 9.2/8.2 → 7.2 mm for M7-bushing pots
+(Same Sky PTN091/PTN092 — see build-pack COMPLETION-SHOPPING §POT2–5).
+The other 8.2 mm hole is the ENCODER's — deliberately unchanged.
+`make-fab-files.sh` builds v2_3; v2_2 is kept as the pre-M7 version
+matching the five fabbed (LED-window-defective) panels.
+
 ## Refilling zones from the command line
 
 `kicad-cli` has no zone-fill command. After editing a board outside the

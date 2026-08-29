@@ -157,7 +157,7 @@ Method: kit BOM + `parts-NOT-from-mouser.csv` minus what PCBWay built.
 | 2 | All SMD passives & ICs | many | — | PCBWay | ✅ assembled |
 | 3 | WM8731 codec | IC4 | 1 | PCBWay | ✅ **populated** (not DNP — see below) |
 | 4 | Thonkiconn jacks | J1–J14 | 14 | Ali | ✅ 200-pc lot — **received 2026-08-28, knurled nuts included** (confirmed in the bag; no separate nut order needed). **Test-fit on board OK 2026-08-28** — footprint matches. |
-| 5 | B10k pots | POT2–5 | 4 | ~~Ali~~ → **Mouser** | ⬆ **UPGRADED 2026-08-29**: Same Sky PTN091-V10115K1B ×25 ordered (metal shaft, M7 bushing — see [POT2–5 section](#pot25-cv-pots--upgrade-to-metal-shaft--threaded-bushing-2026-08-29)); ⚠ needs 7.2 mm panel holes (re-fab). Ali RV09 ×20 on hand = fallback for 9.2 mm panels. |
+| 5 | B10k pots | POT2–5 | 4 | ~~Ali~~ → **Mouser** | ⬆ **UPGRADED 2026-08-29**: Same Sky PTN091-V10115K1B ×25 ordered (metal shaft, M7 bushing — see [POT2–5 section](#pot25-cv-pots--upgrade-to-metal-shaft--threaded-bushing-2026-08-29)); ✅ panel v2_3 has 7.2 mm holes (order re-fab from the v2_3 zip). Ali RV09 ×20 on hand = fallback for 9.2 mm panels. |
 | 6 | B100k dual-gang | POT1 | 1 | ~~Ali~~ → **Mouser** | ❌ **WRONG PART received** (right-angle, mono) → reorder, see [POT1 section](#pot1-dual-gang-gain-pot--wrong-part-substitute-2026-08-28) |
 | 7 | Encoder | SW1 | 1 | Ali | ✅ 6 |
 | 8 | 2.2" ILI9341 TFT | P3 | 1 | Ali | ✅ 6 |
@@ -225,8 +225,10 @@ it. Details in `hardware-kicad/README.md` (pitfall 2).
 zones refilled, `gerbers/gerbers-panel-strampler_panel_v2_2.zip`
 regenerated and verified (copper ∩ window = 0 on both layers).
 
-**Action:** re-order 5 panels from the new zip (PCBWay quick-order, same
-spec as `assembly-pcbway/ORDER-GUIDE.md` §2). The 5 defective panels are
+**Action:** re-order 5 panels — from
+`gerbers-panel-strampler_panel_v2_3.zip` (LED-window fix + the 2026-08-29
+7.2 mm pot-hole change; supersedes the v2_2 zip) — PCBWay quick-order,
+same spec as `assembly-pcbway/ORDER-GUIDE.md` §2. The 5 defective panels are
 usable only as-is with no LED show-through (or scrape the copper off the
 window by hand — it's exposed, ~8 mm², both sides).
 
@@ -301,15 +303,19 @@ Why this part:
 - 10 kΩ linear, standard 2.5 mm 3-pin row; clip the mount tabs, panel nut
   holds it (same rule as POT1). Test-fit on arrival as usual.
 
-**⚠ PANEL CHANGE REQUIRED BEFORE THE RE-FAB IS ORDERED:** the current
-panel drills the four CV pot holes at **9.2 mm** (sized for the RV09
-boss). An M7 bushing needs **7.2 mm** (same as the encoder hole) or the
-nut barely catches. The regenerated panel zip from the LED-window fix
-STILL HAS 9.2 mm pot holes — edit the KiCad panel (4 holes → 7.2 mm),
-verify POT1's hole while in there (PTN092 is also M7; panel's remaining
-drills: 2× 9.5, 2× 8.2 — identify which is POT1), refill/regenerate, THEN
-order the 5 panels. The Ali RV09s (20 on hand) remain the fallback that
-fits the 9.2 mm holes.
+**✅ PANEL CHANGE DONE 2026-08-29 — panel v2_3.** New
+`hardware-kicad/strampler_panel_v2_3.kicad_pcb` (v2_2 kept unchanged as
+the pre-M7 version): the four CV pot holes 9.2 → **7.2 mm**, and POT1's
+hole 8.2 → **7.2 mm** (hole identification by position match against the
+main board: POT1 = the POT_MEDIUM at panel (13.903, −65.096); the OTHER
+8.2 at (77.544, −65.096) is the ENCODER — untouched, current encoders
+thread it fine; the 2× 9.5 are SW2/SW3). Zones refilled, gerbers
+regenerated + verified: drill table has no 9.2 left (7.2 ×6, 8.2 ×1),
+edge/silk byte-identical to v2_2, mask differs by exactly the 5 resized
+openings, copper diff = zone refill only, LED window still copper-free.
+**Order the 5 panels from `gerbers/gerbers-panel-strampler_panel_v2_3.zip`.**
+The Ali RV09s (20 on hand) remain the fallback for the 5 defective 9.2 mm
+panels if they're ever scraped-and-used.
 
 ---
 

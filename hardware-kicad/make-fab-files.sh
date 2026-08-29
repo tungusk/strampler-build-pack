@@ -5,7 +5,7 @@ set -e
 cd "$(dirname "$0")"
 CLI="${KICAD_CLI:-$HOME/Applications/KiCad/KiCad.app/Contents/MacOS/kicad-cli}"
 MAIN=project/Strampler_redesign_v2_2.kicad_pcb
-PANEL=strampler_panel_v2_2.kicad_pcb
+PANEL=strampler_panel_v2_3.kicad_pcb
 OUT=../gerbers
 
 TMP=$(mktemp -d)
@@ -24,8 +24,8 @@ rm -f "$OUT/gerbers-main-Strampler_redesign_v2_2.zip"
 "$CLI" pcb export gerbers -o "$TMP/panel/" --check-zones \
   -l F.Cu,B.Cu,F.Silkscreen,B.Silkscreen,F.Mask,B.Mask,Edge.Cuts "$PANEL"
 "$CLI" pcb export drill -o "$TMP/panel/" --format excellon "$PANEL"
-rm -f "$OUT/gerbers-panel-strampler_panel_v2_2.zip"
-(cd "$TMP/panel" && zip -jq "$OLDPWD/$OUT/gerbers-panel-strampler_panel_v2_2.zip" ./*)
+rm -f "$OUT/gerbers-panel-strampler_panel_v2_3.zip"
+(cd "$TMP/panel" && zip -jq "$OLDPWD/$OUT/gerbers-panel-strampler_panel_v2_3.zip" ./*)
 
 rm -rf "$TMP"
 echo "Done: $OUT/"
