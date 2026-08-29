@@ -16,6 +16,36 @@ assembly. Neither item appears in any BOM. Card spec + purchasing notes
 below; **brand matters far less than FAT32 and the seller** — Lexar at
 ~40% under SanDisk is a sound buy for this duty cycle.
 
+## ✅ FIRST MODULE BUILT — 2026-08-28 (soldering lab)
+
+**Result: PASS — boots and makes sound.** Unit #1 of 5, PCBWay-assembled main
+board + hand-soldered through-hole. Remaining adjustments are cosmetic /
+ergonomic; the electrical build is proven.
+
+What happened, for units 2–5:
+- **Flashed from a bare Mac** (no ESP-IDF): `pip install esptool` in a venv,
+  micro-USB to the on-board CP2102 (`/dev/cu.usbserial-*`), module on
+  **rack +12 V** (USB VBUS does not power the board), then
+  `bin/keys-multisample-v1/flash.sh` offsets with `--flash_size detect`
+  (chip is 8 MB). Boot log: PSRAM 64 Mbit OK, display init, I2S up, WiFi up.
+  Procedure is in the firmware repo `HANDOFF.md` (2026-08-29 entry).
+- **White screen on first power-up** — panel got no init. Fixed by
+  **reseating the TFT in the Hirose P3 receptacle**; root cause not
+  isolated (seating vs. a marginal header pin). Check the 9-pin header is
+  fully home before suspecting anything else. Orientation was correct
+  (backlight on = VCC/GND/LED right).
+- **Jacks**: Ali lot fits, nuts included (audit rows 4).
+- **POT1 (GAIN) not fitted** — Ali sent the wrong part; Mouser substitute
+  carted (see POT1 section). Audio **input** path is untested until it's in;
+  output verified by ear.
+- **Panel**: LED light window is copper on this run (see Panel defect
+  section) — module works, LED just doesn't show through. Re-fab pending.
+- **SJ1 (bottom, IO19↔TFT SDO)** is open, as on the test unit. Not needed
+  for operation; bridge it if TFT readback is wanted (firmware `/tftread`).
+- No SD card was in for the first boot — firmware tolerates that (logs
+  `Failed to initialize the card (263)`, continues). A blank FAT32 card
+  self-populates on first boot.
+
 ## Power cables & SD cards — sourcing notes (for reorders / kit runs)
 
 ### Eurorack power cable, 10-pin (module P4) → 16-pin (bus board)
