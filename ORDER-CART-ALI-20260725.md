@@ -37,6 +37,9 @@ Rough total: **$85–110** signed-in, well under the doc's $110–140 estimate.
   Alpha body "0B100K" visible. Gallery's other shots are recycled stock
   photos — pin rows NOT visually confirmed; MPN + genuine-Alpha look is the
   evidence. D-shaft ("half-axle") → use set-screw knobs (#8 covers this).
+  **❌ 2026-08-28: RECEIVED WRONG PART — right-angle MONO pot.** The
+  unconfirmed pin rows were exactly the failure. Replaced by Mouser
+  179-PTN092V100115K1A; see `COMPLETION-SHOPPING-5UNITS.md` → POT1 section.
 - **Encoder (#4):** 5 pins + push, EC12 = ALPS EC12E pattern; a review
   confirms correct quadrature phasing. 20mm SKU photo = knurled shaft.
 - **SD sniffer (#7):** zoomed photo shows the 8 **staggered** card-edge

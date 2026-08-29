@@ -46,7 +46,7 @@ Other parts:,,,,,,,
 USB-B connector,1,,P2,,,538-105017-0001,
 IPEX Antenna,1,,,,,,From Aliexpress https://www.aliexpress.com/item/4001275208954.html
 Potentiometer,4,B10k,POT2 POT3 POT4 POT5,,,,From Thonk
-Dual gang potentiometer,1,B100k,POT1,,,,From Thonk
+Dual gang potentiometer,1,B100k,POT1,,,179-PTN092V100115K1A,"From Thonk (Alpha RD902F). Mouser sub added 2026-08-28: Same Sky PTN092-V100115K1A (100k LOG, same pin grid, clip tabs)"
 Encoder,1,,SW1,,,,
 Thonkiconn Jack,14,,J1 J2 J3 J4 J5 J6 J7 J8 J9 J10 J11 J12 J13 J14,,,,From Thonk
 Screen connector,1,,,,,798-MDF79S254DSA55,

@@ -128,7 +128,7 @@ Method: kit BOM + `parts-NOT-from-mouser.csv` minus what PCBWay built.
 | 3 | WM8731 codec | IC4 | 1 | PCBWay | ✅ **populated** (not DNP — see below) |
 | 4 | Thonkiconn jacks | J1–J14 | 14 | Ali | ✅ 200-pc lot |
 | 5 | B10k pots | POT2–5 | 4 | Ali | ✅ 20 |
-| 6 | B100k dual-gang | POT1 | 1 | Ali | ✅ 10 |
+| 6 | B100k dual-gang | POT1 | 1 | ~~Ali~~ → **Mouser** | ❌ **WRONG PART received** (right-angle, mono) → reorder, see [POT1 section](#pot1-dual-gang-gain-pot--wrong-part-substitute-2026-08-28) |
 | 7 | Encoder | SW1 | 1 | Ali | ✅ 6 |
 | 8 | 2.2" ILI9341 TFT | P3 | 1 | Ali | ✅ 6 |
 | 9 | Antenna + u.FL pigtail | — | 1 | Ali | ✅ 5 sets + stubs |
@@ -179,6 +179,56 @@ Everything else on this page is background/history.
 
 ---
 
+## POT1 dual-gang (GAIN pot) — WRONG PART, substitute (2026-08-28)
+
+**The Ali "RD902F-B100K" lot (order 2026-07-25, #3) delivered a
+right-angle MONO pot.** Caught at first-module assembly. The listing's
+pin rows were never photo-confirmed (noted at the time) — that was the gap.
+
+**What the board needs** (`POT_DUAL_THONK`, verified against KiCad + the
+Alpha RD902F-40 factory drawing): 9 mm **vertical** (shaft ⟂ board),
+**2 gangs**, two rows of 3 pins, **2.5 mm pin pitch**, rows at **7.5 and
+10.0 mm** from the mount line, 6 mm shaft, M7 bushing.
+
+⚠️ **Correction to the footprint note below:** the board's two Ø2.2 mm
+holes at ±4.4 mm are **not** an Alpha feature. Alpha's own drawings (dual
+RD902F-40 *and* single RD901F-40) show flat anti-rotation tabs ~11.3 mm
+apart. No 9 mm pot's tabs land in those holes — **clip the tabs and let
+the panel nut hold the pot.** Same for POT2–5. Select pots by pin grid
+only; ignore the mount holes.
+
+### Mouser substitute — ORDER THIS
+
+| Mouser # | MPN | Mfr | Price | Stock (08-28) |
+|---|---|---|---|---|
+| **179-PTN092V100115K1A** | PTN092-V100115K1A | Same Sky (ex-CUI) | $2.45 / $1.97 @10 | 135 |
+
+9.5 mm vertical, 2-gang, 100 kΩ, 15 mm 6 mm **knurled T18** shaft (fits
+the Davies set-screw knobs), M7×0.75. PCB layout is pin-for-pin the Alpha
+RD902F pattern (2.5 mm grid, rows 7.5/10). Tabs at 11.5 mm → clip.
+Need 5 → **order 8** (spares).
+
+**Caveat — taper is A (log), not B (linear).** Mouser and Digi-Key have
+no stock of the linear `PTN092-V100115K1B`. Acceptable: the schematic
+wires POT1 as a rheostat (wiper tied to one end, in series with R8/R9
+into the codec input), so taper only changes knob feel, and log is the
+natural feel for a gain control. If linear is a must, buy the exact part
+from Thonk instead: **Alpha 9mm Vertical T18 Dual Gang, B100K**
+(RD902F-40-15R1-B100K), £1.99 ex-VAT —
+https://www.thonk.co.uk/shop/alpha-9mm-pots-vert-t18-dual-gang/
+
+### Ruled out on Mouser (don't re-check)
+- **Bourns PTD902-xxxx-B104** (linear, well stocked, looks perfect): pin
+  pitch is **5.0 mm** within each row. Does not fit.
+- **Alps RK09L** dual 100k linear: only the *horizontal* variant stocked;
+  snap-in type anyway. RK09K / RK097 / Bourns PTV09: single-gang only.
+- **Alpha (Taiwan)** on Mouser carries no RD90x at all.
+
+Sources: Bourns PTD90 datasheet · Same Sky PTN09X datasheet (2024-09-12) ·
+Alpha RD902F-40 / RD901F-40 drawings hosted by Thonk.
+
+---
+
 # Original list — AliExpress-first (no Thonk)
 
 For the 5 PCBWay-assembled boards (ordered 2026-07-17, all SMD done, codec
@@ -192,7 +242,7 @@ spares. Footprint data verified against the KiCad board
 |---|---|---|---|
 | **WQP-PJ398SM jack** (J1–J14) | 70 | 80 | Qingpu's own AliExpress storefront, ~$0.25–0.35 ea. Listing MUST say PJ398SM / WQP-PJ398SM with clear photos — the PJ301M-12 lookalike has a different footprint and will not fit. |
 | **B10k pot, Alpha 9mm vertical** (POT2–5) | 20 | 24 | RD901F style / "RV09" clones. 6mm knurled T18 shaft (match knobs). |
-| **B100k DUAL-gang pot, 9mm vertical** (POT1) | 5 | 8 | ⚠️ Footprint check: two 3-pin rows, 2.5mm pin pitch, rows 2.5mm apart, mount legs at ±4.4mm. Standard Alpha RD902F dual pattern — compare listing photo before buying. |
+| **B100k DUAL-gang pot, 9mm vertical** (POT1) | 5 | 8 | ⚠️ Footprint check: two 3-pin rows, 2.5mm pin pitch, rows 2.5mm apart. Standard Alpha RD902F dual pattern — compare listing photo before buying. **Ali lot delivered a right-angle mono pot — superseded by Mouser 179-PTN092V100115K1A, see POT1 section above.** (The "mount legs at ±4.4mm" claim was wrong: Alpha tabs are ~11.3mm apart and get clipped.) |
 | **EC12E rotary encoder w/ push switch** (SW1) | 5 | 8 | Footprint `ALPS_EC12E_SW`: A/B/C at 2.5mm pitch one side, D/E switch pins opposite (5mm apart), tabs at ±6.1mm — standard EC12. Pick shaft (knurled T18 or D) to match your knob choice + panel clearance. |
 | **2.2" 240×320 SPI TFT, ILI9341** (P3, MSP2202) | 5 | 6 | Original link: aliexpress.com/item/32607741715.html — MSP2202 module, footprint verified on board. |
 | **IPEX/u.FL WiFi antenna** | 5 | 8 | Original link: aliexpress.com/item/4001275208954.html. Cheap — spares. |
@@ -339,7 +389,7 @@ common 2.54mm-header "LC Studio" module remains wrong too.
 ## Pad-map quick reference (from the KiCad board)
 
 - P1 SD: 8 pads, x = -3.85…+3.85 @ 1.1mm pitch, alternating y (-0.47/-1.57); mounts ±4.3
-- POT1 dual: rows y=10.0 & y=7.5, pins x = -2.5/0/+2.5; mounts ±4.4
+- POT1 dual: rows y=10.0 & y=7.5, pins x = -2.5/0/+2.5; Ø2.2 holes ±4.4 (unused by Alpha/Same Sky — tabs at ±5.65–5.75 get clipped)
 - SW1 encoder: ABC @ y=7.5 (2.5mm pitch), D/E @ y=-7.0 (±2.5), tabs ±6.1
 - SW2/3 tact: pins at (±2.5, ±2.5) — 5.0×5.0mm square
 - P2 USB-B: TH legs (±2.5,0)+(±3.5,-2.7), Molex SMD signal pads center
