@@ -38,6 +38,21 @@ you ever re-import from Eagle instead of editing these files:
    zones refilled; panel gerbers regenerated. Verified: filled copper ∩
    window = 0 on both layers.
 
+## Main-board audit (2026-08-28) — keep-outs OK, one mask sliver restored
+
+After the panel bug, the main board was checked for the same class of
+loss. Eagle's `tRestrict`/`bRestrict` circles (mounting holes of P3 TFT,
+jacks, PCB screws) and the `vRestrict` under the crystal all survived as
+proper rule areas inside the footprints (`copperpour not_allowed` on
+F.Cu/B.Cu; via keep-out on both). Verified with pcbnew: filled copper ∩
+every keep-out = 0 (64 pairs). The only dropped item was a 0.15 × 1.3 mm
+`tStop` sliver in the `SJ` (solder jumper) package — the mask opening
+between SJ1's two pads that makes it bridgeable. Restored as an `fp_rect`
+on B.Mask (SJ1 is on the bottom); main gerbers regenerated. The fabbed
+2026-07 main boards lack that sliver: SJ1 can still be bridged, it just
+takes a blob over the ~0.1 mm mask web. SJ1 joins ESP32 IO19 to TFT
+connector pin 9.
+
 ## Refilling zones from the command line
 
 `kicad-cli` has no zone-fill command. After editing a board outside the

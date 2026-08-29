@@ -25440,6 +25440,17 @@
 			(layer "B.SilkS")
 			(uuid "f4ae5d06-0ed5-4801-9ad8-4eca6852a678")
 		)
+		(fp_rect
+			(start -0.0762 -0.65)
+			(end 0.0762 0.65)
+			(stroke
+				(width 0)
+				(type solid)
+			)
+			(fill yes)
+			(layer "B.Mask")
+			(uuid "d8d7c282-35cb-4688-b6e8-2a5a9cf145e0")
+		)
 		(pad "1" smd rect
 			(at -0.75 0)
 			(size 1.2 1.1)
