@@ -123,7 +123,7 @@ Method: kit BOM + `parts-NOT-from-mouser.csv` minus what PCBWay built.
 
 | # | Part | Desig. | Per unit | Source | Status |
 |---|---|---|---|---|---|
-| 1 | Main PCB + panel | — | 1+1 | PCBWay | ✅ ordered ×5 |
+| 1 | Main PCB + panel | — | 1+1 | PCBWay | ✅ main ×5 OK · ❌ **panels ×5 DEFECTIVE** — LED light window is copper instead of bare FR4 (conversion bug, fixed 2026-08-28; see [Panel defect](#panel-defect--led-light-window-is-copper-2026-08-28)). Re-fab from the regenerated `gerbers-panel-*.zip`. |
 | 2 | All SMD passives & ICs | many | — | PCBWay | ✅ assembled |
 | 3 | WM8731 codec | IC4 | 1 | PCBWay | ✅ **populated** (not DNP — see below) |
 | 4 | Thonkiconn jacks | J1–J14 | 14 | Ali | ✅ 200-pc lot — **received 2026-08-28, knurled nuts included** (confirmed in the bag; no separate nut order needed). **Test-fit on board OK 2026-08-28** — footprint matches. |
@@ -176,6 +176,29 @@ WISINVI 10×12 mm knurled aluminum (**"Flower Shaft"** = splined bore,
 would wobble on a D-shaft).
 
 Everything else on this page is background/history.
+
+---
+
+## Panel defect — LED light window is copper (2026-08-28)
+
+Found at first-module assembly: the wavy line between TR1/TR2 that lines
+up with the LED (L1) is a **copper trace** on the fabbed panels. On the
+original Antumbra panel it is a **gap in the solder mask over bare FR4**
+so the LED shines through the board.
+
+**Cause:** the Eagle→KiCad conversion parked the Eagle `tRestrict`/
+`bRestrict` copper keep-outs on KiCad's non-copper `User.1` layer, so the
+mask window was plotted correctly but the copper pours filled underneath
+it. Details in `hardware-kicad/README.md` (pitfall 2).
+
+**Fix (committed):** keep-outs merged into one F.Cu+B.Cu rule area,
+zones refilled, `gerbers/gerbers-panel-strampler_panel_v2_2.zip`
+regenerated and verified (copper ∩ window = 0 on both layers).
+
+**Action:** re-order 5 panels from the new zip (PCBWay quick-order, same
+spec as `assembly-pcbway/ORDER-GUIDE.md` §2). The 5 defective panels are
+usable only as-is with no LED show-through (or scrape the copper off the
+window by hand — it's exposed, ~8 mm², both sides).
 
 ---
 

@@ -47,6 +47,13 @@ and the silkscreen artwork was missing too. This zip is post-fix (copper
 pours filled, the 34k-rect artwork converted to filled shapes). Uploading
 the raw Eagle `.brd` via PCBWay's "other formats" engineer-conversion route
 may also work but is untested.
+
+⚠️ **Rev 2026-08-28 — use the CURRENT zip.** The 2026-07 zip (which passed
+audit and was fabbed) had a second conversion bug: the LED light window
+(wavy line at L1) was plotted as a mask opening over *filled copper*
+instead of bare FR4, so the LED can't shine through. Fixed in the KiCad
+panel (copper keep-out rule area) and the zip regenerated; the 2026-07
+panels are defective. See `hardware-kicad/README.md` pitfall 2.
 - 2 layers (it's just FR4 with plating/art), 1.6 mm, **matte black + ENIG**
   is the classic Antumbra look. Qty 5 (minimum).
 - No assembly.

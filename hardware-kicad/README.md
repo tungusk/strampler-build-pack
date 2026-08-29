@@ -26,7 +26,31 @@ you ever re-import from Eagle instead of editing these files:
    layers (missing copper, mask and artwork). Fixed by filling copper zones
    and converting non-copper zones to filled `gr_poly` shapes.
 2. The importer maps Eagle's t/bRestrict layers to layer `"UNDEFINED"`,
-   which KiCad's own parser then refuses to load. Remapped to `User.1`.
+   which KiCad's own parser then refuses to load. The first fix remapped
+   them to `User.1` — **which was itself a bug**: `User.1` is not a copper
+   layer, so the 1876 tiny restrict rectangles did nothing and the copper
+   pours filled straight under the LED light window. The 2026-07 panel run
+   came back with a **copper wave** where the original has bare FR4 (found
+   2026-08-28 at first-module assembly). **Fixed 2026-08-28:** the 938
+   unique rectangles (identical to the F/B.Mask window polygons) were merged
+   into one polygon and replaced by a single **keep-out rule area on
+   F.Cu + B.Cu** (`copperpour not_allowed`, named "LED light window");
+   zones refilled; panel gerbers regenerated. Verified: filled copper ∩
+   window = 0 on both layers.
+
+## Refilling zones from the command line
+
+`kicad-cli` has no zone-fill command. After editing a board outside the
+GUI (e.g. scripted changes), refill with the bundled Python before
+running `make-fab-files.sh`:
+
+```
+PY=~/Applications/KiCad/KiCad.app/Contents/Frameworks/Python.framework/Versions/Current/bin/python3
+$PY -c "import pcbnew; b=pcbnew.LoadBoard('strampler_panel_v2_2.kicad_pcb'); \
+  pcbnew.ZONE_FILLER(b).Fill(b.Zones()); pcbnew.SaveBoard('strampler_panel_v2_2.kicad_pcb', b)"
+```
+
+(`SaveBoard` drops a stray `.kicad_pro` next to the panel — delete it.)
 
 Verify against the Eagle originals and the `render-main-*.png` references
 before fabbing modified boards. License: CC BY-NC-SA 4.0 (see ../LICENSE.md).
