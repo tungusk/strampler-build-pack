@@ -157,7 +157,7 @@ Method: kit BOM + `parts-NOT-from-mouser.csv` minus what PCBWay built.
 | 2 | All SMD passives & ICs | many | — | PCBWay | ✅ assembled |
 | 3 | WM8731 codec | IC4 | 1 | PCBWay | ✅ **populated** (not DNP — see below) |
 | 4 | Thonkiconn jacks | J1–J14 | 14 | Ali | ✅ 200-pc lot — **received 2026-08-28, knurled nuts included** (confirmed in the bag; no separate nut order needed). **Test-fit on board OK 2026-08-28** — footprint matches. |
-| 5 | B10k pots | POT2–5 | 4 | Ali | ✅ 20 |
+| 5 | B10k pots | POT2–5 | 4 | ~~Ali~~ → **Mouser** | ⬆ **UPGRADED 2026-08-29**: Same Sky PTN091-V10115K1B ×25 ordered (metal shaft, M7 bushing — see [POT2–5 section](#pot25-cv-pots--upgrade-to-metal-shaft--threaded-bushing-2026-08-29)); ⚠ needs 7.2 mm panel holes (re-fab). Ali RV09 ×20 on hand = fallback for 9.2 mm panels. |
 | 6 | B100k dual-gang | POT1 | 1 | ~~Ali~~ → **Mouser** | ❌ **WRONG PART received** (right-angle, mono) → reorder, see [POT1 section](#pot1-dual-gang-gain-pot--wrong-part-substitute-2026-08-28) |
 | 7 | Encoder | SW1 | 1 | Ali | ✅ 6 |
 | 8 | 2.2" ILI9341 TFT | P3 | 1 | Ali | ✅ 6 |
@@ -279,6 +279,37 @@ https://www.thonk.co.uk/shop/alpha-9mm-pots-vert-t18-dual-gang/
 
 Sources: Bourns PTD90 datasheet · Same Sky PTN09X datasheet (2024-09-12) ·
 Alpha RD902F-40 / RD901F-40 drawings hosted by Thonk.
+
+---
+
+## POT2–5 CV pots — upgrade to metal shaft + threaded bushing (2026-08-29)
+
+The Ali RV09 clones (row 5) work electrically but feel cheap: plastic
+shaft, no bushing, nothing fixing them to the panel (unlike the encoder's
+M7 nut). **ORDERED 2026-08-29: Same Sky PTN091-V10115K1B ×25, Mouser
+179-PTN091V10115K1B, $1.32 @ 25 = $33 (shipping paid, under the $60
+free-ship line).** Need 20 (4 × 5 units) + 5 spares.
+
+Why this part:
+- Single-gang sibling of the POT1 sub (PTN092-V100115K1A) — same family,
+  same bushing/shaft geometry across the panel, one vendor.
+- **Aluminum knurled 18T + slotted shaft** (datasheet materials table),
+  15 mm — matches the original Alpha length, existing Davies knobs fit.
+- **M7×0.75 zinc threaded bushing + nut** — panel-mounts like the encoder.
+  Note: 15 mm shaft carries the 5 mm bushing (7 mm only on 20/25 mm
+  shafts) — fine through the 1.6 mm panel, same as the POT1 sub.
+- 10 kΩ linear, standard 2.5 mm 3-pin row; clip the mount tabs, panel nut
+  holds it (same rule as POT1). Test-fit on arrival as usual.
+
+**⚠ PANEL CHANGE REQUIRED BEFORE THE RE-FAB IS ORDERED:** the current
+panel drills the four CV pot holes at **9.2 mm** (sized for the RV09
+boss). An M7 bushing needs **7.2 mm** (same as the encoder hole) or the
+nut barely catches. The regenerated panel zip from the LED-window fix
+STILL HAS 9.2 mm pot holes — edit the KiCad panel (4 holes → 7.2 mm),
+verify POT1's hole while in there (PTN092 is also M7; panel's remaining
+drills: 2× 9.5, 2× 8.2 — identify which is POT1), refill/regenerate, THEN
+order the 5 panels. The Ali RV09s (20 on hand) remain the fallback that
+fits the 9.2 mm holes.
 
 ---
 
