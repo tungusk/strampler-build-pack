@@ -126,7 +126,7 @@ Method: kit BOM + `parts-NOT-from-mouser.csv` minus what PCBWay built.
 | 1 | Main PCB + panel | — | 1+1 | PCBWay | ✅ ordered ×5 |
 | 2 | All SMD passives & ICs | many | — | PCBWay | ✅ assembled |
 | 3 | WM8731 codec | IC4 | 1 | PCBWay | ✅ **populated** (not DNP — see below) |
-| 4 | Thonkiconn jacks | J1–J14 | 14 | Ali | ✅ 200-pc lot — **received 2026-08-28, knurled nuts included** (confirmed in the bag; no separate nut order needed) |
+| 4 | Thonkiconn jacks | J1–J14 | 14 | Ali | ✅ 200-pc lot — **received 2026-08-28, knurled nuts included** (confirmed in the bag; no separate nut order needed). **Test-fit on board OK 2026-08-28** — footprint matches. |
 | 5 | B10k pots | POT2–5 | 4 | Ali | ✅ 20 |
 | 6 | B100k dual-gang | POT1 | 1 | ~~Ali~~ → **Mouser** | ❌ **WRONG PART received** (right-angle, mono) → reorder, see [POT1 section](#pot1-dual-gang-gain-pot--wrong-part-substitute-2026-08-28) |
 | 7 | Encoder | SW1 | 1 | Ali | ✅ 6 |
