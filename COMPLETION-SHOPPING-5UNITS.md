@@ -225,10 +225,18 @@ it. Details in `hardware-kicad/README.md` (pitfall 2).
 zones refilled, `gerbers/gerbers-panel-strampler_panel_v2_2.zip`
 regenerated and verified (copper ∩ window = 0 on both layers).
 
-**Action:** re-order 5 panels — from
-`gerbers-panel-strampler_panel_v2_3.zip` (LED-window fix + the 2026-08-29
-7.2 mm pot-hole change; supersedes the v2_2 zip) — PCBWay quick-order,
-same spec as `assembly-pcbway/ORDER-GUIDE.md` §2. The 5 defective panels are
+**Action: ✅ ORDERED 2026-08-30 — at JLCPCB, not PCBWay** (5× panels from
+`gerbers-panel-strampler_panel_v2_3.zip`, ~$19 shipped: $9.70 boards +
+$9.08 Global Standard Direct Line, 8–13 business days). This is a
+**solder-mask shade trial**: the PCBWay run was confirmed matte black but
+reads lighter than the Pusherman reference; JLCPCB's current "Black" is a
+proprietary semi-matte hybrid (they discontinued pure matte black as
+scratch-prone), so it may land between. Spec: 1.6 mm, black mask, white
+silk, HASL (finish is invisible — no exposed copper anywhere on the
+panel), no order-number mark (JLC's free default). **On arrival: compare
+shade vs the PCBWay matte panels and the Pusherman panel — the winner
+prints the production run; Pusherman remains the known-good fallback for
+the exact reference look.** The 5 defective panels are
 usable only as-is with no LED show-through (or scrape the copper off the
 window by hand — it's exposed, ~8 mm², both sides).
 
