@@ -356,7 +356,7 @@ Arlo wants hex instead of the knurled nuts that shipped with the jack lot;
 NOT fit; it must be a jack-specific 8mm-across-flats nut (generic DIN439
 M6×0.5 exists on Ali but is 10mm AF — barely clears the 12.7mm jack grid,
 ruled out on looks/wrenchability).
-**DECIDED: Qingpu factory hex nut WQP-KN, qty 200** — matches the full
+**DECIDED: Qingpu factory hex nut — SKU WQP-HN (NB: WQP-KN is the KNURLED one!), qty 200, $0.10 ea at Danesi = $20** — matches the full
 200-jack stock (84 fitted across 6 units incl. unit 1 retrofit; the rest
 keeps every spare jack buildable in the house style, saves a second
 shipping later). Source: Danesi Designs (Scott Danesi, Chicago —
