@@ -350,17 +350,20 @@ Both together cost ~$4 — ordering one lot of each and letting the bench
 decide is legitimate.
 
 ### Non-knurled hex nuts for the jacks (J1–J14)
-Arlo wants hex instead of the knurled nuts that shipped with the jack lot.
+Arlo wants hex instead of the knurled nuts that shipped with the jack lot;
+**silver confirmed** (Bananuts/black ruled out 2026-09-01).
 **Thread is M6 × 0.5 (extra-fine)** — standard M6×1.0 and fine M6×0.75 DO
-NOT fit; it must be a jack-specific nut. Qty: 70 (5 units) + 14 (unit 1
-retrofit, current knurled swap right off) → order 100.
-- Cheapest/certain-fit: **Qingpu factory hex nut** (WQP-KN hex /
-  W-QP-NUT-H) — check the Ali storefront the jacks came from (Shenzhen
-  NingSheng, item 2251832766984352); US fallback: Amplified Parts /
-  CE Distribution ~$0.15–0.25 ea.
-- Dress option: **Befaco Bananuts** (anodized alu, colors incl. black) —
-  ~$7–8/25 at Thonk/Perfect Circuit. Decide silver-vs-black AFTER the JLC
-  panel shade verdict.
+NOT fit; it must be a jack-specific 8mm-across-flats nut (generic DIN439
+M6×0.5 exists on Ali but is 10mm AF — barely clears the 12.7mm jack grid,
+ruled out on looks/wrenchability).
+**DECIDED: Qingpu factory hex nut WQP-KN, qty 200** — matches the full
+200-jack stock (84 fitted across 6 units incl. unit 1 retrofit; the rest
+keeps every spare jack buildable in the house style, saves a second
+shipping later). Source: Danesi Designs (Scott Danesi, Chicago —
+danesidesigns.com/products/wqp-kn-qingpu-hexjack-nut-m6-x-0-5mm),
+~$0.15–0.25 ea; equal fallback: Amplified Parts / CE Distribution
+(same Qingpu part). The Ali jack seller (NingSheng) does NOT carry nuts
+(checked 2026-09-01).
 
 # Original list — AliExpress-first (no Thonk)
 
