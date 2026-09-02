@@ -327,6 +327,41 @@ panels if they're ever scraped-and-used.
 
 ---
 
+## Pending small hardware (2026-08-31) — display firming + hex jack nuts
+
+### Display corner standoffs (firm up the TFT)
+The MSP2202 module hangs off only the Hirose header — the known
+white-screen/seating weak point. Main board + module both have 4 corner
+mount holes (main board drill 3.1 mm plated ≈3.0 finished; 61.2×34.1 mm
+rectangle). The unused card-slot can on the module's back sets a floor on
+the gap of a couple of mm. **MEASURE FIRST at a corner hole on the working
+unit (calipers or drill-shank gauge), then pick ONE:**
+- **M3 nylon hex standoff F-F × <measured>** + M3×6 nylon screws both ends
+  — fits our 3.0 mm holes for certain. Qty 30 standoffs + 60 screws
+  (6 units incl. retrofit of unit 1 + spares). Ali parametric listing:
+  aliexpress.com/item/32996308968.html (pick M3 + length).
+- **Dual-lock snap support, 3.2 mm hole class** (barbed both ends,
+  tool-free; RS 030-4195 shows the geometry; Ali: search "dual lock PCB
+  support 3.2mm") — nicer assembly but our plated 3.0 mm bore is ~0.2 mm
+  under nominal; barbs may seat snug or may refuse. Heights come in coarse
+  steps (6.4/7.9/9.5) and can't be shimmed. Try-it item; ~$2/100.
+  (The common Ali "RC" snap series is 4.0 mm-hole — does NOT fit.)
+Both together cost ~$4 — ordering one lot of each and letting the bench
+decide is legitimate.
+
+### Non-knurled hex nuts for the jacks (J1–J14)
+Arlo wants hex instead of the knurled nuts that shipped with the jack lot.
+**Thread is M6 × 0.5 (extra-fine)** — standard M6×1.0 and fine M6×0.75 DO
+NOT fit; it must be a jack-specific nut. Qty: 70 (5 units) + 14 (unit 1
+retrofit, current knurled swap right off) → order 100.
+- Cheapest/certain-fit: **Qingpu factory hex nut** (WQP-KN hex /
+  W-QP-NUT-H) — check the Ali storefront the jacks came from (Shenzhen
+  NingSheng, item 2251832766984352); US fallback: Amplified Parts /
+  CE Distribution ~$0.15–0.25 ea.
+- Dress option: **Befaco Bananuts** (anodized alu, colors incl. black) —
+  ~$7–8/25 at Thonk/Perfect Circuit. Decide silver-vs-black AFTER the JLC
+  panel shade verdict.
+
 # Original list — AliExpress-first (no Thonk)
 
 For the 5 PCBWay-assembled boards (ordered 2026-07-17, all SMD done, codec
