@@ -401,11 +401,16 @@ below — do not spend one of these ideas alone.
 
 ### Main board
 - **USB-C replaces micro-B** for the CP2102 flash/serial port. 12-pin
-  USB-2.0-only receptacle (TYPE-C-31-M-12 class, ~$0.10, JLC-assemblable),
-  two 5.1 kΩ pull-downs on CC, D+/D− unchanged. While in there: check
-  whether the CP2102 runs from VBUS or 3.3 V — bus-powering the bridge
-  would allow flashing with no rack power (nicer kit-assembly workflow;
-  today rack +12 V is required).
+  USB-2.0-only receptacle (TYPE-C-31-M-12 class, ~$0.10), two 5.1 kΩ
+  pull-downs on CC, D+/D− unchanged. While in there: check whether the
+  CP2102 runs from VBUS or 3.3 V — bus-powering the bridge would allow
+  flashing with no rack power (nicer kit-assembly workflow; today rack
+  +12 V is required). Assembly note: the current micro-B (Molex
+  105017-0001, P2) is a HYBRID footprint — SMD signal pads + 4 TH shield
+  legs — which is why PCBWay's reflow-only job skipped it. USB-C offers
+  the same choice: hybrid-with-TH-stakes (strong, stays a hand-solder
+  step) vs pure-SMD (reflowable at PCBWay, mechanically weaker). For an
+  occasional programming port the anchored hybrid is in character.
 - **Display mounting holes 3.1 → 4.0 mm** (and unplated) to accept
   dual-lock snap-in PCB supports (RC-style, tool-free) instead of M3
   hardware. Note the TFT module's own ~3 mm corner holes remain the other
