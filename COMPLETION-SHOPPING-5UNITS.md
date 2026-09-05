@@ -292,6 +292,33 @@ Alpha RD902F-40 / RD901F-40 drawings hosted by Thonk.
 
 ---
 
+## Bench results 2026-09-04 — Mouser pots arrived, SJ1 bridged, input path PASSES
+
+**Mouser order received.** Findings on the first module (the .85 unit):
+
+- **POT1 (PTN092 dual-gang) FITTED and WORKING.** Two adjustments:
+  (1) body sits tall in the bottom box — **file off the anti-rotation tab**
+  on the bushing face (soft zinc; keep filings out of the pot, shaft down);
+  (2) assembly order: **install jacks+pots LOOSE, fit panel, snug nuts,
+  THEN solder** — the panel jigs every bushing to true height, so exact
+  body height stops mattering. Both belong in KIT-GUIDE for units 2–5.
+  Panel v2_4 candidate: add the anti-rotation locating holes (hidden under
+  the nuts) so no filing is needed.
+- **Audio INPUT path VERIFIED** (was the last untested electrical path):
+  signal in, `vu[0]/vu[1]` swept ~1→253 (full range) with the gain pot,
+  L/R matched within a count or two the whole sweep (both gangs alive and
+  balanced). Ear-level listen still owed (line-in tuner or Tape monitor).
+- **SJ1 BRIDGED on this unit → GRAM readback WORKS.** `/tftread`: pixel
+  test 4/4 bit-exact at a 10 MHz read clock. **`id_ok` is false and always
+  will be on this panel lot** (clone controller ignores 0xD3; RDDID
+  nonstandard too) — **the QA criterion for units 2–5 is `pixel_ok`, not
+  the overall verdict** (it reads "PARTIAL" because of the ID). Unit 1's
+  SJ1 remains open (by choice).
+- **PTN091 single-gang (POT2–5): NOT YET TESTED** — look like they fit,
+  none installed yet (current panels have 9.2 mm CV holes; the M7 bushing
+  wants the v2_3 panels in fab). First install = first test; expect the
+  same anti-rotation tab to file unless the tab-hole lands in v2_4.
+
 ## POT2–5 CV pots — upgrade to metal shaft + threaded bushing (2026-08-29)
 
 The Ali RV09 clones (row 5) work electrically but feel cheap: plastic
