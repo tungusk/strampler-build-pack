@@ -392,6 +392,38 @@ danesidesigns.com/products/wqp-kn-qingpu-hexjack-nut-m6-x-0-5mm),
 (same Qingpu part). The Ali jack seller (NingSheng) does NOT carry nuts
 (checked 2026-09-01).
 
+## Board rev candidates — HYPOTHETICAL ONLY (no respin planned)
+
+Collected "if we ever respin" ideas. **The 5 assembled main boards in hand
+are fine; nothing here is a commitment or a schedule.** A respin has fixed
+costs (fab + assembly setup + re-validation), so it should batch everything
+below — do not spend one of these ideas alone.
+
+### Main board
+- **USB-C replaces micro-B** for the CP2102 flash/serial port. 12-pin
+  USB-2.0-only receptacle (TYPE-C-31-M-12 class, ~$0.10, JLC-assemblable),
+  two 5.1 kΩ pull-downs on CC, D+/D− unchanged. While in there: check
+  whether the CP2102 runs from VBUS or 3.3 V — bus-powering the bridge
+  would allow flashing with no rack power (nicer kit-assembly workflow;
+  today rack +12 V is required).
+- **Display mounting holes 3.1 → 4.0 mm** (and unplated) to accept
+  dual-lock snap-in PCB supports (RC-style, tool-free) instead of M3
+  hardware. Note the TFT module's own ~3 mm corner holes remain the other
+  half of the problem — only helps if the module side is solved too.
+- **SJ1**: optionally replace with a wired-through trace (bridge is now
+  the standard build step anyway; original CTAG wired MISO permanently).
+  Or keep the jumper — costs nothing and preserves the isolation option.
+- Already fixed in KiCad but absent from the 2026-07 fabbed boards
+  (any refab inherits them automatically): SJ1 mask sliver, main-board
+  keep-out audit results.
+
+### Panel (v2_4 candidates — v2_3 is the current fab)
+- **Anti-rotation locating holes for POT1–5** (~1.3 mm at the PTN09X tab
+  radius, hidden under the nuts) — eliminates the file-the-tab assembly
+  step. Tab angular position is deterministic (pot orientation fixed by
+  PCB pins); take the radius/angle from the PTN09X drawing and verify
+  against a filed-tab pot in hand before committing.
+
 # Original list — AliExpress-first (no Thonk)
 
 For the 5 PCBWay-assembled boards (ordered 2026-07-17, all SMD done, codec
