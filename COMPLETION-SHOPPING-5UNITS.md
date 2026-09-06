@@ -432,12 +432,10 @@ purely the panel sandwich (jacks/pots/encoder/LED — which MUST stay hand
 work for the panel-jig solder order). Not worth it for self-built units:
 those six parts are ~10 min in the same soldering session.
 
-### Panel (v2_4 candidates — v2_3 is the current fab)
-- **Anti-rotation locating holes for POT1–5** (~1.3 mm at the PTN09X tab
-  radius, hidden under the nuts) — eliminates the file-the-tab assembly
-  step. Tab angular position is deterministic (pot orientation fixed by
-  PCB pins); take the radius/angle from the PTN09X drawing and verify
-  against a filed-tab pot in hand before committing.
+### Panel
+- Anti-rotation locating holes for the pots were considered and DROPPED
+  (2026-09-05): filing the PTN09X tab worked out fine on unit 2, so the
+  file-the-tab step stays in the assembly order. v2_3 remains the panel.
 
 # Original list — AliExpress-first (no Thonk)
 
