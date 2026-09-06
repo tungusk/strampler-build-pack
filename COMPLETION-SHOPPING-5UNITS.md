@@ -422,6 +422,16 @@ below — do not spend one of these ideas alone.
   (any refab inherits them automatically): SJ1 mask sliver, main-board
   keep-out audit results.
 
+### Kit-ready assembly (process change, not a layout change)
+If boards are ever built for OTHER people, add the machine-doable TH parts
+to the PCBWay job: micro-USB, SD holder, 2× tact switches, power header,
+display socket — ~50 joints/board, est. **$15–40 extra** on the run (2026-07
+reference: assembly was only $29.00 of the $370.65 / 5-board order) plus
+sourcing markup or consignment handling. Shrinks the kit builder's work to
+purely the panel sandwich (jacks/pots/encoder/LED — which MUST stay hand
+work for the panel-jig solder order). Not worth it for self-built units:
+those six parts are ~10 min in the same soldering session.
+
 ### Panel (v2_4 candidates — v2_3 is the current fab)
 - **Anti-rotation locating holes for POT1–5** (~1.3 mm at the PTN09X tab
   radius, hidden under the nuts) — eliminates the file-the-tab assembly
