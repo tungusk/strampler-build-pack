@@ -42,12 +42,12 @@ JACK_ROWS = [
 # 3-position ON-OFF-ON: up = bus A, centre = off (jack un-normalled), down = bus B.
 # Feeds the SWITCHING jacks listed in NORMALLED via their tip-shunt (normal) lug.
 TOGGLE_HOLE = 6.5                   # 1/4"-40 bushing (C&K 7203 DPDT ON-OFF-ON / generic MTS-203)
-# ONE ganged E-mu-style KYBD switch (up = keyboard 1, centre = off, down = keyboard 2), 2 poles:
-#   pole A: VOICE 1/2 -> jack 1 normal lug, pole B: GATE 1/2 -> TR1.  TR2 stays plain (Arlo 09-07:
-#   TR1/TR2 are independent trigger inputs to the firmware, so driving both from one key is redundant).
-# targets: (jack ref, route) where route = "down" (straight down between the columns) or ("side", x_run)
-TOGGLES = [(27.4, 131.5, "KYBD: 1 · TR1", [])]   # targets named in the label; no indicator lines (Arlo 09-07)
-NORMALLED = {"J7": "VOICE 1/2 (kbd CV)", "J5": "GATE 1/2"}   # Switchcraft 12A/112A; TR2 plain
+# TWO ganged E-mu-style KYBD switches (up = keyboard 1, centre = off, down = keyboard 2), one per
+# column of the left field: column 1 switch -> jack 1 (VOICE) + TR1 (GATE); column 2 switch ->
+# jack 2 (VOICE) + TR2 (GATE). Each is a DPDT ON-OFF-ON. (Arlo 09-07)
+TOGGLES = [(15.4, 131.5, "KYBD", []), (39.4, 131.5, "KYBD", [])]
+NORMALLED = {"J7": "VOICE 1/2 via switch 1", "J5": "GATE 1/2 via switch 1",
+             "J8": "VOICE 1/2 via switch 2", "J6": "GATE 1/2 via switch 2"}   # Switchcraft 12A/112A x4
 
 # bottom row under the PCB, one jack directly below each CV knob (x = knob x)
 BOTTOM_JACKS = [("5", "J9", 13.903), ("6", "J10", 35.117), ("7", "J13", 56.33), ("8", "J14", 77.544)]
