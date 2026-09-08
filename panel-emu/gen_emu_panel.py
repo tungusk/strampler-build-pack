@@ -32,7 +32,7 @@ FONT = "Helvetica, Arial, sans-serif"
 
 # left jack field: rows top-to-bottom, each row = (left jack, right jack) as (label, board ref)
 JACK_ROWS = [
-    (("TRIG 1", "J5"), ("TRIG 2", "J6")),
+    (("TR1", "J5"), ("TR2", "J6")),
     (("CV 1  V/OCT", "J7"), ("CV 2  V/OCT", "J8")),
     (("CV 3  ±5V", "J11"), ("CV 4  ±5V", "J12")),
     (("IN L", "J2"),  ("IN R", "J1")),
@@ -129,7 +129,7 @@ art_box(bx + 3.0, JACK_ROW0 - 7.5, bx + 88.3, JACK_ROW0 + 12.5, r=3.0)   # CV 5-
 wx = bx + 91.3/2
 text(wx, (by + 38.5 + JACK_ROW0 + 12.5)/2 - 6.5*0.35, "CTAG STRÄMPLER", 6.5)   # centred in the band (baseline shifted by ~cap height/2)
 fx0, fx1 = JACK_COLS[0] - 10.5, JACK_COLS[1] + 10.5
-fy0, fy1 = JACK_ROW0 - 7.5, JACK_ROW0 + (len(JACK_ROWS)-1)*JACK_PITCH + 12.5
+fy0, fy1 = JACK_ROW0 - 7.5, by + 121.0   # top aligned with the interface box (padding above the top row)
 art_box(fx0, fy0, fx1, fy1, r=3.0)
 
 # ------------------------------------------------------------ write SVG

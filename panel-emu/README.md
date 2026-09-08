@@ -61,8 +61,8 @@ the two V/oct inputs get the shortest, tidiest runs.
 
 | jack | signal | board pad (panel x, y mm) | jack hole (x, y mm) | lead ≈ |
 |---|---|---|---|---|
-| J5 | TRIG 1 | 75.02, 47.35 | 15.40, 118.60 | 108 mm |
-| J6 | TRIG 2 | 75.02, 34.65 | 39.40, 118.60 | 106 mm |
+| J5 | TR1 | 75.02, 47.35 | 15.40, 118.60 | 108 mm |
+| J6 | TR2 | 75.02, 34.65 | 39.40, 118.60 | 106 mm |
 | J7 | CV 1 (V/oct) | 87.74, 47.35 | 15.40, 93.20 | 101 mm |
 | J8 | CV 2 (V/oct) | 100.40, 47.35 | 39.40, 93.20 | 91 mm |
 | J11 | CV 3 (±5 V) | 113.20, 47.35 | 15.40, 67.80 | 115 mm |
@@ -81,7 +81,7 @@ each directly below its knob** (same x as POT2–5), in the strip under the
 PCB's bottom edge (the PCB is 108 mm tall inside the 128.5 mm panel
 region, so the board region is raised to y = 18 and the jack row sits at
 y = 17 with ~5 mm nut clearance to the PCB edge). The other ten jacks are
-a 2 × 5 field on the left at 1" pitch — TRIG 1/2, CV 1/2, CV 3/4, IN L/R,
+a 2 × 5 field on the left at 1" pitch — TR1/TR2, CV 1/2, CV 3/4, IN L/R,
 OUT L/R — with OUT sharing the bottom row's height. Three rounded blue
 boxes: left field, interface block, CV 5–8 row; wordmark "CTAG
 STRÄMPLER" alone between.
