@@ -33,8 +33,8 @@ FONT = "Helvetica, Arial, sans-serif"
 # left jack field: rows top-to-bottom, each row = (left jack, right jack) as (label, board ref)
 JACK_ROWS = [
     (("TR1", "J5"), ("TR2", "J6")),
-    (("1  V/OCT", "J7"), ("2  V/OCT", "J8")),
-    (("3  ±5V", "J11"), ("4  ±5V", "J12")),
+    (("CV 1", "J7"), ("CV 2", "J8")),
+    (("CV 3", "J11"), ("CV 4", "J12")),
     (("IN L", "J2"),  ("IN R", "J1")),
     (("OUT L", "J4"), ("OUT R", "J3")),
 ]
@@ -50,7 +50,9 @@ NORMALLED = {"J7": "VOICE 1/2 via switch 1", "J5": "GATE 1/2 via switch 1",
              "J8": "VOICE 1/2 via switch 2", "J6": "GATE 1/2 via switch 2"}   # Switchcraft 12A/112A x4
 
 # bottom row under the PCB, one jack directly below each CV knob (x = knob x)
-BOTTOM_JACKS = [("5", "J9", 13.903), ("6", "J10", 35.117), ("7", "J13", 56.33), ("8", "J14", 77.544)]
+BOTTOM_JACKS = [("CV 5", "J9", 13.903), ("CV 6", "J10", 35.117), ("CV 7", "J13", 56.33), ("CV 8", "J14", 77.544)]
+# qualifier printed between the two jacks of a left-field row (row index -> text)
+ROW_MID_LABELS = {1: "V/OCT", 2: "±5V"}
 
 # ------------------------------------------------ board-locked geometry (v2_3)
 bx, by = BOARD_ORIGIN
@@ -62,7 +64,7 @@ POTS = [  # (x, y, dia, label)
     (13.903, 65.096, 7.2, "GAIN"),
     (77.544, 65.096, 8.2, "SELECT"),            # encoder SW1
 ]
-BUTTONS = [(35.117, 65.096, 9.5, "1"), (56.33, 65.096, 9.5, "2")]   # SW2/SW3
+BUTTONS = [(35.117, 65.096, 9.5, "TR1"), (56.33, 65.096, 9.5, "TR2")]   # SW2/SW3 = manual TR1/TR2 (Arlo 09-07)
 LED = (45.65, 65.04)
 ANT = (83.901, 97.693, 7.2)
 SCREWS = [(4.741, 80.224), (86.723, 80.224), (4.741, 114.565), (86.723, 114.565), (45.65, 73.479)]
@@ -134,6 +136,9 @@ def jack_positions():
 for lab, ref, xs, y in jack_positions():
     circle(xs, y, JACK_HOLE)
     text(xs, y + JACK_HOLE/2 + 2.4, lab, 2.6 if len(lab) <= 6 else 2.2)
+for i, mid in ROW_MID_LABELS.items():
+    y = JACK_ROW0 + (len(JACK_ROWS) - 1 - i) * JACK_PITCH
+    text((JACK_COLS[0] + JACK_COLS[1]) / 2, y - 0.8, mid, 2.0, weight="normal")
 
 # bus toggles + a light vertical chain line down each column: switch -> TR -> V/OCT jack,
 # broken around the labels and the holes
