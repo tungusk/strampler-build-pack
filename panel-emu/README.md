@@ -89,7 +89,9 @@ PCB's bottom edge (the PCB is 108 mm tall inside the 128.5 mm panel
 region, so the board region is raised to y = 18 and the jack row sits at
 y = 17 with ~5 mm nut clearance to the PCB edge). The other ten jacks are
 a 2 × 5 field on the left at 1" pitch — TR1/TR2, CV 1/2, CV 3/4, IN L/R,
-OUT L/R — with OUT sharing the bottom row's height. Blue artwork: an E-mu-style border 2 mm inside the panel edge, a rounded
+OUT L/R — with OUT sharing the bottom row's height. Blue artwork: an E-mu-style solid blue band 2.5 mm wide bleeding off the
+panel edge (the art DXF carries its inner boundary; fill between it and
+the panel outline), a rounded
 box around the interface block, and ONE L-shaped rounded outline joining
 the left jack field to the CV 5–8 row along the bottom (tops of the two
 boxes aligned); wordmark "CTAG STRÄMPLER" alone between. Labels (Arlo 09-07): CV jacks read "CV 1"…"CV 8"; the V/OCT, ±5V, IN and OUT

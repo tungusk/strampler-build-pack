@@ -206,8 +206,13 @@ fx0, fx1 = JACK_COLS[0] - 10.5, JACK_COLS[1] + 10.5
 fy0, fy1 = JACK_ROW0 - 7.5, by + 121.0   # top aligned with the interface box (padding above the top row)
 bx1, by1 = bx + 89.8, JACK_ROW0 + 12.5   # bottom row box extents (shares the left box's bottom edge)
 art_poly([(fx0, fy0), (bx1, fy0), (bx1, by1), (fx1, by1), (fx1, fy1), (fx0, fy1)], r=3.0)
-EDGE_INSET = 2.0                     # E-mu-style blue border just inside the panel edge (screw heads sit on it at the corners)
-art_box(EDGE_INSET, EDGE_INSET, W - EDGE_INSET, H - EDGE_INSET, r=2.5, w=0.7)
+EDGE_BAND = 2.5                      # E-mu-style solid blue band from the panel edge inward (Arlo 09-07: "bleed to the edge")
+e = EDGE_BAND; rr = 2.5
+art.append(f'<path fill-rule="evenodd" fill="{BLUE}" stroke="none" d="M 0 0 H {W} V {H} H 0 Z '
+           f'M {e+rr:.3f} {Y(H-e):.3f} H {W-e-rr:.3f} A {rr} {rr} 0 0 1 {W-e:.3f} {Y(H-e-rr):.3f} '
+           f'V {Y(e+rr):.3f} A {rr} {rr} 0 0 1 {W-e-rr:.3f} {Y(e):.3f} H {e+rr:.3f} A {rr} {rr} 0 0 1 {e:.3f} {Y(e+rr):.3f} '
+           f'V {Y(H-e-rr):.3f} A {rr} {rr} 0 0 1 {e+rr:.3f} {Y(H-e):.3f} Z"/>')
+dxf_art.append(("rrect", (e, e, W - e, H - e), rr))   # inner boundary of the band; outer boundary = the panel edge (fill/hatch between)
 
 # ------------------------------------------------------------ write SVG
 out = os.path.dirname(os.path.abspath(__file__))
