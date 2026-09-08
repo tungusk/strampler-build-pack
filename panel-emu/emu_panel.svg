@@ -20,8 +20,14 @@
 <text x="89.867" y="128.200" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">6</text>
 <text x="111.080" y="128.200" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">7</text>
 <text x="132.294" y="128.200" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">8</text>
-<text x="15.400" y="26.050" font-family="Helvetica, Arial, sans-serif" font-size="2.2" font-weight="bold" text-anchor="middle" fill="#000">KBD  A/B</text>
-<text x="39.400" y="26.050" font-family="Helvetica, Arial, sans-serif" font-size="2.2" font-weight="bold" text-anchor="middle" fill="#000">TRIG  A/B</text>
+<text x="15.400" y="15.650" font-family="Helvetica, Arial, sans-serif" font-size="2.0" font-weight="bold" text-anchor="middle" fill="#000">TRIG  A/B</text>
+<line x1="12.150" y1="20.900" x2="8.000" y2="20.900" stroke="#2456A6" stroke-width="0.3"/>
+<line x1="8.000" y1="20.900" x2="8.000" y2="39.400" stroke="#2456A6" stroke-width="0.3"/>
+<line x1="8.000" y1="39.400" x2="10.200" y2="39.400" stroke="#2456A6" stroke-width="0.3"/>
+<text x="39.400" y="15.650" font-family="Helvetica, Arial, sans-serif" font-size="2.0" font-weight="bold" text-anchor="middle" fill="#000">KBD  A/B</text>
+<line x1="36.150" y1="20.900" x2="27.400" y2="20.900" stroke="#2456A6" stroke-width="0.3"/>
+<line x1="27.400" y1="20.900" x2="27.400" y2="63.400" stroke="#2456A6" stroke-width="0.3"/>
+<line x1="27.400" y1="63.400" x2="20.600" y2="63.400" stroke="#2456A6" stroke-width="0.3"/>
 <rect x="56.250" y="13.400" width="88.300" height="82.500" rx="3.000" fill="none" stroke="#2456A6" stroke-width="0.6"/>
 <rect x="56.250" y="122.900" width="88.300" height="20.000" rx="3.000" fill="none" stroke="#2456A6" stroke-width="0.6"/>
 <text x="100.400" y="111.675" font-family="Helvetica, Arial, sans-serif" font-size="6.5" font-weight="bold" text-anchor="middle" fill="#000">CTAG STRÄMPLER</text>
@@ -64,7 +70,9 @@
 <circle cx="89.867" cy="135.400" r="4.800"/>
 <circle cx="111.080" cy="135.400" r="4.800"/>
 <circle cx="132.294" cy="135.400" r="4.800"/>
-<circle cx="15.400" cy="19.400" r="3.250"/>
-<circle cx="39.400" cy="19.400" r="3.250"/>
+<circle cx="15.400" cy="20.900" r="3.250"/>
+<circle cx="39.400" cy="20.900" r="3.250"/>
+<circle cx="60.000" cy="6.900" r="1.600"/>
+<circle cx="120.000" cy="6.900" r="1.600"/>
 </g>
 </svg>

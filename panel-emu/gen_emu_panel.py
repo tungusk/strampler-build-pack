@@ -42,7 +42,8 @@ JACK_ROWS = [
 # 3-position ON-OFF-ON: up = bus A, centre = off (jack un-normalled), down = bus B.
 # Feeds the SWITCHING jacks listed in NORMALLED via their tip-shunt (normal) lug.
 TOGGLE_HOLE = 6.5                   # 1/4"-40 bushing (C&K 7103 / generic MTS-103)
-TOGGLES = [(15.4, 133.0, "KBD  A/B"), (39.4, 133.0, "TRIG  A/B")]
+# (x, y, label, normalled jack ref, x of the vertical run of the indicator line)
+TOGGLES = [(15.4, 131.5, "TRIG  A/B", "J5", 8.0), (39.4, 131.5, "KBD  A/B", "J7", 27.4)]
 NORMALLED = {"J7": "KBD bus (CV)", "J5": "TRIG bus"}   # jack 1 and TR1 → Switchcraft 12A/112A
 
 # bottom row under the PCB, one jack directly below each CV knob (x = knob x)
@@ -131,10 +132,24 @@ for lab, ref, xs, y in jack_positions():
     circle(xs, y, JACK_HOLE)
     text(xs, y + JACK_HOLE/2 + 2.4, lab, 2.6 if len(lab) <= 6 else 2.2)
 
-# bus toggles
-for (tx, ty, lab) in TOGGLES:
+# bus toggles + indicator line to the jack each one normals
+def find_jack(ref):
+    for lab, r, x, y in jack_positions():
+        if r == ref: return x, y
+for (tx, ty, lab, ref, rx) in TOGGLES:
     circle(tx, ty, TOGGLE_HOLE)
-    text(tx, ty - TOGGLE_HOLE/2 - 3.4, lab, 2.2)
+    text(tx, ty + TOGGLE_HOLE/2 + 2.0, lab, 2.0)
+    jx, jy = find_jack(ref)
+    sgn = 1 if rx > tx else -1
+    pts = [(tx + sgn*TOGGLE_HOLE/2, ty), (rx, ty), (rx, jy), (jx + (JACK_HOLE/2 + 0.4)*(1 if rx > jx else -1), jy)]
+    for (xa, ya), (xb, yb) in zip(pts, pts[1:]):
+        line(xa, ya, xb, yb, 0.3)
+
+# ±12 V regulators (7812 / 7912, TO-220) bolted flat to the back of the panel — the panel is the heatsink.
+# Tab holes only; bodies lie horizontally in the top strip, pins toward the panel centre.
+REG_HOLES = [(60.0, 145.5, "7812"), (120.0, 145.5, "7912 (insulate tab)")]
+for (x, y, lab) in REG_HOLES:
+    circle(x, y, 3.2)
 
 # E-mu style dress: rounded blue boxes (left field, interface block, bottom row); wordmark plain
 art_box(bx + 1.5, by + 38.5, bx + 89.8, by + 121.0, r=3.0)   # display, SD, ANT, pots, buttons, LED

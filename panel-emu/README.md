@@ -100,8 +100,12 @@ system keyboard with nothing patched:
 
 | jack | normalled from | toggle | switching jack |
 |---|---|---|---|
-| **1** (V/oct, J7) | KBD bus A or B | `KBD A/B`, x 15.4 y 133 | Switchcraft **12A** (open) / **112A** (enclosed) — tip-shunt |
-| **TR1** (J5) | TRIG bus A or B | `TRIG A/B`, x 39.4 y 133 | same |
+| **1** (V/oct, J7) | KBD bus A or B (VOICE 1/2) | `KBD A/B`, x 39.4 y 131.5 | Switchcraft **12A** (open) / **112A** (enclosed) — tip-shunt |
+| **TR1** (J5) | TRIG bus A or B (GATE 1/2) | `TRIG A/B`, x 15.4 y 131.5 | same |
+
+A thin blue **indicator line** runs from each toggle to the jack it
+normals (TRIG is directly above TR1; the KBD line drops between the
+columns to jack 1). Toggle labels sit above the toggles.
 
 Wiring per input: bus A → toggle up contact, bus B → toggle down contact,
 toggle common → the jack's **shunt (normal) lug**; tip lug → board `IN`
@@ -120,6 +124,42 @@ the board's 100 k / NPN trigger input takes directly — **no inverter**;
 the VOICE bus is 1 V/oct into CVIN0's 180k/47k network, nothing to scale.
 Still open: which DIP pins carry GATE/TRIG (meter it), and whether to
 merge the two toggles into one E-mu-style ganged KYBD 1/2 switch.
+
+## Power conversion — ±15 V bus → ±12 V board (built into the panel)
+
+The E-mu bus is ±15 V; the Strämpler's rail caps are 16 V parts, so the
+panel carries its own linear regulators. **Two TO-220 tab holes (Ø3.2)
+in the top strip: 7812 at (60, 145.5), 7912 at (120, 145.5)**, regulators
+bolted flat to the back of the panel with the bodies lying horizontally
+toward the panel centre — the 6" × 6" aluminum panel is the heatsink
+(≈1.5 W on the 7812 at 0.5 A, trivial for that plate). Pins point inward
+so the caps and wiring sit in the strip above the PCB (PCB top edge is at
+y 136, the strip is y 138–152).
+
+| qty | part | ≈ | notes |
+|---|---|---|---|
+| 1 | **L7812CV** (TO-220) | $0.60 | tab = GND → bolt straight to the panel; panel becomes the star ground |
+| 1 | **L7912CV** (TO-220) | $0.60 | **tab = INPUT (−15 V)** — MUST be insulated: TO-220 mica/silpad + shoulder washer kit |
+| 1 | TO-220 insulator kit (silpad + nylon shoulder washer) | $0.30 | for the 7912 |
+| 2 | M3 × 8 screw + nut + lock washer | | tab bolts |
+| 2 | 1 µF 50 V ceramic (X7R) | | regulator inputs, close to the pins |
+| 2 | 10 µF 25 V (ceramic or electrolytic) | | regulator outputs |
+| 2 | 1N4007 | | reverse diodes output→input across each regulator (protects on power-down) |
+| 1 | 16-pin DIP plug for ribbon (3M 3416-xxxx style IDC DIP plug) + ~30 cm 16-way ribbon | $2 | the bus pickup |
+| 1 | 2 × 5 IDC socket or bare Eurorack power header pins | | into the board's P4 power header (10-pin: −12, GND, +12, +5, CV/gate) |
+| — | small perfboard scrap or dead-bug wiring, heat-shrink | | |
+
+Wiring: DIP pin 7 (+15) → 7812 IN, DIP pin 8 (−15) → 7912 IN, DIP pins 1–4
+(GND) → both regulator commons + panel + board GND. 7812 OUT → board
++12, 7912 OUT → board −12 via the Eurorack header (pin order per the
+board's P4 silk: the shrouded header is keyed, red stripe = −12). Leave
+the bus +5 unused (the board makes its own 3.3 V). Add a 0.5 A fuse in
+the +15 lead if the cabinet supply is a vintage 2900/2910 (3 A / 2 A).
+**Before first power-up:** meter the DIP socket in the cabinet — the pin
+map came from a 1974 drawing and the socket keying is not documented.
+
+Alternative that skips all of this: a separate ±12 V brick for the
+module and only VOICE/GATE/TRIG/GND from the DIP.
 
 ## Jack sourcing (14 needed, buy 16)
 
@@ -230,8 +270,8 @@ mechanical spec.
 2. Panel stock thickness (1.6 mm aluminum preferred; period panels were
    1/8" — counterbore the six pot/encoder holes if you go that thick).
 3. Artwork method (fibre laser / CerMark / engrave / print).
-4. **Power**: 7812/7912 on the panel, or a separate ±12 V supply — the
-   board must not see the bus's ±15 V (16 V rail caps).
+4. **Power**: 7812/7912 now designed onto the panel (tab holes in the
+   top strip, BOM above); still needs the cabinet DIP pinout metered.
 5. Bus DIP pinout for GATE/TRIG (pins 5/6/11/12/10): confirm with a meter.
 6. Decide: keep two toggles (KBD A/B, TRIG A/B) or go E-mu-faithful with
    one ganged KYBD 1/off/2 switch (jack 1 ← VOICE, TR1 ← GATE, TR2 ← TRIG).
