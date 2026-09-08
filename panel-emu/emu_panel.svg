@@ -9,6 +9,10 @@
 <text x="132.294" y="59.704" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">DATA</text>
 <text x="89.867" y="59.704" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">TR1</text>
 <text x="111.080" y="59.704" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">TR2</text>
+<circle cx="138.651" cy="45.507" r="0.45" fill="#000"/>
+<path d="M 139.570 44.588 A 1.300 1.300 0 0 0 137.732 44.588" fill="none" stroke="#000" stroke-width="0.45" stroke-linecap="round"/>
+<path d="M 140.419 43.739 A 2.500 2.500 0 0 0 136.883 43.739" fill="none" stroke="#000" stroke-width="0.45" stroke-linecap="round"/>
+<path d="M 141.267 42.891 A 3.700 3.700 0 0 0 136.035 42.891" fill="none" stroke="#000" stroke-width="0.45" stroke-linecap="round"/>
 <text x="15.400" y="32.200" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">TR1</text>
 <text x="39.400" y="32.200" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">TR2</text>
 <text x="15.400" y="56.200" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">CV 1</text>

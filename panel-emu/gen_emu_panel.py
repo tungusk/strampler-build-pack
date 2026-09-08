@@ -101,6 +101,18 @@ def art_box(x0, y0, x1, y1, r=3.0, w=0.6, color=BLUE):
                f'fill="none" stroke="{color}" stroke-width="{w}"/>')
     dxf_art.append(("rrect", (x0, y0, x1, y1), r))
 
+def wifi(cx, cy, r0=1.3, step=1.2, w=0.45, color="#000"):
+    """WiFi glyph: dot at (cx, cy) with three 90-degree arcs above it."""
+    art.append(f'<circle cx="{cx:.3f}" cy="{Y(cy):.3f}" r="0.45" fill="{color}"/>')
+    dxf_art.append(("dot", (cx, cy), 0.45))
+    for i in range(3):
+        r = r0 + i*step
+        x1, y1 = cx + r*math.cos(math.radians(45)), cy + r*math.sin(math.radians(45))
+        x2, y2 = cx + r*math.cos(math.radians(135)), cy + r*math.sin(math.radians(135))
+        art.append(f'<path d="M {x1:.3f} {Y(y1):.3f} A {r:.3f} {r:.3f} 0 0 0 {x2:.3f} {Y(y2):.3f}" '
+                   f'fill="none" stroke="{color}" stroke-width="{w}" stroke-linecap="round"/>')
+        dxf_art.append(("arc", (cx, cy), r, 45, 135))
+
 def text(x, y, s, size=2.6, anchor="middle", weight="bold", color="#000"):
     art.append(f'<text x="{x:.3f}" y="{Y(y):.3f}" font-family="{FONT}" font-size="{size}" font-weight="{weight}" '
                f'text-anchor="{anchor}" fill="{color}">{s}</text>')
@@ -118,7 +130,7 @@ for (x, y, d, lab) in POTS:
 for (x, y, d, lab) in BUTTONS:
     px, py = B(x, y); circle(px, py, d); text(px, py + 9.6, lab, 2.6)
 lx, ly = B(*LED); circle(lx, ly, LED_HOLE)
-ax, ay, ad = ANT; px, py = B(ax, ay); circle(px, py, ad)   # unlabelled (Arlo 09-07)
+ax, ay, ad = ANT; px, py = B(ax, ay); circle(px, py, ad); wifi(px, py - ad/2 - 5.2)   # WiFi glyph below the SMA (Arlo 09-07)
 for (x, y) in SCREWS:
     px, py = B(x, y); circle(px, py, SCREW_DIA)
 x0, y0, x1, y1, r = DISPLAY
@@ -204,6 +216,8 @@ def write_dxf(path, ops, layer):
                     ang = math.radians(a0 + t); pts.append((cx + r*math.cos(ang), cy + r*math.sin(ang)))
             msp.add_lwpolyline(pts, close=True, dxfattribs=a)
         elif k == "line": msp.add_line(op[1], op[2], dxfattribs=a)
+        elif k == "arc": msp.add_arc(op[1], op[2], op[3], op[4], dxfattribs=a)
+        elif k == "dot": msp.add_circle(op[1], op[2], dxfattribs=a)
         elif k == "text":
             (x, y), s, size, anchor = op[1], op[2], op[3], op[4]
             align = {"middle": "MIDDLE_CENTER", "start": "MIDDLE_LEFT", "end": "MIDDLE_RIGHT"}[anchor]
