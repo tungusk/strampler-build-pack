@@ -35,8 +35,8 @@ JACK_ROWS = [
     (("TR1", "J5"), ("TR2", "J6")),
     (("CV 1", "J7"), ("CV 2", "J8")),
     (("CV 3", "J11"), ("CV 4", "J12")),
-    (("IN L", "J2"),  ("IN R", "J1")),
-    (("OUT L", "J4"), ("OUT R", "J3")),
+    (("L", "J2"),  ("R", "J1")),          # "IN" printed between the pair
+    (("L", "J4"), ("R", "J3")),           # "OUT" printed between the pair
 ]
 # bus-select toggles (E-mu keyboard / trigger buses), in the padding above the top row.
 # 3-position ON-OFF-ON: up = bus A, centre = off (jack un-normalled), down = bus B.
@@ -52,7 +52,7 @@ NORMALLED = {"J7": "VOICE 1/2 via switch 1", "J5": "GATE 1/2 via switch 1",
 # bottom row under the PCB, one jack directly below each CV knob (x = knob x)
 BOTTOM_JACKS = [("CV 5", "J9", 13.903), ("CV 6", "J10", 35.117), ("CV 7", "J13", 56.33), ("CV 8", "J14", 77.544)]
 # qualifier printed between the two jacks of a left-field row (row index -> text)
-ROW_MID_LABELS = {1: "V/OCT", 2: "±5V"}
+ROW_MID_LABELS = {1: "V/OCT", 2: "±5V", 3: "IN", 4: "OUT"}
 
 # ------------------------------------------------ board-locked geometry (v2_3)
 bx, by = BOARD_ORIGIN

@@ -74,10 +74,10 @@ the two V/oct inputs get the shortest, tidiest runs.
 | J8 | CV 2 | 100.40, 47.35 | 39.40, 93.20 | 91 mm |
 | J11 | CV 3 (±5V between the pair) | 113.20, 47.35 | 15.40, 67.80 | 115 mm |
 | J12 | CV 4 | 125.93, 47.35 | 39.40, 67.80 | 104 mm |
-| J2 | IN L | 62.29, 47.35 | 15.40, 42.40 | 62 mm |
-| J1 | IN R | 62.29, 34.65 | 39.40, 42.40 | 39 mm |
-| J4 | OUT L | 138.65, 47.35 | 15.40, 17.00 | 142 mm |
-| J3 | OUT R | 138.65, 34.65 | 39.40, 17.00 | 116 mm |
+| J2 | L (IN between the pair) | 62.29, 47.35 | 15.40, 42.40 | 62 mm |
+| J1 | R (IN) | 62.29, 34.65 | 39.40, 42.40 | 39 mm |
+| J4 | L (OUT between the pair) | 138.65, 47.35 | 15.40, 17.00 | 142 mm |
+| J3 | R (OUT) | 138.65, 34.65 | 39.40, 17.00 | 116 mm |
 | J9 | CV 5 (knob above) | 87.74, 34.65 | 68.65, 17.00 | 41 mm |
 | J10 | CV 6 (knob above) | 100.40, 34.65 | 89.87, 17.00 | 36 mm |
 | J13 | CV 7 (knob above) | 113.20, 34.65 | 111.08, 17.00 | 33 mm |
@@ -91,8 +91,8 @@ y = 17 with ~5 mm nut clearance to the PCB edge). The other ten jacks are
 a 2 × 5 field on the left at 1" pitch — TR1/TR2, CV 1/2, CV 3/4, IN L/R,
 OUT L/R — with OUT sharing the bottom row's height. Three rounded blue
 boxes: left field, interface block, CV 5–8 row (box tops aligned); wordmark
-"CTAG STRÄMPLER" alone between. Labels (Arlo 09-07): CV jacks read "CV 1"…"CV 8"; the V/OCT and ±5V
-qualifiers sit between the two jacks of their row; the four attenuator
+"CTAG STRÄMPLER" alone between. Labels (Arlo 09-07): CV jacks read "CV 1"…"CV 8"; the V/OCT, ±5V, IN and OUT
+words sit between the two jacks of their row (audio jacks read just L / R); the four attenuator
 knobs are unlabelled (jack directly below); trigger jacks are TR1/TR2 and
 the two push buttons under the screen are labelled TR1/TR2 too (manual
 triggers).

@@ -12,16 +12,18 @@
 <text x="39.400" y="56.200" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">CV 2</text>
 <text x="15.400" y="80.200" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">CV 3</text>
 <text x="39.400" y="80.200" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">CV 4</text>
-<text x="15.400" y="104.200" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">IN L</text>
-<text x="39.400" y="104.200" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">IN R</text>
-<text x="15.400" y="128.200" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">OUT L</text>
-<text x="39.400" y="128.200" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">OUT R</text>
+<text x="15.400" y="104.200" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">L</text>
+<text x="39.400" y="104.200" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">R</text>
+<text x="15.400" y="128.200" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">L</text>
+<text x="39.400" y="128.200" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">R</text>
 <text x="68.653" y="128.200" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">CV 5</text>
 <text x="89.867" y="128.200" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">CV 6</text>
 <text x="111.080" y="128.200" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">CV 7</text>
 <text x="132.294" y="128.200" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">CV 8</text>
 <text x="27.400" y="64.200" font-family="Helvetica, Arial, sans-serif" font-size="2.0" font-weight="normal" text-anchor="middle" fill="#000">V/OCT</text>
 <text x="27.400" y="88.200" font-family="Helvetica, Arial, sans-serif" font-size="2.0" font-weight="normal" text-anchor="middle" fill="#000">±5V</text>
+<text x="27.400" y="112.200" font-family="Helvetica, Arial, sans-serif" font-size="2.0" font-weight="normal" text-anchor="middle" fill="#000">IN</text>
+<text x="27.400" y="136.200" font-family="Helvetica, Arial, sans-serif" font-size="2.0" font-weight="normal" text-anchor="middle" fill="#000">OUT</text>
 <text x="15.400" y="15.650" font-family="Helvetica, Arial, sans-serif" font-size="2.2" font-weight="bold" text-anchor="middle" fill="#000">KYBD</text>
 <text x="19.850" y="18.700" font-family="Helvetica, Arial, sans-serif" font-size="1.8" font-weight="normal" text-anchor="start" fill="#000">1</text>
 <text x="19.850" y="24.300" font-family="Helvetica, Arial, sans-serif" font-size="1.8" font-weight="normal" text-anchor="start" fill="#000">2</text>
