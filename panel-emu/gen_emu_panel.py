@@ -130,7 +130,7 @@ for (x, y, d, lab) in POTS:
 for (x, y, d, lab) in BUTTONS:
     px, py = B(x, y); circle(px, py, d); text(px, py + 9.6, lab, 2.6)
 lx, ly = B(*LED); circle(lx, ly, LED_HOLE)
-ax, ay, ad = ANT; px, py = B(ax, ay); circle(px, py, ad); wifi(px, py - ad/2 - 5.2)   # WiFi glyph below the SMA (Arlo 09-07)
+ax, ay, ad = ANT; px, py = B(ax, ay); circle(px, py, ad); wifi(px, py + ad/2 + 1.4)   # WiFi glyph ABOVE the SMA (Arlo 09-07)
 for (x, y) in SCREWS:
     px, py = B(x, y); circle(px, py, SCREW_DIA)
 x0, y0, x1, y1, r = DISPLAY
