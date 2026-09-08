@@ -45,7 +45,7 @@ TOGGLE_HOLE = 6.5                   # 1/4"-40 bushing (C&K 7203 DPDT ON-OFF-ON /
 # TWO ganged E-mu-style KYBD switches (up = keyboard 1, centre = off, down = keyboard 2), one per
 # column of the left field: column 1 switch -> jack 1 (VOICE) + TR1 (GATE); column 2 switch ->
 # jack 2 (VOICE) + TR2 (GATE). Each is a DPDT ON-OFF-ON. (Arlo 09-07)
-TOGGLES = [(15.4, 131.5, "KYBD", []), (39.4, 131.5, "KYBD", [])]
+TOGGLES = [(15.4, 131.5, "BUS", []), (39.4, 131.5, "BUS", [])]
 NORMALLED = {"J7": "VOICE 1/2 via switch 1", "J5": "GATE 1/2 via switch 1",
              "J8": "VOICE 1/2 via switch 2", "J6": "GATE 1/2 via switch 2"}   # Switchcraft 12A/112A x4
 
