@@ -45,10 +45,11 @@ Eurorack panel `hardware-kicad/strampler_panel_v2_3.kicad_pcb` and only
 translated by `BOARD_ORIGIN`. Countersink the five M3 holes if the panel
 is aluminum (they take the panel-to-standoff screws).
 
-Omitted on purpose: the Eurorack rail holes, the SD card slot (Arlo
-2026-09-07: card stays inside — note the TFT module's own SD socket is
-**not wired** to the ESP32; using it means running the SD lines to it),
-and the fourteen 3.5 mm jack holes.
+Omitted on purpose: the Eurorack rail holes and the fourteen 3.5 mm jack
+holes. The SD card slot (2.5 × 13 mm at the left edge) is **kept** — set
+`INCLUDE_SD_SLOT = False` to drop it if the card is to stay inside. (The
+TFT module's own SD socket is **not wired** to the ESP32; using it would
+mean running the SD lines to it.)
 
 ## 1/4" jacks — wiring
 

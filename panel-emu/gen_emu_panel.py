@@ -26,7 +26,7 @@ JACK_ROW0 = 19.05                   # y of the bottom row
 MOUNT_HOLES = [(6.35, 6.35), (W-6.35, 6.35), (6.35, H-6.35), (W-6.35, H-6.35)]
 MOUNT_DIA = 4.2                     # PLACEHOLDER — measure the cabinet rails
 LED_HOLE = 3.2                      # 3 mm light pipe / bare 3 mm LED behind
-INCLUDE_SD_SLOT = False             # Arlo 2026-09-07: omit, card lives inside
+INCLUDE_SD_SLOT = True              # kept "just in case" (Arlo 2026-09-07)
 BLUE = "#2456A6"                    # E-mu accent blue
 FONT = "Helvetica, Arial, sans-serif"
 
