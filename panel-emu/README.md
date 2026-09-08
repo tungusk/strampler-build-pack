@@ -141,9 +141,97 @@ for the normalled inputs (see Bus normalling).
 All of these use the **3/8"-32 bushing → Ø9.5 mm hole** (the file uses
 9.6 for clearance). Knurled nut + lock washer come with the Switchcrafts.
 
+## E-mu Modular conventions — researched 2026-09-07
+
+Primary source: the *Eµ Systems Modular Technical Manual* (schematics
+1972–80, compiled by Rob Keeble; archive.org
+`e-mu-modular-technical-manual`, 129 pp). Everything below was read off
+the original drawings unless marked otherwise.
+
+**Panels.** 6" high, widths in 3" steps. Vintage Synth Explorer: *"bright
+and shiny 1/8" aluminum panels with nice blue lines separating each
+module"* — so period panels were **1/8" (3.2 mm)** aluminum, black
+lettering, blue lines. (Our pot bushings can't take 3.2 mm — see the
+thickness table; counterbore or use 1/16".) The manual is schematics only:
+**no mechanical drawings, no mounting-hole pattern** → still measure the
+cabinet.
+
+**The bus is a 16-pin DIP socket at every module position** (2900 Power
+Supply Module schematic, doc 2900-001-001, 22 Apr 1973: "DIP SOCKETS (FOUR
+IDENTICAL)"). Modules plug in with a DIP header on a ribbon. It carries:
+
+| signal | notes |
+|---|---|
+| VOICE 1, VOICE 2 | the two keyboard CVs, 1 V/oct |
+| GATE 1, GATE 2 | per keyboard |
+| TRIG 1, TRIG 2 | per keyboard — **gate and trigger are separate lines** |
+| SYNC 1, SYNC 2 | VCO sync buses (module-to-module, no PSU source) |
+| GND, +15 V, +5 V, −15 V | |
+
+Pin map read off the 2200 VCO module schematic (doc 2200-001-003, left
+column 1–8 top→bottom, right column 16–9 top→bottom): **1–4 GND, 7 +15,
+8 −15, 9 +5, 16 VOICE 1, 15 VOICE 2, 14 SYNC 1, 13 SYNC 2**. The
+gate/trigger pins are among **5, 6, 12, 11, 10** (the VCO doesn't use
+them; the 2350 TG drawing is too faint to assign them with confidence).
+**Verify at the cabinet with a meter** before wiring: power pins are
+unambiguous, VOICE/GATE/TRIG identify themselves when a key is pressed.
+
+**Module convention for keyboard selection.** Every module has ONE
+`KYBD 1 / 2` switch (VCO: 2-pole with SYNC 1/2 alongside; 2350 Transient
+Generator: a ganged DPDT that selects keyboard 1 or 2 for BOTH its gate
+and its trigger, and the module's EXT GATE / EXT TRIGGERING jacks are
+**normalled from the selected bus through the jack's switch contact**).
+That is exactly the scheme on this panel. To be E-mu-faithful the two
+separate toggles would become **one ganged KYBD 1 / off / 2 switch**
+feeding jack 1 (← VOICE), TR1 (← GATE) and optionally TR2 (← TRIG) — a
+3PDT ON-OFF-ON (C&K 7301 ~$10, or a generic MTS-303). Not yet changed on
+the panel; decide.
+
+**Gate / trigger polarity: POSITIVE, 0 / +5 V TTL.** 4000 Keyboard
+schematic (doc 4000-001-003, 26 Jun 1973): TRIGGER (J4) and GATE (J3) are
+**7416 open-collector outputs with 1 kΩ pull-ups to +5 V**. The 2200
+VCO's own GATE INPUT is 100 k into a 2N3904 base with a 1N914 clamp —
+the same topology as the Strämpler's TR inputs. **No inverter needed;**
+a +5 V gate into our 100 k / NPN input is fine. (Not S-trig.)
+
+**Keyboard cable (for reference):** 12-conductor Burndy, 4000 output
+connector: 1 analog GND, 2 digital GND, 3 +15, 4 −15, 5/6 +5, 7 VOICE,
+8 GATE, 9 TRIGGER (4920-011-001 gives the wire colours). Firm-wire patch
+pins on module rears are "Burndy pins" (4910-K).
+
+**⚠ Power: the E-mu bus is ±15 V, the Strämpler is a ±12 V board.** The
+digital side is fine on +15 (Recom R-78E3.3 switcher, 7–28 V in; ADP7118
+LDO ≤ 20 V; TL072s happy at ±15). The problem is the rail capacitors:
+**C38/C39/C42 are 16 V tantalums** (TCTAL1C226) and **C36 is a 16 V
+polymer** — at ±15 V they'd sit at 94 % of rating, far outside tantalum
+derating, and the −10 V LM4040 reference's series current also rises.
+**Do not feed the board from the ±15 bus directly.** Two clean options:
+1. **Regulate on the panel**: 7812 / 7912 (TO-220, small heatsink on the
+   7812 — the ESP32 + WiFi side draws ~0.3–0.5 A, ≈1.5 W drop) plus
+   four caps on a scrap of perfboard behind the panel; take +15/−15/GND
+   from the DIP, leave +5 unused. Check the cabinet supply has ~0.5 A of
+   +15 headroom (2900 = 3 A, 2910 = 2 A, 2920 = 1 A per the PSU table).
+2. **Separate ±12 V supply** for the module (any Eurorack brick), with
+   only VOICE / GATE / TRIG / GND taken from the bus.
+
+**Sources:** manual pages 54 (2200 VCO), 55 (VCO gate input), 76 (2350 TG),
+104 (2900 PSU + DIP sockets), 115 (4000 keyboard output stage), 128–129
+(4910/4920 cables); [Vintage Synth Explorer](https://www.vintagesynth.com/e-mu/modular-systems)
+(1/8" aluminum, blue lines, 2 CV/gate 1 V/oct); [Silicon Breakdown](https://siliconbreakdown.com/e-mu-modular)
+(2200: "±15 V @ 50 mA, +5 V @ 10 mA"; "Power Bus Connected Inputs:
+Keyboard CV's 1 & 2 & Sync Busses 1 & 2"); [AMSynths](https://amsynths.co.uk/home/synthesizers/emu-systems-modular-2003/)
+(6" high, 3/6/12" wide); Mos-Lab reissue (2026) exists but publishes no
+mechanical spec.
+
 ## Open items before cutting
 
 1. Cabinet mounting-hole pattern (measure → `MOUNT_HOLES`, `MOUNT_DIA`).
-2. Panel stock thickness (see table; 1.6 mm aluminum preferred).
-3. Whether the shop's laser can mark aluminum (fibre / CerMark) or the
-   artwork goes on as a print / engrave / vinyl.
+   Not in the technical manual.
+2. Panel stock thickness (1.6 mm aluminum preferred; period panels were
+   1/8" — counterbore the six pot/encoder holes if you go that thick).
+3. Artwork method (fibre laser / CerMark / engrave / print).
+4. **Power**: 7812/7912 on the panel, or a separate ±12 V supply — the
+   board must not see the bus's ±15 V (16 V rail caps).
+5. Bus DIP pinout for GATE/TRIG (pins 5/6/11/12/10): confirm with a meter.
+6. Decide: keep two toggles (KBD A/B, TRIG A/B) or go E-mu-faithful with
+   one ganged KYBD 1/off/2 switch (jack 1 ← VOICE, TR1 ← GATE, TR2 ← TRIG).
