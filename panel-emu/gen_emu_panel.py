@@ -113,9 +113,9 @@ for (x, y) in MOUNT_HOLES: circle(x, y, MOUNT_DIA)
 # board-locked
 for (x, y, d, lab) in POTS:
     px, py = B(x, y); circle(px, py, d)
-    if lab: text(px, py + d/2 + 5.5, lab, 2.6)
+    if lab: text(px, py + 9.6, lab, 2.6)          # fixed offset so GAIN / TR1 / TR2 / DATA share one baseline
 for (x, y, d, lab) in BUTTONS:
-    px, py = B(x, y); circle(px, py, d); text(px, py + d/2 + 2.2, lab, 2.4)
+    px, py = B(x, y); circle(px, py, d); text(px, py + 9.6, lab, 2.6)
 lx, ly = B(*LED); circle(lx, ly, LED_HOLE)
 ax, ay, ad = ANT; px, py = B(ax, ay); circle(px, py, ad); text(px, py - ad/2 - 3.2, "ANT", 2.2)
 for (x, y) in SCREWS:
