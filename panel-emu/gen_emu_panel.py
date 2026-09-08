@@ -41,10 +41,12 @@ JACK_ROWS = [
 # bus-select toggles (E-mu keyboard / trigger buses), in the padding above the top row.
 # 3-position ON-OFF-ON: up = bus A, centre = off (jack un-normalled), down = bus B.
 # Feeds the SWITCHING jacks listed in NORMALLED via their tip-shunt (normal) lug.
-TOGGLE_HOLE = 6.5                   # 1/4"-40 bushing (C&K 7103 / generic MTS-103)
-# (x, y, label, normalled jack ref, x of the vertical run of the indicator line)
-TOGGLES = [(15.4, 131.5, "TRIG  A/B", "J5", 8.0), (39.4, 131.5, "KBD  A/B", "J7", 27.4)]
-NORMALLED = {"J7": "KBD bus (CV)", "J5": "TRIG bus"}   # jack 1 and TR1 → Switchcraft 12A/112A
+TOGGLE_HOLE = 6.5                   # 1/4"-40 bushing (C&K 7301 3PDT ON-OFF-ON / generic MTS-303)
+# ONE ganged E-mu-style KYBD switch (up = keyboard 1, centre = off, down = keyboard 2), 3 poles:
+#   pole A: VOICE 1/2 -> jack 1 normal lug, pole B: GATE 1/2 -> TR1, pole C: TRIG 1/2 -> TR2
+# targets: (jack ref, route) where route = "down" (straight down between the columns) or ("side", x_run)
+TOGGLES = [(27.4, 131.5, "KYBD", [("J7", "down"), ("J5", ("side", 8.0)), ("J6", ("side", 46.8))])]
+NORMALLED = {"J7": "VOICE 1/2 (kbd CV)", "J5": "GATE 1/2", "J6": "TRIG 1/2"}   # Switchcraft 12A/112A
 
 # bottom row under the PCB, one jack directly below each CV knob (x = knob x)
 BOTTOM_JACKS = [("5", "J9", 13.903), ("6", "J10", 35.117), ("7", "J13", 56.33), ("8", "J14", 77.544)]
@@ -132,18 +134,24 @@ for lab, ref, xs, y in jack_positions():
     circle(xs, y, JACK_HOLE)
     text(xs, y + JACK_HOLE/2 + 2.4, lab, 2.6 if len(lab) <= 6 else 2.2)
 
-# bus toggles + indicator line to the jack each one normals
+# bus toggle + indicator lines to the jacks it normals
 def find_jack(ref):
     for lab, r, x, y in jack_positions():
         if r == ref: return x, y
-for (tx, ty, lab, ref, rx) in TOGGLES:
+for (tx, ty, lab, targets) in TOGGLES:
     circle(tx, ty, TOGGLE_HOLE)
-    text(tx, ty + TOGGLE_HOLE/2 + 2.0, lab, 2.0)
-    jx, jy = find_jack(ref)
-    sgn = 1 if rx > tx else -1
-    pts = [(tx + sgn*TOGGLE_HOLE/2, ty), (rx, ty), (rx, jy), (jx + (JACK_HOLE/2 + 0.4)*(1 if rx > jx else -1), jy)]
-    for (xa, ya), (xb, yb) in zip(pts, pts[1:]):
-        line(xa, ya, xb, yb, 0.3)
+    text(tx, ty + TOGGLE_HOLE/2 + 2.0, lab, 2.2)
+    text(tx + TOGGLE_HOLE/2 + 1.2, ty + 2.2, "1", 1.8, anchor="start", weight="normal")
+    text(tx + TOGGLE_HOLE/2 + 1.2, ty - 3.4, "2", 1.8, anchor="start", weight="normal")
+    for ref, route in targets:
+        jx, jy = find_jack(ref)
+        if route == "down":
+            pts = [(tx, ty - TOGGLE_HOLE/2), (tx, jy), (jx + (JACK_HOLE/2 + 0.4)*(1 if tx > jx else -1), jy)]
+        else:
+            rx = route[1]; sgn = 1 if rx > tx else -1
+            pts = [(tx + sgn*TOGGLE_HOLE/2, ty), (rx, ty), (rx, jy), (jx + (JACK_HOLE/2 + 0.4)*(1 if rx > jx else -1), jy)]
+        for (xa, ya), (xb, yb) in zip(pts, pts[1:]):
+            line(xa, ya, xb, yb, 0.3)
 
 # ±12 V regulators (7812 / 7912, TO-220) bolted flat to the back of the panel — the panel is the heatsink.
 # Tab holes only; bodies lie horizontally in the top strip, pins toward the panel centre.
