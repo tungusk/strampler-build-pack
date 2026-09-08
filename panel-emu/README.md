@@ -84,8 +84,7 @@ y = 17 with ~5 mm nut clearance to the PCB edge). The other ten jacks are
 a 2 × 5 field on the left at 1" pitch — TR1/TR2, CV 1/2, CV 3/4, IN L/R,
 OUT L/R — with OUT sharing the bottom row's height. Three rounded blue
 boxes: left field, interface block, CV 5–8 row (box tops aligned); wordmark
-"CTAG STRÄMPLER" alone between. Labels say "CV" once per group (blue tag);
-CV jacks are numbered, the four attenuator knobs are unlabelled (jack
+"CTAG STRÄMPLER" alone between. No "CV" label anywhere: CV jacks are just numbered, the four attenuator knobs are unlabelled (jack
 directly below), triggers are TR1/TR2.
 
 Jack field geometry: left field two columns 24 mm apart, five rows at 1"

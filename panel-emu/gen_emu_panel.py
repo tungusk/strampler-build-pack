@@ -127,14 +127,11 @@ for lab, ref, xs, y in jack_positions():
 # E-mu style dress: rounded blue boxes (left field, interface block, bottom row); wordmark plain
 art_box(bx + 1.5, by + 38.5, bx + 89.8, by + 121.0, r=3.0)   # display, SD, ANT, pots, buttons, LED
 art_box(bx + 1.5, JACK_ROW0 - 7.5, bx + 89.8, JACK_ROW0 + 12.5, r=3.0)   # CV 5-8 row, same width as the interface box
-text(bx + 3.3, JACK_ROW0 - 0.8, "CV", 2.2, anchor="start", color=BLUE)
 wx = bx + 91.3/2
 text(wx, (by + 38.5 + JACK_ROW0 + 12.5)/2 - 6.5*0.35, "CTAG STRÄMPLER", 6.5)   # centred in the band (baseline shifted by ~cap height/2)
 fx0, fx1 = JACK_COLS[0] - 10.5, JACK_COLS[1] + 10.5
 fy0, fy1 = JACK_ROW0 - 7.5, by + 121.0   # top aligned with the interface box (padding above the top row)
 art_box(fx0, fy0, fx1, fy1, r=3.0)
-cv_mid = JACK_ROW0 + 2.5*JACK_PITCH   # between rows "2" and "3" (rows 1-4 = CV)
-text(fx0 + 2.0, cv_mid - 0.9, "CV", 2.6, anchor="start", color=BLUE)
 
 # ------------------------------------------------------------ write SVG
 out = os.path.dirname(os.path.abspath(__file__))
