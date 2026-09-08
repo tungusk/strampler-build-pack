@@ -45,7 +45,8 @@ TOGGLE_HOLE = 6.5                   # 1/4"-40 bushing (C&K 7203 DPDT ON-OFF-ON /
 # TWO ganged E-mu-style KYBD switches (up = keyboard 1, centre = off, down = keyboard 2), one per
 # column of the left field: column 1 switch -> jack 1 (VOICE) + TR1 (GATE); column 2 switch ->
 # jack 2 (VOICE) + TR2 (GATE). Each is a DPDT ON-OFF-ON. (Arlo 09-07)
-TOGGLES = [(15.4, 131.5, "BUS", []), (39.4, 131.5, "BUS", [])]
+TOGGLES = [(15.4, 131.5, "", []), (39.4, 131.5, "", [])]
+TOGGLE_ROW_LABEL = "BUS"            # one word centred between the two switches
 NORMALLED = {"J7": "VOICE 1/2 via switch 1", "J5": "GATE 1/2 via switch 1",
              "J8": "VOICE 1/2 via switch 2", "J6": "GATE 1/2 via switch 2"}   # Switchcraft 12A/112A x4
 
@@ -149,7 +150,7 @@ CHAIN = {15.4: ("J5", "J7"), 39.4: ("J6", "J8")}   # column x -> (TR jack, V/oct
 LABEL_H = 3.4                                       # vertical clearance kept around a jack label
 for (tx, ty, lab, targets) in TOGGLES:
     circle(tx, ty, TOGGLE_HOLE)
-    text(tx, ty + TOGGLE_HOLE/2 + 2.0, lab, 2.2)
+    if lab: text(tx, ty + TOGGLE_HOLE/2 + 2.0, lab, 2.2)
     text(tx + TOGGLE_HOLE/2 + 1.2, ty + 2.2, "1", 1.8, anchor="start", weight="normal")
     text(tx + TOGGLE_HOLE/2 + 1.2, ty - 3.4, "2", 1.8, anchor="start", weight="normal")
     if tx in CHAIN:
@@ -159,6 +160,9 @@ for (tx, ty, lab, targets) in TOGGLES:
             lab_y = jy + JACK_HOLE/2 + 2.4          # label baseline (see jack field)
             line(tx, y_cursor, tx, lab_y + LABEL_H - 0.6, 0.3)      # down to the label; the label→hole stub is omitted
             y_cursor = jy - JACK_HOLE/2 - 0.6                       # continue below the hole
+
+if TOGGLES:
+    text(sum(t[0] for t in TOGGLES)/len(TOGGLES), TOGGLES[0][1] - 0.9, TOGGLE_ROW_LABEL, 2.6)   # between the switches, at their height
 
 # ±12 V regulators: NOT on the panel (the wood rail sits behind the top strip — Arlo 09-07).
 # They live on a small board behind the PCB, on extended standoffs; see README "Power conversion".

@@ -106,7 +106,7 @@ tall behind the panel — orient the lugs toward the board.
 
 Decided 2026-09-07: E-mu's two keyboard buses drive the two CV/trigger
 pairs independently. Each column of the left field has its own **BUS
-1 / off / 2** switch (panel label "BUS"; E-mu called it KYBD) at the top (x 15.4 and 39.4, y 131.5): a **DPDT
+1 / off / 2** switch (one "BUS" word centred between the two switches; E-mu called it KYBD) at the top (x 15.4 and 39.4, y 131.5): a **DPDT
 ON-OFF-ON** mini toggle (C&K 7203 ~$7, generic MTS-203 ~$1, Ø6.5 hole),
 "1" and "2" marked beside it (up = keyboard 1, down = keyboard 2, centre
 = that pair un-normalled). A light blue chain line runs straight down
