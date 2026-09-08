@@ -65,3 +65,11 @@ substitutions, verification renders/PDF, and the ordering/cost documentation.
 Not affiliated with or endorsed by CTAG or Antumbra — errors are ours, not
 theirs. Verify footprints against the Eagle originals before fabbing
 modified boards.
+
+## Experimental: E-mu-format panel (2026-09)
+
+`panel-emu/` — a 6" × 6" E-mu Modular style front panel for the main board
+with 1/4" Switchcraft jacks, bus-normalled CV/trigger inputs, and a ±12 V
+regulator sub-board for the E-mu ±15 V bus. Parametric generator + SVG/DXF
+cut and art files + README (BOM, wiring, E-mu conventions). One-off for a
+hackerspace system; slow burn.
