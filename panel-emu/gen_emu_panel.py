@@ -45,7 +45,7 @@ TOGGLE_HOLE = 6.5                   # 1/4"-40 bushing (C&K 7301 3PDT ON-OFF-ON /
 # ONE ganged E-mu-style KYBD switch (up = keyboard 1, centre = off, down = keyboard 2), 3 poles:
 #   pole A: VOICE 1/2 -> jack 1 normal lug, pole B: GATE 1/2 -> TR1, pole C: TRIG 1/2 -> TR2
 # targets: (jack ref, route) where route = "down" (straight down between the columns) or ("side", x_run)
-TOGGLES = [(27.4, 131.5, "KYBD", [("J7", "down"), ("J5", ("side", 8.0)), ("J6", ("side", 46.8))])]
+TOGGLES = [(27.4, 131.5, "KYBD: 1 · TR1 · TR2", [])]   # targets named in the label; no indicator lines (Arlo 09-07)
 NORMALLED = {"J7": "VOICE 1/2 (kbd CV)", "J5": "GATE 1/2", "J6": "TRIG 1/2"}   # Switchcraft 12A/112A
 
 # bottom row under the PCB, one jack directly below each CV knob (x = knob x)
@@ -140,7 +140,7 @@ def find_jack(ref):
         if r == ref: return x, y
 for (tx, ty, lab, targets) in TOGGLES:
     circle(tx, ty, TOGGLE_HOLE)
-    text(tx, ty + TOGGLE_HOLE/2 + 2.0, lab, 2.2)
+    text(tx, ty + TOGGLE_HOLE/2 + 2.0, lab, 2.0)
     text(tx + TOGGLE_HOLE/2 + 1.2, ty + 2.2, "1", 1.8, anchor="start", weight="normal")
     text(tx + TOGGLE_HOLE/2 + 1.2, ty - 3.4, "2", 1.8, anchor="start", weight="normal")
     for ref, route in targets:

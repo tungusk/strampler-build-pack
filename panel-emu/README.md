@@ -102,8 +102,8 @@ Decided 2026-09-07: the E-mu module convention, one **KYBD 1 / off / 2**
 switch per module. It is a **3PDT ON-OFF-ON** mini toggle (C&K 7301,
 ~$10; generic MTS-303, ~$1.50; Ø6.5 hole) at x 27.4, y 131.5, centred
 above the left field, "1" and "2" marked beside it (up = keyboard 1,
-down = keyboard 2, centre = nothing normalled). Thin blue indicator lines
-run from the switch to the three jacks it feeds.
+down = keyboard 2, centre = nothing normalled). The label names what it
+feeds — "KYBD: 1 · TR1 · TR2" — no indicator lines (tried, too busy).
 
 | pole | bus lines (DIP) | → jack (switching, Switchcraft 12A / 112A) |
 |---|---|---|
