@@ -138,7 +138,7 @@ for lab, ref, xs, y in jack_positions():
     text(xs, y + JACK_HOLE/2 + 2.4, lab, 2.6 if len(lab) <= 6 else 2.2)
 for i, mid in ROW_MID_LABELS.items():
     y = JACK_ROW0 + (len(JACK_ROWS) - 1 - i) * JACK_PITCH
-    text((JACK_COLS[0] + JACK_COLS[1]) / 2, y - 0.8, mid, 2.0, weight="normal")
+    text((JACK_COLS[0] + JACK_COLS[1]) / 2, y - 0.9, mid, 2.6)   # same size/weight as the jack labels
 
 # bus toggles + a light vertical chain line down each column: switch -> TR -> V/OCT jack,
 # broken around the labels and the holes
@@ -157,8 +157,7 @@ for (tx, ty, lab, targets) in TOGGLES:
         for ref in CHAIN[tx]:
             jx, jy = find_jack(ref)
             lab_y = jy + JACK_HOLE/2 + 2.4          # label baseline (see jack field)
-            line(tx, y_cursor, tx, lab_y + LABEL_H - 0.6, 0.3)      # down to the label
-            line(tx, lab_y - 1.2, tx, jy + JACK_HOLE/2 + 0.6, 0.3)  # label to hole
+            line(tx, y_cursor, tx, lab_y + LABEL_H - 0.6, 0.3)      # down to the label; the label→hole stub is omitted
             y_cursor = jy - JACK_HOLE/2 - 0.6                       # continue below the hole
 
 # ±12 V regulators: NOT on the panel (the wood rail sits behind the top strip — Arlo 09-07).
