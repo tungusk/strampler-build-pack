@@ -18,9 +18,13 @@ block, rerun, all files regenerate).
 - Modules are **6" high**, widths in **3" steps** (3 / 6 / 12"). The board
   footprint is 91.3 mm ≈ 3.6", so this panel is one 6" × 6" unit.
 - Natural bright aluminum, black lettering, **blue accent lines**.
-- **Mounting holes are a PLACEHOLDER** (4 × Ø4.2 at 0.25" from each
-  corner). Measure the hackerspace cabinet's rail hole spacing and screw
-  size before cutting, then set `MOUNT_HOLES` / `MOUNT_DIA`.
+- **Mounting: the hackerspace cabinet has WOOD rails** (Arlo, 2026-09-07),
+  so there is no fixed hole pattern to hit — the four corner holes
+  (Ø4.2, clearance for #6 wood screws; use 3.6 for #4) just need to land
+  on the rail and match the neighbouring modules' inset (0.25" from each
+  edge is the placeholder). Check the rail's top/bottom edge positions and
+  that the screw heads clear the top-strip regulators. Countersink if the
+  neighbours use flat-head screws.
 
 ## Panel thickness — the real constraint
 
@@ -265,8 +269,8 @@ mechanical spec.
 
 ## Open items before cutting
 
-1. Cabinet mounting-hole pattern (measure → `MOUNT_HOLES`, `MOUNT_DIA`).
-   Not in the technical manual.
+1. Mounting: wood rails → confirm rail edge positions + neighbours' screw
+   inset/head style, then set `MOUNT_HOLES` / `MOUNT_DIA`.
 2. Panel stock thickness (1.6 mm aluminum preferred; period panels were
    1/8" — counterbore the six pot/encoder holes if you go that thick).
 3. Artwork method (fibre laser / CerMark / engrave / print).
