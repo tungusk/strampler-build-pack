@@ -61,23 +61,24 @@ the two V/oct inputs get the shortest, tidiest runs.
 
 | jack | signal | board pad (panel x, y mm) | jack hole (x, y mm) | lead ≈ |
 |---|---|---|---|---|
-| J2 | IN L | 13.89, 41.30 | 113.0, 133.35 | 150 mm |
-| J1 | IN R | 13.89, 28.60 | 137.0, 133.35 | 177 mm |
-| J5 | TRIG 1 | 26.62, 41.30 | 113.0, 114.30 | 128 mm |
-| J6 | TRIG 2 | 26.62, 28.60 | 137.0, 114.30 | 155 mm |
-| J7 | CV 1 (V/oct) | 39.34, 41.30 | 113.0, 95.25 | 106 mm |
-| J8 | CV 2 (V/oct) | 52.00, 41.30 | 137.0, 95.25 | 116 mm |
-| J11 | CV 3 (±5 V) | 64.80, 41.30 | 113.0, 76.20 | 75 mm |
-| J12 | CV 4 (±5 V) | 77.53, 41.30 | 137.0, 76.20 | 84 mm |
-| J9 | CV 5 (knob) | 39.34, 28.60 | 113.0, 57.15 | 94 mm |
-| J10 | CV 6 (knob) | 52.00, 28.60 | 137.0, 57.15 | 105 mm |
-| J13 | CV 7 (knob) | 64.80, 28.60 | 113.0, 38.10 | 64 mm |
-| J14 | CV 8 (knob) | 77.53, 28.60 | 137.0, 38.10 | 75 mm |
-| J4 | OUT L | 90.25, 41.30 | 113.0, 19.05 | 47 mm |
-| J3 | OUT R | 90.25, 28.60 | 137.0, 19.05 | 63 mm |
+| J2 | IN L | 62.29, 41.30 | 15.40, 133.35 | 118 mm |
+| J1 | IN R | 62.29, 28.60 | 39.40, 133.35 | 122 mm |
+| J5 | TRIG 1 | 75.02, 41.30 | 15.40, 114.30 | 109 mm |
+| J6 | TRIG 2 | 75.02, 28.60 | 39.40, 114.30 | 108 mm |
+| J7 | CV 1 (V/oct) | 87.74, 41.30 | 15.40, 95.25 | 105 mm |
+| J8 | CV 2 (V/oct) | 100.40, 41.30 | 39.40, 95.25 | 96 mm |
+| J11 | CV 3 (±5 V) | 113.20, 41.30 | 15.40, 76.20 | 119 mm |
+| J12 | CV 4 (±5 V) | 125.93, 41.30 | 39.40, 76.20 | 108 mm |
+| J9 | CV 5 (knob) | 87.74, 28.60 | 15.40, 57.15 | 93 mm |
+| J10 | CV 6 (knob) | 100.40, 28.60 | 39.40, 57.15 | 82 mm |
+| J13 | CV 7 (knob) | 113.20, 28.60 | 15.40, 38.10 | 113 mm |
+| J14 | CV 8 (knob) | 125.93, 28.60 | 39.40, 38.10 | 102 mm |
+| J4 | OUT L | 138.65, 41.30 | 15.40, 19.05 | 140 mm |
+| J3 | OUT R | 138.65, 28.60 | 39.40, 19.05 | 115 mm |
 
-Layout (Arlo 2026-09-07): signal pairs side by side, top to bottom —
-IN L/R, TRIG 1/2, CV 1/2, CV 3/4, CV 5/6, CV 7/8, OUT L/R.
+Layout (Arlo 2026-09-07): jack field on the LEFT, board on the right;
+signal pairs side by side, top to bottom — IN L/R, TRIG 1/2, CV 1/2,
+CV 3/4, CV 5/6, CV 7/8, OUT L/R.
 
 Signal identities were read off the schematic (`hardware-kicad/project/
 schematic-verification.pdf`): J1/J2 → IC2 → RIN/LIN; J3/J4 ← IC3 ← ROUT/

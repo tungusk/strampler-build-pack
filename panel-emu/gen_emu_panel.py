@@ -18,9 +18,9 @@ import math, os, sys
 
 # ----------------------------------------------------------------- CONFIG
 W, H = 152.4, 152.4                 # 6" x 6"
-BOARD_ORIGIN = (6.35, 11.95)        # where the 91.3x128.5 board footprint sits
+BOARD_ORIGIN = (54.75, 11.95)       # board footprint at the RIGHT (152.4 - 6.35 - 91.3)
 JACK_HOLE = 9.6                     # 3/8"-32 bushing (Switchcraft 11/111/112): 9.53 nominal
-JACK_COLS = (113.0, 137.0)          # x of the two 1/4" jack columns
+JACK_COLS = (15.4, 39.4)            # x of the two 1/4" jack columns (LEFT side)
 JACK_PITCH = 19.05                  # 3/4" row pitch, 7 rows
 JACK_ROW0 = 19.05                   # y of the bottom row
 MOUNT_HOLES = [(6.35, 6.35), (W-6.35, 6.35), (6.35, H-6.35), (W-6.35, H-6.35)]
@@ -128,7 +128,7 @@ fx0, fx1 = JACK_COLS[0] - 10.5, JACK_COLS[1] + 10.5
 fy0, fy1 = JACK_ROW0 - 9.5, JACK_ROW0 + (len(JACK_ROWS)-1)*JACK_PITCH + 9.5
 for (xa, ya, xb, yb) in [(fx0, fy0, fx1, fy0), (fx0, fy1, fx1, fy1), (fx0, fy0, fx0, fy1), (fx1, fy0, fx1, fy1)]:
     line(xa, ya, xb, yb, 0.5)
-line(bx + 89 + 2, by + 128.5 - 4, bx + 89 + 2, by + 4, 0.5)   # divider board | jacks
+line(bx - 3, by + 128.5 - 4, bx - 3, by + 4, 0.5)   # divider jacks | board
 
 # ------------------------------------------------------------ write SVG
 out = os.path.dirname(os.path.abspath(__file__))
