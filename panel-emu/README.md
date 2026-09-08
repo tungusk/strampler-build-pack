@@ -93,7 +93,7 @@ OUT L/R — with OUT sharing the bottom row's height. Three rounded blue
 boxes: left field, interface block, CV 5–8 row (box tops aligned); wordmark
 "CTAG STRÄMPLER" alone between. Labels (Arlo 09-07): CV jacks read "CV 1"…"CV 8"; the V/OCT, ±5V, IN and OUT
 words sit between the two jacks of their row (audio jacks read just L / R); the four attenuator
-knobs are unlabelled (jack directly below); trigger jacks are TR1/TR2 and
+knobs read CV 5–8 like the jacks below them; trigger jacks are TR1/TR2 and
 the two push buttons under the screen are labelled TR1/TR2 too (manual
 triggers).
 

@@ -59,8 +59,8 @@ bx, by = BOARD_ORIGIN
 def B(x, y): return (bx + x, by + y)
 
 POTS = [  # (x, y, dia, label)
-    (13.903, 45.834, 7.2, ""), (35.117, 45.834, 7.2, ""),
-    (56.33, 45.834, 7.2, ""), (77.544, 45.834, 7.2, ""),       # attenuator knobs: unlabelled, jack "5".."8" sits directly below
+    (13.903, 45.834, 7.2, "CV 5"), (35.117, 45.834, 7.2, "CV 6"),
+    (56.33, 45.834, 7.2, "CV 7"), (77.544, 45.834, 7.2, "CV 8"),   # attenuator knobs (Arlo 09-07: labelled again)
     (13.903, 65.096, 7.2, "GAIN"),
     (77.544, 65.096, 8.2, "DATA"),              # encoder SW1
 ]
