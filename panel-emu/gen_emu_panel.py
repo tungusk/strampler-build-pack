@@ -113,6 +113,24 @@ def wifi(cx, cy, r0=1.3, step=1.2, w=0.45, color="#000"):
                    f'fill="none" stroke="{color}" stroke-width="{w}" stroke-linecap="round"/>')
         dxf_art.append(("arc", (cx, cy), r, 45, 135))
 
+def art_poly(verts, r=3.0, w=0.6, color=BLUE):
+    """Axis-aligned polygon (CCW, y-up panel coords) with filleted corners, on the ART layer."""
+    n = len(verts); pts = []
+    for i in range(n):
+        px_, py_ = verts[i-1]; vx, vy = verts[i]; nx, ny = verts[(i+1) % n]
+        d1 = (vx-px_, vy-py_); l1 = math.hypot(*d1); d1 = (d1[0]/l1, d1[1]/l1)
+        d2 = (nx-vx, ny-vy); l2 = math.hypot(*d2); d2 = (d2[0]/l2, d2[1]/l2)
+        cx, cy = vx - d1[0]*r + d2[0]*r, vy - d1[1]*r + d2[1]*r
+        a0 = math.atan2((vy - d1[1]*r) - cy, (vx - d1[0]*r) - cx)
+        a1 = math.atan2((vy + d2[1]*r) - cy, (vx + d2[0]*r) - cx)
+        turn = d1[0]*d2[1] - d1[1]*d2[0]           # +: left turn (convex on CCW), -: right turn (concave)
+        if turn > 0 and a1 < a0: a1 += 2*math.pi
+        if turn < 0 and a1 > a0: a1 -= 2*math.pi
+        for k in range(7):
+            a = a0 + (a1 - a0)*k/6; pts.append((cx + r*math.cos(a), cy + r*math.sin(a)))
+    art.append('<path d="M ' + ' L '.join(f'{x:.3f} {Y(y):.3f}' for x, y in pts) + f' Z" fill="none" stroke="{color}" stroke-width="{w}"/>')
+    dxf_art.append(("poly", pts))
+
 def text(x, y, s, size=2.6, anchor="middle", weight="bold", color="#000"):
     art.append(f'<text x="{x:.3f}" y="{Y(y):.3f}" font-family="{FONT}" font-size="{size}" font-weight="{weight}" '
                f'text-anchor="{anchor}" fill="{color}">{s}</text>')
@@ -179,14 +197,17 @@ if TOGGLES:
 # ±12 V regulators: NOT on the panel (the wood rail sits behind the top strip — Arlo 09-07).
 # They live on a small board behind the PCB, on extended standoffs; see README "Power conversion".
 
-# E-mu style dress: rounded blue boxes (left field, interface block, bottom row); wordmark plain
+# E-mu style dress: rounded blue boxes — interface block, and ONE L-shaped jack box that joins the
+# left field to the CV 5-8 row along the bottom (Arlo 09-07); wordmark plain
 art_box(bx + 1.5, by + 38.5, bx + 89.8, by + 121.0, r=3.0)   # display, SD, ANT, pots, buttons, LED
-art_box(bx + 1.5, JACK_ROW0 - 7.5, bx + 89.8, JACK_ROW0 + 12.5, r=3.0)   # CV 5-8 row, same width as the interface box
 wx = bx + 91.3/2
 text(wx, (by + 38.5 + JACK_ROW0 + 12.5)/2 - 6.5*0.35, "CTAG STRÄMPLER", 6.5)   # centred in the band (baseline shifted by ~cap height/2)
 fx0, fx1 = JACK_COLS[0] - 10.5, JACK_COLS[1] + 10.5
 fy0, fy1 = JACK_ROW0 - 7.5, by + 121.0   # top aligned with the interface box (padding above the top row)
-art_box(fx0, fy0, fx1, fy1, r=3.0)
+bx1, by1 = bx + 89.8, JACK_ROW0 + 12.5   # bottom row box extents (shares the left box's bottom edge)
+art_poly([(fx0, fy0), (bx1, fy0), (bx1, by1), (fx1, by1), (fx1, fy1), (fx0, fy1)], r=3.0)
+EDGE_INSET = 2.0                     # E-mu-style blue border just inside the panel edge (screw heads sit on it at the corners)
+art_box(EDGE_INSET, EDGE_INSET, W - EDGE_INSET, H - EDGE_INSET, r=2.5, w=0.7)
 
 # ------------------------------------------------------------ write SVG
 out = os.path.dirname(os.path.abspath(__file__))
@@ -216,6 +237,7 @@ def write_dxf(path, ops, layer):
                     ang = math.radians(a0 + t); pts.append((cx + r*math.cos(ang), cy + r*math.sin(ang)))
             msp.add_lwpolyline(pts, close=True, dxfattribs=a)
         elif k == "line": msp.add_line(op[1], op[2], dxfattribs=a)
+        elif k == "poly": msp.add_lwpolyline(op[1], close=True, dxfattribs=a)
         elif k == "arc": msp.add_arc(op[1], op[2], op[3], op[4], dxfattribs=a)
         elif k == "dot": msp.add_circle(op[1], op[2], dxfattribs=a)
         elif k == "text":

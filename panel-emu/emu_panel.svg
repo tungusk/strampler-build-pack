@@ -41,9 +41,9 @@
 <line x1="39.400" y1="44.800" x2="39.400" y2="53.400" stroke="#2456A6" stroke-width="0.3"/>
 <text x="27.400" y="21.800" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">BUS</text>
 <rect x="56.250" y="13.400" width="88.300" height="82.500" rx="3.000" fill="none" stroke="#2456A6" stroke-width="0.6"/>
-<rect x="56.250" y="122.900" width="88.300" height="20.000" rx="3.000" fill="none" stroke="#2456A6" stroke-width="0.6"/>
 <text x="100.400" y="111.675" font-family="Helvetica, Arial, sans-serif" font-size="6.5" font-weight="bold" text-anchor="middle" fill="#000">CTAG STRÄMPLER</text>
-<rect x="4.900" y="13.400" width="45.000" height="129.500" rx="3.000" fill="none" stroke="#2456A6" stroke-width="0.6"/>
+<path d="M 4.900 139.900 L 5.002 140.676 L 5.302 141.400 L 5.779 142.021 L 6.400 142.498 L 7.124 142.798 L 7.900 142.900 L 141.550 142.900 L 142.326 142.798 L 143.050 142.498 L 143.671 142.021 L 144.148 141.400 L 144.448 140.676 L 144.550 139.900 L 144.550 125.900 L 144.448 125.124 L 144.148 124.400 L 143.671 123.779 L 143.050 123.302 L 142.326 123.002 L 141.550 122.900 L 52.900 122.900 L 52.124 122.798 L 51.400 122.498 L 50.779 122.021 L 50.302 121.400 L 50.002 120.676 L 49.900 119.900 L 49.900 16.400 L 49.798 15.624 L 49.498 14.900 L 49.021 14.279 L 48.400 13.802 L 47.676 13.502 L 46.900 13.400 L 7.900 13.400 L 7.124 13.502 L 6.400 13.802 L 5.779 14.279 L 5.302 14.900 L 5.002 15.624 L 4.900 16.400 Z" fill="none" stroke="#2456A6" stroke-width="0.6"/>
+<rect x="2.000" y="2.000" width="148.400" height="148.400" rx="2.500" fill="none" stroke="#2456A6" stroke-width="0.7"/>
 </g>
 <g id="CUT" fill="none" stroke="#e00" stroke-width="0.1">
 <rect x="0" y="0" width="152.4" height="152.4"/>
