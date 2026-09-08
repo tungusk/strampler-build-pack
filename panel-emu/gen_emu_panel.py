@@ -32,10 +32,10 @@ FONT = "Helvetica, Arial, sans-serif"
 
 # left jack field: rows top-to-bottom, each row = (left jack, right jack) as (label, board ref)
 JACK_ROWS = [
-    (("IN L", "J2"),  ("IN R", "J1")),
     (("TRIG 1", "J5"), ("TRIG 2", "J6")),
     (("CV 1  V/OCT", "J7"), ("CV 2  V/OCT", "J8")),
     (("CV 3  ±5V", "J11"), ("CV 4  ±5V", "J12")),
+    (("IN L", "J2"),  ("IN R", "J1")),
     (("OUT L", "J4"), ("OUT R", "J3")),
 ]
 # bottom row under the PCB, one jack directly below each CV knob (x = knob x)

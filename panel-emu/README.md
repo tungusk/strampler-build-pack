@@ -61,14 +61,14 @@ the two V/oct inputs get the shortest, tidiest runs.
 
 | jack | signal | board pad (panel x, y mm) | jack hole (x, y mm) | lead ≈ |
 |---|---|---|---|---|
-| J2 | IN L | 62.29, 47.35 | 15.40, 118.60 | 100 mm |
-| J1 | IN R | 62.29, 34.65 | 39.40, 118.60 | 102 mm |
-| J5 | TRIG 1 | 75.02, 47.35 | 15.40, 93.20 | 90 mm |
-| J6 | TRIG 2 | 75.02, 34.65 | 39.40, 93.20 | 84 mm |
-| J7 | CV 1 (V/oct) | 87.74, 47.35 | 15.40, 67.80 | 90 mm |
-| J8 | CV 2 (V/oct) | 100.40, 47.35 | 39.40, 67.80 | 79 mm |
-| J11 | CV 3 (±5 V) | 113.20, 47.35 | 15.40, 42.40 | 113 mm |
-| J12 | CV 4 (±5 V) | 125.93, 47.35 | 39.40, 42.40 | 102 mm |
+| J5 | TRIG 1 | 75.02, 47.35 | 15.40, 118.60 | 108 mm |
+| J6 | TRIG 2 | 75.02, 34.65 | 39.40, 118.60 | 106 mm |
+| J7 | CV 1 (V/oct) | 87.74, 47.35 | 15.40, 93.20 | 101 mm |
+| J8 | CV 2 (V/oct) | 100.40, 47.35 | 39.40, 93.20 | 91 mm |
+| J11 | CV 3 (±5 V) | 113.20, 47.35 | 15.40, 67.80 | 115 mm |
+| J12 | CV 4 (±5 V) | 125.93, 47.35 | 39.40, 67.80 | 104 mm |
+| J2 | IN L | 62.29, 47.35 | 15.40, 42.40 | 62 mm |
+| J1 | IN R | 62.29, 34.65 | 39.40, 42.40 | 39 mm |
 | J4 | OUT L | 138.65, 47.35 | 15.40, 17.00 | 142 mm |
 | J3 | OUT R | 138.65, 34.65 | 39.40, 17.00 | 116 mm |
 | J9 | CV 5 (knob) | 87.74, 34.65 | 68.65, 17.00 | 41 mm |
@@ -81,9 +81,10 @@ each directly below its knob** (same x as POT2–5), in the strip under the
 PCB's bottom edge (the PCB is 108 mm tall inside the 128.5 mm panel
 region, so the board region is raised to y = 18 and the jack row sits at
 y = 17 with ~5 mm nut clearance to the PCB edge). The other ten jacks are
-a 2 × 5 field on the left at 1" pitch — IN L/R, TRIG 1/2, CV 1/2, CV 3/4,
+a 2 × 5 field on the left at 1" pitch — TRIG 1/2, CV 1/2, CV 3/4, IN L/R,
 OUT L/R — with OUT sharing the bottom row's height. Three rounded blue
-boxes: left field, interface block, CV 5–8 row; wordmark between.
+boxes: left field, interface block, CV 5–8 row; wordmark "CTAG
+STRÄMPLER" alone between.
 
 Jack field geometry: left field two columns 24 mm apart, five rows at 1"
 pitch; bottom row on the knob spacing (21.2 mm). Ø9.6 holes (3/8"-32
