@@ -156,11 +156,8 @@ for (tx, ty, lab, targets) in TOGGLES:
             line(tx, lab_y - 1.2, tx, jy + JACK_HOLE/2 + 0.6, 0.3)  # label to hole
             y_cursor = jy - JACK_HOLE/2 - 0.6                       # continue below the hole
 
-# ±12 V regulators (7812 / 7912, TO-220) bolted flat to the back of the panel — the panel is the heatsink.
-# Tab holes only; bodies lie horizontally in the top strip, pins toward the panel centre.
-REG_HOLES = [(60.0, 145.5, "7812"), (120.0, 145.5, "7912 (insulate tab)")]
-for (x, y, lab) in REG_HOLES:
-    circle(x, y, 3.2)
+# ±12 V regulators: NOT on the panel (the wood rail sits behind the top strip — Arlo 09-07).
+# They live on a small board behind the PCB, on extended standoffs; see README "Power conversion".
 
 # E-mu style dress: rounded blue boxes (left field, interface block, bottom row); wordmark plain
 art_box(bx + 1.5, by + 38.5, bx + 89.8, by + 121.0, r=3.0)   # display, SD, ANT, pots, buttons, LED

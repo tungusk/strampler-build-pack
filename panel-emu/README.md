@@ -22,9 +22,12 @@ block, rerun, all files regenerate).
   so there is no fixed hole pattern to hit — the four corner holes
   (Ø4.2, clearance for #6 wood screws; use 3.6 for #4) just need to land
   on the rail and match the neighbouring modules' inset (0.25" from each
-  edge is the placeholder). Check the rail's top/bottom edge positions and
-  that the screw heads clear the top-strip regulators. Countersink if the
-  neighbours use flat-head screws.
+  edge is the placeholder). **Measure the rail height** (panel edge to the
+  rail's inner edge, top and bottom): nothing that protrudes behind the
+  panel can sit over the rail. The bottom jack rows (OUT L/R and CV 5–8,
+  hole centres at y 17, nut edges at y 10.7) and the KYBD switches near
+  the top need to clear it — if the rails are taller than ~10 mm those
+  rows move inward. Countersink if the neighbours use flat-head screws.
 
 ## Panel thickness — the real constraint
 
@@ -130,32 +133,34 @@ the board's 100 k / NPN trigger input takes directly — **no inverter**;
 VOICE is 1 V/oct into CVIN0/1's 180k/47k networks, nothing to scale. Still
 open: which DIP pins carry GATE 1/2 (meter it).
 
-## Power conversion — ±15 V bus → ±12 V board (built into the panel)
+## Power conversion — ±15 V bus → ±12 V board (sub-board behind the PCB)
 
 The E-mu bus is ±15 V; the Strämpler's rail caps are 16 V parts, so the
-panel carries its own linear regulators. **Two TO-220 tab holes (Ø3.2)
-in the top strip: 7812 at (60, 145.5), 7912 at (120, 145.5)**, regulators
-bolted flat to the back of the panel with the bodies lying horizontally
-toward the panel centre — the 6" × 6" aluminum panel is the heatsink
-(≈1.5 W on the 7812 at 0.5 A, trivial for that plate). Pins point inward
-so the caps and wiring sit in the strip above the PCB (PCB top edge is at
-y 136, the strip is y 138–152).
+module carries its own linear regulators. **They are not on the panel**:
+the cabinet's wood rails sit behind the panel's top and bottom strips,
+so there is no depth there. Instead a **small regulator board mounts
+behind the PCB** — on the PCB's existing M3 standoff holes with longer
+M/F standoffs (or double-sided foam tape onto the PCB back), right next
+to the Eurorack power header it feeds. 7812 gets a clip-on TO-220
+heatsink (~1.5 W at the ESP32's 0.5 A → ~30 °C rise on a 20 °C/W clip,
+fine); the 7912 runs cool. Ribbon from the cabinet's DIP socket to the
+sub-board; short twisted leads from the sub-board to the header.
 
 | qty | part | ≈ | notes |
 |---|---|---|---|
-| 1 | **L7812CV** (TO-220) | $0.60 | tab = GND → bolt straight to the panel; panel becomes the star ground |
-| 1 | **L7912CV** (TO-220) | $0.60 | **tab = INPUT (−15 V)** — MUST be insulated: TO-220 mica/silpad + shoulder washer kit |
-| 1 | TO-220 insulator kit (silpad + nylon shoulder washer) | $0.30 | for the 7912 |
-| 2 | M3 × 8 screw + nut + lock washer | | tab bolts |
+| 1 | **L7812CV** (TO-220) | $0.60 | with clip-on TO-220 heatsink (e.g. Aavid 574502B00000G, ~$1) |
+| 1 | **L7912CV** (TO-220) | $0.60 | tab = INPUT (−15 V): keep it clear of ground; no heatsink needed |
+| 4 | M3 M/F standoffs (length = PCB rear clearance, ~10 mm) + M3 screws | | sub-board on the PCB's standoff holes |
+| 1 | perfboard ~40 × 25 mm | | the sub-board |
 | 2 | 1 µF 50 V ceramic (X7R) | | regulator inputs, close to the pins |
 | 2 | 10 µF 25 V (ceramic or electrolytic) | | regulator outputs |
 | 2 | 1N4007 | | reverse diodes output→input across each regulator (protects on power-down) |
 | 1 | 16-pin DIP plug for ribbon (3M 3416-xxxx style IDC DIP plug) + ~30 cm 16-way ribbon | $2 | the bus pickup |
 | 1 | 2 × 5 IDC socket or bare Eurorack power header pins | | into the board's P4 power header (10-pin: −12, GND, +12, +5, CV/gate) |
-| — | small perfboard scrap or dead-bug wiring, heat-shrink | | |
+| — | heat-shrink, 0.5 A fuse holder (optional) | | |
 
 Wiring: DIP pin 7 (+15) → 7812 IN, DIP pin 8 (−15) → 7912 IN, DIP pins 1–4
-(GND) → both regulator commons + panel + board GND. 7812 OUT → board
+(GND) → both regulator commons + board GND. 7812 OUT → board
 +12, 7912 OUT → board −12 via the Eurorack header (pin order per the
 board's P4 silk: the shrouded header is keyed, red stripe = −12). Leave
 the bus +5 unused (the board makes its own 3.3 V). Add a 0.5 A fuse in
@@ -275,7 +280,7 @@ mechanical spec.
 2. Panel stock thickness (1.6 mm aluminum preferred; period panels were
    1/8" — counterbore the six pot/encoder holes if you go that thick).
 3. Artwork method (fibre laser / CerMark / engrave / print).
-4. **Power**: 7812/7912 now designed onto the panel (tab holes in the
-   top strip, BOM above); still needs the cabinet DIP pinout metered.
+4. **Power**: 7812/7912 sub-board behind the PCB (BOM above); still
+   needs the cabinet DIP pinout metered.
 5. Bus DIP pinout for GATE/TRIG (pins 5/6/11/12/10): confirm with a meter.
 6. ~~Toggle scheme~~ — decided: two ganged KYBD 1/off/2 (DPDT), one per column.
