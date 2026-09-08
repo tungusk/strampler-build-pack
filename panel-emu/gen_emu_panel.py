@@ -82,6 +82,11 @@ def line(x0, y0, x1, y1, w=0.5, color=BLUE):
     art.append(f'<line x1="{x0:.3f}" y1="{Y(y0):.3f}" x2="{x1:.3f}" y2="{Y(y1):.3f}" stroke="{color}" stroke-width="{w}"/>')
     dxf_art.append(("line", (x0, y0), (x1, y1)))
 
+def art_box(x0, y0, x1, y1, r=3.0, w=0.6, color=BLUE):
+    art.append(f'<rect x="{x0:.3f}" y="{Y(y1):.3f}" width="{x1-x0:.3f}" height="{y1-y0:.3f}" rx="{r:.3f}" '
+               f'fill="none" stroke="{color}" stroke-width="{w}"/>')
+    dxf_art.append(("rrect", (x0, y0, x1, y1), r))
+
 def text(x, y, s, size=2.6, anchor="middle", weight="bold", color="#000"):
     art.append(f'<text x="{x:.3f}" y="{Y(y):.3f}" font-family="{FONT}" font-size="{size}" font-weight="{weight}" '
                f'text-anchor="{anchor}" fill="{color}">{s}</text>')
@@ -116,19 +121,15 @@ for lab, ref, xs, y in jack_positions():
     circle(xs, y, JACK_HOLE)
     text(xs, y + JACK_HOLE/2 + 2.4, lab, 2.6 if len(lab) <= 6 else 2.2)
 
-# E-mu style dress: blue rules + wordmark block in the vacated jack strip
+# E-mu style dress: rounded blue boxes (jack field, wordmark block)
 strip_x0, strip_x1 = bx + 2, bx + 89
-line(strip_x0, by + 40, strip_x1, by + 40, 0.6)
-line(strip_x0, by + 6, strip_x1, by + 6, 0.6)
+art_box(strip_x0, by + 5, strip_x1, by + 40, r=3.0)
 text((strip_x0 + strip_x1)/2, by + 26, "STRÄMPLER", 7.0)
 text((strip_x0 + strip_x1)/2, by + 17.5, "MULTI-MACHINE SAMPLE STREAMER", 2.4, weight="normal")
 text((strip_x0 + strip_x1)/2, by + 10.5, "6\" E-mu FORMAT · 1/4\" I/O", 1.9, weight="normal", color=BLUE)
-# jack field frame
 fx0, fx1 = JACK_COLS[0] - 10.5, JACK_COLS[1] + 10.5
 fy0, fy1 = JACK_ROW0 - 9.5, JACK_ROW0 + (len(JACK_ROWS)-1)*JACK_PITCH + 9.5
-for (xa, ya, xb, yb) in [(fx0, fy0, fx1, fy0), (fx0, fy1, fx1, fy1), (fx0, fy0, fx0, fy1), (fx1, fy0, fx1, fy1)]:
-    line(xa, ya, xb, yb, 0.5)
-line(bx - 3, by + 128.5 - 4, bx - 3, by + 4, 0.5)   # divider jacks | board
+art_box(fx0, fy0, fx1, fy1, r=3.0)
 
 # ------------------------------------------------------------ write SVG
 out = os.path.dirname(os.path.abspath(__file__))
