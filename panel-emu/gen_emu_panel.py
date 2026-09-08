@@ -62,7 +62,7 @@ POTS = [  # (x, y, dia, label)
     (13.903, 45.834, 7.2, ""), (35.117, 45.834, 7.2, ""),
     (56.33, 45.834, 7.2, ""), (77.544, 45.834, 7.2, ""),       # attenuator knobs: unlabelled, jack "5".."8" sits directly below
     (13.903, 65.096, 7.2, "GAIN"),
-    (77.544, 65.096, 8.2, "SELECT"),            # encoder SW1
+    (77.544, 65.096, 8.2, "DATA"),              # encoder SW1
 ]
 BUTTONS = [(35.117, 65.096, 9.5, "TR1"), (56.33, 65.096, 9.5, "TR2")]   # SW2/SW3 = manual TR1/TR2 (Arlo 09-07)
 LED = (45.65, 65.04)
