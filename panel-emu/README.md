@@ -113,13 +113,13 @@ plain un-normalled jack. The toggles are 3-position **ON-OFF-ON SPDT**
 patched by hand. To normal all four, add two more entries to `TOGGLES` /
 `NORMALLED` — the padding row has room for four at ~11 mm pitch.
 
-⚠ Check before wiring: (1) how the hackerspace cabinet exposes the buses
-(bus bar, rear connector, or lugs) — two wire pairs come off this panel;
-(2) **trigger polarity** — the board's TR inputs drive an NPN base through
-100 k and want a **positive** gate/trigger; if the E-mu bus carries an
-S-trig (switch-to-ground) it needs a pull-up + inverter in between.
-(3) The KBD bus is 1 V/oct into CVIN0's 180k/47k network — same as a
-patched cable, nothing to scale.
+Resolved by the research below (2026-09-07): the buses come off a
+**16-pin DIP socket** at the module position; E-mu gate/trigger is a
+**positive 0/+5 V TTL** signal (7416 open-collector + 1 k pull-up), which
+the board's 100 k / NPN trigger input takes directly — **no inverter**;
+the VOICE bus is 1 V/oct into CVIN0's 180k/47k network, nothing to scale.
+Still open: which DIP pins carry GATE/TRIG (meter it), and whether to
+merge the two toggles into one E-mu-style ganged KYBD 1/2 switch.
 
 ## Jack sourcing (14 needed, buy 16)
 
