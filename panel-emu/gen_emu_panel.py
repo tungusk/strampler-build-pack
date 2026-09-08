@@ -18,11 +18,11 @@ import math, os, sys
 
 # ----------------------------------------------------------------- CONFIG
 W, H = 152.4, 152.4                 # 6" x 6"
-BOARD_ORIGIN = (54.75, 11.95)       # board footprint at the RIGHT (152.4 - 6.35 - 91.3)
+BOARD_ORIGIN = (54.75, 18.0)        # board footprint at the RIGHT, raised so a jack row fits under the PCB (PCB spans y 10.25..118.25 of the region)
 JACK_HOLE = 9.6                     # 3/8"-32 bushing (Switchcraft 11/111/112): 9.53 nominal
 JACK_COLS = (15.4, 39.4)            # x of the two 1/4" jack columns (LEFT side)
-JACK_PITCH = 19.05                  # 3/4" row pitch, 7 rows
-JACK_ROW0 = 19.05                   # y of the bottom row
+JACK_PITCH = 25.4                   # 1" row pitch, 5 rows on the left
+JACK_ROW0 = 17.0                    # y of the bottom row (shared by the left field and the CV 5-8 row)
 MOUNT_HOLES = [(6.35, 6.35), (W-6.35, 6.35), (6.35, H-6.35), (W-6.35, H-6.35)]
 MOUNT_DIA = 4.2                     # PLACEHOLDER — measure the cabinet rails
 LED_HOLE = 3.2                      # 3 mm light pipe / bare 3 mm LED behind
@@ -30,16 +30,16 @@ INCLUDE_SD_SLOT = True              # kept "just in case" (Arlo 2026-09-07)
 BLUE = "#2456A6"                    # E-mu accent blue
 FONT = "Helvetica, Arial, sans-serif"
 
-# jack field: rows top-to-bottom, each row = (left jack, right jack) as (label, board ref)
+# left jack field: rows top-to-bottom, each row = (left jack, right jack) as (label, board ref)
 JACK_ROWS = [
     (("IN L", "J2"),  ("IN R", "J1")),
     (("TRIG 1", "J5"), ("TRIG 2", "J6")),
     (("CV 1  V/OCT", "J7"), ("CV 2  V/OCT", "J8")),
     (("CV 3  ±5V", "J11"), ("CV 4  ±5V", "J12")),
-    (("CV 5", "J9"),  ("CV 6", "J10")),
-    (("CV 7", "J13"), ("CV 8", "J14")),
     (("OUT L", "J4"), ("OUT R", "J3")),
 ]
+# bottom row under the PCB, one jack directly below each CV knob (x = knob x)
+BOTTOM_JACKS = [("CV 5", "J9", 13.903), ("CV 6", "J10", 35.117), ("CV 7", "J13", 56.33), ("CV 8", "J14", 77.544)]
 
 # ------------------------------------------------ board-locked geometry (v2_3)
 bx, by = BOARD_ORIGIN
@@ -117,18 +117,21 @@ def jack_positions():
         y = JACK_ROW0 + (len(JACK_ROWS) - 1 - i) * JACK_PITCH
         for xs, (lab, ref) in zip(JACK_COLS, row):
             yield lab, ref, xs, y
+    for lab, ref, kx in BOTTOM_JACKS:
+        yield lab, ref, bx + kx, JACK_ROW0
 for lab, ref, xs, y in jack_positions():
     circle(xs, y, JACK_HOLE)
     text(xs, y + JACK_HOLE/2 + 2.4, lab, 2.6 if len(lab) <= 6 else 2.2)
 
-# E-mu style dress: rounded blue boxes (jack field, interface block); wordmark plain
-strip_x0, strip_x1 = bx + 2, bx + 89
+# E-mu style dress: rounded blue boxes (left field, interface block, bottom row); wordmark plain
 art_box(bx + 1.5, by + 38.5, bx + 89.8, by + 121.0, r=3.0)   # display, SD, ANT, pots, buttons, LED
-text((strip_x0 + strip_x1)/2, by + 26, "STRÄMPLER", 7.0)
-text((strip_x0 + strip_x1)/2, by + 17.5, "MULTI-MACHINE SAMPLE STREAMER", 2.4, weight="normal")
-text((strip_x0 + strip_x1)/2, by + 10.5, "6\" E-mu FORMAT · 1/4\" I/O", 1.9, weight="normal", color=BLUE)
+art_box(bx + 3.0, JACK_ROW0 - 7.5, bx + 88.3, JACK_ROW0 + 12.5, r=3.0)   # CV 5-8 row (bottom clears the corner mount holes)
+wx = bx + 91.3/2
+text(wx, by + 30.0, "STRÄMPLER", 7.0)
+text(wx, by + 22.5, "MULTI-MACHINE SAMPLE STREAMER", 2.4, weight="normal")
+text(wx, by + 16.5, "6\" E-mu FORMAT · 1/4\" I/O", 1.9, weight="normal", color=BLUE)
 fx0, fx1 = JACK_COLS[0] - 10.5, JACK_COLS[1] + 10.5
-fy0, fy1 = JACK_ROW0 - 9.5, JACK_ROW0 + (len(JACK_ROWS)-1)*JACK_PITCH + 9.5
+fy0, fy1 = JACK_ROW0 - 7.5, JACK_ROW0 + (len(JACK_ROWS)-1)*JACK_PITCH + 12.5
 art_box(fx0, fy0, fx1, fy1, r=3.0)
 
 # ------------------------------------------------------------ write SVG

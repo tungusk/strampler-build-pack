@@ -61,34 +61,33 @@ the two V/oct inputs get the shortest, tidiest runs.
 
 | jack | signal | board pad (panel x, y mm) | jack hole (x, y mm) | lead ≈ |
 |---|---|---|---|---|
-| J2 | IN L | 62.29, 41.30 | 15.40, 133.35 | 118 mm |
-| J1 | IN R | 62.29, 28.60 | 39.40, 133.35 | 122 mm |
-| J5 | TRIG 1 | 75.02, 41.30 | 15.40, 114.30 | 109 mm |
-| J6 | TRIG 2 | 75.02, 28.60 | 39.40, 114.30 | 108 mm |
-| J7 | CV 1 (V/oct) | 87.74, 41.30 | 15.40, 95.25 | 105 mm |
-| J8 | CV 2 (V/oct) | 100.40, 41.30 | 39.40, 95.25 | 96 mm |
-| J11 | CV 3 (±5 V) | 113.20, 41.30 | 15.40, 76.20 | 119 mm |
-| J12 | CV 4 (±5 V) | 125.93, 41.30 | 39.40, 76.20 | 108 mm |
-| J9 | CV 5 (knob) | 87.74, 28.60 | 15.40, 57.15 | 93 mm |
-| J10 | CV 6 (knob) | 100.40, 28.60 | 39.40, 57.15 | 82 mm |
-| J13 | CV 7 (knob) | 113.20, 28.60 | 15.40, 38.10 | 113 mm |
-| J14 | CV 8 (knob) | 125.93, 28.60 | 39.40, 38.10 | 102 mm |
-| J4 | OUT L | 138.65, 41.30 | 15.40, 19.05 | 140 mm |
-| J3 | OUT R | 138.65, 28.60 | 39.40, 19.05 | 115 mm |
+| J2 | IN L | 62.29, 47.35 | 15.40, 118.60 | 100 mm |
+| J1 | IN R | 62.29, 34.65 | 39.40, 118.60 | 102 mm |
+| J5 | TRIG 1 | 75.02, 47.35 | 15.40, 93.20 | 90 mm |
+| J6 | TRIG 2 | 75.02, 34.65 | 39.40, 93.20 | 84 mm |
+| J7 | CV 1 (V/oct) | 87.74, 47.35 | 15.40, 67.80 | 90 mm |
+| J8 | CV 2 (V/oct) | 100.40, 47.35 | 39.40, 67.80 | 79 mm |
+| J11 | CV 3 (±5 V) | 113.20, 47.35 | 15.40, 42.40 | 113 mm |
+| J12 | CV 4 (±5 V) | 125.93, 47.35 | 39.40, 42.40 | 102 mm |
+| J4 | OUT L | 138.65, 47.35 | 15.40, 17.00 | 142 mm |
+| J3 | OUT R | 138.65, 34.65 | 39.40, 17.00 | 116 mm |
+| J9 | CV 5 (knob) | 87.74, 34.65 | 68.65, 17.00 | 41 mm |
+| J10 | CV 6 (knob) | 100.40, 34.65 | 89.87, 17.00 | 36 mm |
+| J13 | CV 7 (knob) | 113.20, 34.65 | 111.08, 17.00 | 33 mm |
+| J14 | CV 8 (knob) | 125.93, 34.65 | 132.29, 17.00 | 34 mm |
 
-Layout (Arlo 2026-09-07): jack field on the LEFT, board on the right;
-signal pairs side by side, top to bottom — IN L/R, TRIG 1/2, CV 1/2,
-CV 3/4, CV 5/6, CV 7/8, OUT L/R.
+Layout (Arlo 2026-09-07): **CV 5–8 jacks in a row across the bottom,
+each directly below its knob** (same x as POT2–5), in the strip under the
+PCB's bottom edge (the PCB is 108 mm tall inside the 128.5 mm panel
+region, so the board region is raised to y = 18 and the jack row sits at
+y = 17 with ~5 mm nut clearance to the PCB edge). The other ten jacks are
+a 2 × 5 field on the left at 1" pitch — IN L/R, TRIG 1/2, CV 1/2, CV 3/4,
+OUT L/R — with OUT sharing the bottom row's height. Three rounded blue
+boxes: left field, interface block, CV 5–8 row; wordmark between.
 
-Signal identities were read off the schematic (`hardware-kicad/project/
-schematic-verification.pdf`): J1/J2 → IC2 → RIN/LIN; J3/J4 ← IC3 ← ROUT/
-LOUT; J5/J6 → Q5/Q6 triggers; J7/J8 → IC10A/B (180k/47k) = CVIN0/1;
-J11/J12 (200k/33k, −10 V offset) = CVIN2/3; J9/J10/J13/J14 with POT2–5 =
-CVIN4–7.
-
-Jack field geometry: two columns 24 mm apart, seven rows at 3/4" (19.05
-mm) pitch, Ø9.6 holes (3/8"-32 bushing). A 3/4" pitch is patchbay
-density; plugs clear each other. Switchcraft bodies are 0.5" wide × 0.62"
+Jack field geometry: left field two columns 24 mm apart, five rows at 1"
+pitch; bottom row on the knob spacing (21.2 mm). Ø9.6 holes (3/8"-32
+bushing). Plugs clear each other at both pitches. Switchcraft bodies are 0.5" wide × 0.62"
 tall behind the panel — orient the lugs toward the board.
 
 ## Jack sourcing (14 needed, buy 16)
