@@ -121,9 +121,9 @@ for lab, ref, xs, y in jack_positions():
     circle(xs, y, JACK_HOLE)
     text(xs, y + JACK_HOLE/2 + 2.4, lab, 2.6 if len(lab) <= 6 else 2.2)
 
-# E-mu style dress: rounded blue boxes (jack field, wordmark block)
+# E-mu style dress: rounded blue boxes (jack field, interface block); wordmark plain
 strip_x0, strip_x1 = bx + 2, bx + 89
-art_box(strip_x0, by + 5, strip_x1, by + 40, r=3.0)
+art_box(bx + 1.5, by + 38.5, bx + 89.8, by + 121.0, r=3.0)   # display, SD, ANT, pots, buttons, LED
 text((strip_x0 + strip_x1)/2, by + 26, "STRÄMPLER", 7.0)
 text((strip_x0 + strip_x1)/2, by + 17.5, "MULTI-MACHINE SAMPLE STREAMER", 2.4, weight="normal")
 text((strip_x0 + strip_x1)/2, by + 10.5, "6\" E-mu FORMAT · 1/4\" I/O", 1.9, weight="normal", color=BLUE)

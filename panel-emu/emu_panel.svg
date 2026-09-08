@@ -24,7 +24,7 @@
 <text x="39.400" y="107.100" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">CV 8</text>
 <text x="15.400" y="126.150" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">OUT L</text>
 <text x="39.400" y="126.150" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">OUT R</text>
-<rect x="56.750" y="100.450" width="87.000" height="35.000" rx="3.000" fill="none" stroke="#2456A6" stroke-width="0.6"/>
+<rect x="56.250" y="19.450" width="88.300" height="82.500" rx="3.000" fill="none" stroke="#2456A6" stroke-width="0.6"/>
 <text x="100.250" y="114.450" font-family="Helvetica, Arial, sans-serif" font-size="7.0" font-weight="bold" text-anchor="middle" fill="#000">STRÄMPLER</text>
 <text x="100.250" y="122.950" font-family="Helvetica, Arial, sans-serif" font-size="2.4" font-weight="normal" text-anchor="middle" fill="#000">MULTI-MACHINE SAMPLE STREAMER</text>
 <text x="100.250" y="129.950" font-family="Helvetica, Arial, sans-serif" font-size="1.9" font-weight="normal" text-anchor="middle" fill="#2456A6">6" E-mu FORMAT · 1/4" I/O</text>
