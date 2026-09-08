@@ -99,26 +99,30 @@ tall behind the panel — orient the lugs toward the board.
 ## Bus normalling — one ganged KYBD switch (E-mu convention)
 
 Decided 2026-09-07: the E-mu module convention, one **KYBD 1 / off / 2**
-switch per module. It is a **3PDT ON-OFF-ON** mini toggle (C&K 7301,
-~$10; generic MTS-303, ~$1.50; Ø6.5 hole) at x 27.4, y 131.5, centred
+switch per module. It is a **DPDT ON-OFF-ON** mini toggle (C&K 7203,
+~$7; generic MTS-203, ~$1; Ø6.5 hole) at x 27.4, y 131.5, centred
 above the left field, "1" and "2" marked beside it (up = keyboard 1,
 down = keyboard 2, centre = nothing normalled). The label names what it
-feeds — "KYBD: 1 · TR1 · TR2" — no indicator lines (tried, too busy).
+feeds — "KYBD: 1 · TR1" — no indicator lines (tried, too busy).
 
 | pole | bus lines (DIP) | → jack (switching, Switchcraft 12A / 112A) |
 |---|---|---|
 | A | VOICE 1 / VOICE 2 | **1** (V/oct, J7) |
 | B | GATE 1 / GATE 2 | **TR1** (J5) |
-| C | TRIG 1 / TRIG 2 | **TR2** (J6) |
+
+TR2 is **not** normalled (Arlo 2026-09-07): TR1/TR2 are two independent
+trigger inputs to the firmware, not an E-mu-style gate/trigger pair, so
+driving both from one keypress is redundant. TR2 stays a plain jack for a
+second keyboard or hand patching. If the TRIG pulse is ever wanted
+instead of GATE on TR1, it's a one-wire swap on the DIP side.
 
 Wiring per pole: bus "1" line → the up contact, bus "2" line → the down
 contact, common → that jack's **shunt (normal) lug**; tip lug → board
 `IN` pad; sleeve → `GND`. With no plug the shunt closes to the tip and the
-bus drives the input; a plug opens it. Jacks 2, 3, 4 and everything else
-stay plain 2-lug. TR1 gets the keyboard's **gate** (high while a key is
-held), TR2 its **trigger** (pulse at key-on) — the firmware sees both as
-positive-edge trigger inputs, so either works as "note on"; pick per
-machine by patching or by which jack the machine reads.
+bus drives the input; a plug opens it. Everything else stays plain
+2-lug. TR1 gets the keyboard's **gate** (high while a key is held) so the
+gate length reaches the firmware; the bus TRIG line (pulse at key-on) is
+left unused.
 
 Facts behind this (see the research section): the buses come off a
 **16-pin DIP socket** at the module position; E-mu gate/trigger is a
@@ -169,8 +173,8 @@ Period-correct is the Switchcraft open-frame family; the panel doesn't
 need the switch contact, so the 2-lug versions are the right ones.
 Prices are 2026 list-ish from the usual dealers — verify at order time.
 
-Of the 14: **11 × plain 2-lug** (rows below) + **3 × switching 12A/112A**
-for the normalled inputs 1, TR1, TR2 (see Bus normalling).
+Of the 14: **12 × plain 2-lug** (rows below) + **2 × switching 12A/112A**
+for the normalled inputs 1 and TR1 (see Bus normalling).
 
 | option | part | type | ≈ each | notes |
 |---|---|---|---|---|
@@ -225,8 +229,8 @@ and its trigger, and the module's EXT GATE / EXT TRIGGERING jacks are
 **normalled from the selected bus through the jack's switch contact**).
 That is exactly the scheme on this panel. To be E-mu-faithful the two
 separate toggles would become **one ganged KYBD 1 / off / 2 switch**
-feeding jack 1 (← VOICE), TR1 (← GATE) and TR2 (← TRIG) — a 3PDT
-ON-OFF-ON (C&K 7301 ~$10, or a generic MTS-303). **Adopted 2026-09-07.**
+feeding jack 1 (← VOICE) and TR1 (← GATE) — a DPDT ON-OFF-ON (C&K 7203,
+or a generic MTS-203). **Adopted 2026-09-07; TR2 deliberately left plain.**
 
 **Gate / trigger polarity: POSITIVE, 0 / +5 V TTL.** 4000 Keyboard
 schematic (doc 4000-001-003, 26 Jun 1973): TRIGGER (J4) and GATE (J3) are
@@ -274,4 +278,4 @@ mechanical spec.
 4. **Power**: 7812/7912 now designed onto the panel (tab holes in the
    top strip, BOM above); still needs the cabinet DIP pinout metered.
 5. Bus DIP pinout for GATE/TRIG (pins 5/6/11/12/10): confirm with a meter.
-6. ~~Toggle scheme~~ — decided: one ganged KYBD 1/off/2 (3PDT).
+6. ~~Toggle scheme~~ — decided: one ganged KYBD 1/off/2 (DPDT) → jack 1 + TR1.
