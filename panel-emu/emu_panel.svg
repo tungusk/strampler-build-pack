@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="152.4mm" height="152.4mm" viewBox="0 0 152.4 152.4">
+<rect width="100%" height="100%" fill="#d9dcdf"/>
+<g id="ART">
+<text x="20.253" y="85.516" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">CV 5</text>
+<text x="41.467" y="85.516" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">CV 6</text>
+<text x="62.680" y="85.516" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">CV 7</text>
+<text x="83.894" y="85.516" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">CV 8</text>
+<text x="20.253" y="66.254" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">GAIN</text>
+<text x="83.894" y="65.754" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">SELECT</text>
+<text x="41.467" y="68.404" font-family="Helvetica, Arial, sans-serif" font-size="2.4" font-weight="bold" text-anchor="middle" fill="#000">1</text>
+<text x="62.680" y="68.404" font-family="Helvetica, Arial, sans-serif" font-size="2.4" font-weight="bold" text-anchor="middle" fill="#000">2</text>
+<text x="90.251" y="49.557" font-family="Helvetica, Arial, sans-serif" font-size="2.2" font-weight="bold" text-anchor="middle" fill="#000">ANT</text>
+<text x="113.000" y="11.850" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">IN L</text>
+<text x="113.000" y="30.900" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">IN R</text>
+<text x="113.000" y="49.950" font-family="Helvetica, Arial, sans-serif" font-size="2.2" font-weight="bold" text-anchor="middle" fill="#000">CV 1  V/OCT</text>
+<text x="113.000" y="69.000" font-family="Helvetica, Arial, sans-serif" font-size="2.2" font-weight="bold" text-anchor="middle" fill="#000">CV 2  V/OCT</text>
+<text x="113.000" y="88.050" font-family="Helvetica, Arial, sans-serif" font-size="2.2" font-weight="bold" text-anchor="middle" fill="#000">CV 3  ±5V</text>
+<text x="113.000" y="107.100" font-family="Helvetica, Arial, sans-serif" font-size="2.2" font-weight="bold" text-anchor="middle" fill="#000">CV 4  ±5V</text>
+<text x="113.000" y="126.150" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">TRIG 1</text>
+<text x="137.000" y="11.850" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">CV 5</text>
+<text x="137.000" y="30.900" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">CV 6</text>
+<text x="137.000" y="49.950" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">CV 7</text>
+<text x="137.000" y="69.000" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">CV 8</text>
+<text x="137.000" y="88.050" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">TRIG 2</text>
+<text x="137.000" y="107.100" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">OUT L</text>
+<text x="137.000" y="126.150" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">OUT R</text>
+<line x1="8.350" y1="100.450" x2="95.350" y2="100.450" stroke="#2456A6" stroke-width="0.6"/>
+<line x1="8.350" y1="134.450" x2="95.350" y2="134.450" stroke="#2456A6" stroke-width="0.6"/>
+<text x="51.850" y="114.450" font-family="Helvetica, Arial, sans-serif" font-size="7.0" font-weight="bold" text-anchor="middle" fill="#000">STRÄMPLER</text>
+<text x="51.850" y="122.950" font-family="Helvetica, Arial, sans-serif" font-size="2.4" font-weight="normal" text-anchor="middle" fill="#000">MULTI-MACHINE SAMPLE STREAMER</text>
+<text x="51.850" y="129.950" font-family="Helvetica, Arial, sans-serif" font-size="1.9" font-weight="normal" text-anchor="middle" fill="#2456A6">6" E-mu FORMAT · 1/4" I/O</text>
+<line x1="102.500" y1="142.850" x2="147.500" y2="142.850" stroke="#2456A6" stroke-width="0.5"/>
+<line x1="102.500" y1="9.550" x2="147.500" y2="9.550" stroke="#2456A6" stroke-width="0.5"/>
+<line x1="102.500" y1="142.850" x2="102.500" y2="9.550" stroke="#2456A6" stroke-width="0.5"/>
+<line x1="147.500" y1="142.850" x2="147.500" y2="9.550" stroke="#2456A6" stroke-width="0.5"/>
+<line x1="97.350" y1="15.950" x2="97.350" y2="136.450" stroke="#2456A6" stroke-width="0.5"/>
+</g>
+<g id="CUT" fill="none" stroke="#e00" stroke-width="0.1">
+<rect x="0" y="0" width="152.4" height="152.4"/>
+<circle cx="6.350" cy="146.050" r="2.100"/>
+<circle cx="146.050" cy="146.050" r="2.100"/>
+<circle cx="6.350" cy="6.350" r="2.100"/>
+<circle cx="146.050" cy="6.350" r="2.100"/>
+<circle cx="20.253" cy="94.616" r="3.600"/>
+<circle cx="41.467" cy="94.616" r="3.600"/>
+<circle cx="62.680" cy="94.616" r="3.600"/>
+<circle cx="83.894" cy="94.616" r="3.600"/>
+<circle cx="20.253" cy="75.354" r="3.600"/>
+<circle cx="83.894" cy="75.354" r="4.100"/>
+<circle cx="41.467" cy="75.354" r="4.750"/>
+<circle cx="62.680" cy="75.354" r="4.750"/>
+<circle cx="52.000" cy="75.410" r="1.600"/>
+<circle cx="90.251" cy="42.757" r="3.600"/>
+<circle cx="11.091" cy="60.226" r="1.600"/>
+<circle cx="93.073" cy="60.226" r="1.600"/>
+<circle cx="11.091" cy="25.885" r="1.600"/>
+<circle cx="93.073" cy="25.885" r="1.600"/>
+<circle cx="52.000" cy="66.971" r="1.600"/>
+<rect x="30.482" y="27.469" width="43.176" height="32.576" rx="1.000"/>
+<circle cx="113.000" cy="19.050" r="4.800"/>
+<circle cx="113.000" cy="38.100" r="4.800"/>
+<circle cx="113.000" cy="57.150" r="4.800"/>
+<circle cx="113.000" cy="76.200" r="4.800"/>
+<circle cx="113.000" cy="95.250" r="4.800"/>
+<circle cx="113.000" cy="114.300" r="4.800"/>
+<circle cx="113.000" cy="133.350" r="4.800"/>
+<circle cx="137.000" cy="19.050" r="4.800"/>
+<circle cx="137.000" cy="38.100" r="4.800"/>
+<circle cx="137.000" cy="57.150" r="4.800"/>
+<circle cx="137.000" cy="76.200" r="4.800"/>
+<circle cx="137.000" cy="95.250" r="4.800"/>
+<circle cx="137.000" cy="114.300" r="4.800"/>
+<circle cx="137.000" cy="133.350" r="4.800"/>
+</g>
+</svg>
