@@ -127,8 +127,7 @@ for lab, ref, xs, y in jack_positions():
 art_box(bx + 1.5, by + 38.5, bx + 89.8, by + 121.0, r=3.0)   # display, SD, ANT, pots, buttons, LED
 art_box(bx + 3.0, JACK_ROW0 - 7.5, bx + 88.3, JACK_ROW0 + 12.5, r=3.0)   # CV 5-8 row (bottom clears the corner mount holes)
 wx = bx + 91.3/2
-text(wx, by + 26.5, "CTAG STRÄMPLER", 6.5)
-text(wx, by + 19.5, "6\" E-mu FORMAT · 1/4\" I/O", 1.9, weight="normal", color=BLUE)
+text(wx, (by + 38.5 + JACK_ROW0 + 12.5)/2 - 6.5*0.35, "CTAG STRÄMPLER", 6.5)   # centred in the band (baseline shifted by ~cap height/2)
 fx0, fx1 = JACK_COLS[0] - 10.5, JACK_COLS[1] + 10.5
 fy0, fy1 = JACK_ROW0 - 7.5, JACK_ROW0 + (len(JACK_ROWS)-1)*JACK_PITCH + 12.5
 art_box(fx0, fy0, fx1, fy1, r=3.0)
