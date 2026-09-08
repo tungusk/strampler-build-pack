@@ -34,9 +34,9 @@ FONT = "Helvetica, Arial, sans-serif"
 JACK_ROWS = [
     (("TR1", "J5"), ("TR2", "J6")),
     (("CV 1", "J7"), ("CV 2", "J8")),
-    (("CV 3", "J11"), ("CV 4", "J12")),
     (("L", "J2"),  ("R", "J1")),          # "IN" printed between the pair
     (("L", "J4"), ("R", "J3")),           # "OUT" printed between the pair
+    (("CV 3", "J11"), ("CV 4", "J12")),   # bottom row -> CV 3..8 read across the panel bottom
 ]
 # bus-select toggles (E-mu keyboard / trigger buses), in the padding above the top row.
 # 3-position ON-OFF-ON: up = bus A, centre = off (jack un-normalled), down = bus B.
@@ -53,7 +53,7 @@ NORMALLED = {"J7": "VOICE 1/2 via switch 1", "J5": "GATE 1/2 via switch 1",
 # bottom row under the PCB, one jack directly below each CV knob (x = knob x)
 BOTTOM_JACKS = [("CV 5", "J9", 13.903), ("CV 6", "J10", 35.117), ("CV 7", "J13", 56.33), ("CV 8", "J14", 77.544)]
 # qualifier printed between the two jacks of a left-field row (row index -> text)
-ROW_MID_LABELS = {1: "V/OCT", 2: "±5V", 3: "IN", 4: "OUT"}
+ROW_MID_LABELS = {1: "V/OCT", 2: "IN", 3: "OUT", 4: "±5V"}
 
 # ------------------------------------------------ board-locked geometry (v2_3)
 bx, by = BOARD_ORIGIN
@@ -131,10 +131,11 @@ def art_poly(verts, r=3.0, w=0.6, color=BLUE):
     art.append('<path d="M ' + ' L '.join(f'{x:.3f} {Y(y):.3f}' for x, y in pts) + f' Z" fill="none" stroke="{color}" stroke-width="{w}"/>')
     dxf_art.append(("poly", pts))
 
-def text(x, y, s, size=2.6, anchor="middle", weight="bold", color="#000"):
-    art.append(f'<text x="{x:.3f}" y="{Y(y):.3f}" font-family="{FONT}" font-size="{size}" font-weight="{weight}" '
+def text(x, y, s, size=2.6, anchor="middle", weight="bold", color="#000", italic=False):
+    style = ' font-style="italic"' if italic else ''
+    art.append(f'<text x="{x:.3f}" y="{Y(y):.3f}" font-family="{FONT}" font-size="{size}" font-weight="{weight}"{style} '
                f'text-anchor="{anchor}" fill="{color}">{s}</text>')
-    dxf_art.append(("text", (x, y), s, size, anchor))
+    dxf_art.append(("text", (x, y), s, size, anchor, 15 if italic else 0))
 
 # outline
 cut.append(f'<rect x="0" y="0" width="{W}" height="{H}"/>')
@@ -201,7 +202,7 @@ if TOGGLES:
 # left field to the CV 5-8 row along the bottom (Arlo 09-07); wordmark plain
 art_box(bx + 1.5, by + 38.5, bx + 89.8, by + 121.0, r=3.0)   # display, SD, ANT, pots, buttons, LED
 wx = bx + 91.3/2
-text(wx, (by + 38.5 + JACK_ROW0 + 12.5)/2 - 6.5*0.35, "CTAG STRÄMPLER", 6.5)   # centred in the band (baseline shifted by ~cap height/2)
+text(wx, (by + 38.5 + JACK_ROW0 + 12.5)/2 - 6.5*0.35, "CTAG STRÄMPLER", 6.5, italic=True)   # centred in the band (baseline shifted by ~cap height/2)
 fx0, fx1 = JACK_COLS[0] - 10.5, JACK_COLS[1] + 10.5
 fy0, fy1 = JACK_ROW0 - 7.5, by + 121.0   # top aligned with the interface box (padding above the top row)
 bx1, by1 = bx + 89.8, JACK_ROW0 + 12.5   # bottom row box extents (shares the left box's bottom edge)
@@ -247,8 +248,9 @@ def write_dxf(path, ops, layer):
         elif k == "dot": msp.add_circle(op[1], op[2], dxfattribs=a)
         elif k == "text":
             (x, y), s, size, anchor = op[1], op[2], op[3], op[4]
+            obl = op[5] if len(op) > 5 else 0
             align = {"middle": "MIDDLE_CENTER", "start": "MIDDLE_LEFT", "end": "MIDDLE_RIGHT"}[anchor]
-            msp.add_text(s, height=size*0.72, dxfattribs=a).set_placement((x, y + size*0.35), align=getattr(ezdxf.enums.TextEntityAlignment, align))
+            msp.add_text(s, height=size*0.72, dxfattribs={**a, "oblique": obl}).set_placement((x, y + size*0.35), align=getattr(ezdxf.enums.TextEntityAlignment, align))
     doc.saveas(path)
 write_dxf(os.path.join(out, "emu_panel_cut.dxf"), dxf_cut, "CUT")
 write_dxf(os.path.join(out, "emu_panel_art.dxf"), dxf_art, "ART")
