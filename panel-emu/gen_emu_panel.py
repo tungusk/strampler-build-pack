@@ -21,7 +21,7 @@ W, H = 152.4, 152.4                 # 6" x 6"
 BOARD_ORIGIN = (54.75, 18.0)        # board footprint at the RIGHT, raised so a jack row fits under the PCB (PCB spans y 10.25..118.25 of the region)
 JACK_HOLE = 9.6                     # 3/8"-32 bushing (Switchcraft 11/111/112): 9.53 nominal
 JACK_COLS = (15.4, 39.4)            # x of the two 1/4" jack columns (LEFT side)
-JACK_PITCH = 25.4                   # 1" row pitch, 5 rows on the left
+JACK_PITCH = 24.0                   # row pitch, 5 rows on the left (was 1"; tightened to make room for the bus toggles)
 JACK_ROW0 = 17.0                    # y of the bottom row (shared by the left field and the CV 5-8 row)
 MOUNT_HOLES = [(6.35, 6.35), (W-6.35, 6.35), (6.35, H-6.35), (W-6.35, H-6.35)]
 MOUNT_DIA = 4.2                     # PLACEHOLDER — measure the cabinet rails
@@ -38,6 +38,13 @@ JACK_ROWS = [
     (("IN L", "J2"),  ("IN R", "J1")),
     (("OUT L", "J4"), ("OUT R", "J3")),
 ]
+# bus-select toggles (E-mu keyboard / trigger buses), in the padding above the top row.
+# 3-position ON-OFF-ON: up = bus A, centre = off (jack un-normalled), down = bus B.
+# Feeds the SWITCHING jacks listed in NORMALLED via their tip-shunt (normal) lug.
+TOGGLE_HOLE = 6.5                   # 1/4"-40 bushing (C&K 7103 / generic MTS-103)
+TOGGLES = [(15.4, 133.0, "KBD  A/B"), (39.4, 133.0, "TRIG  A/B")]
+NORMALLED = {"J7": "KBD bus (CV)", "J5": "TRIG bus"}   # jack 1 and TR1 → Switchcraft 12A/112A
+
 # bottom row under the PCB, one jack directly below each CV knob (x = knob x)
 BOTTOM_JACKS = [("5", "J9", 13.903), ("6", "J10", 35.117), ("7", "J13", 56.33), ("8", "J14", 77.544)]
 
@@ -123,6 +130,11 @@ def jack_positions():
 for lab, ref, xs, y in jack_positions():
     circle(xs, y, JACK_HOLE)
     text(xs, y + JACK_HOLE/2 + 2.4, lab, 2.6 if len(lab) <= 6 else 2.2)
+
+# bus toggles
+for (tx, ty, lab) in TOGGLES:
+    circle(tx, ty, TOGGLE_HOLE)
+    text(tx, ty - TOGGLE_HOLE/2 - 3.4, lab, 2.2)
 
 # E-mu style dress: rounded blue boxes (left field, interface block, bottom row); wordmark plain
 art_box(bx + 1.5, by + 38.5, bx + 89.8, by + 121.0, r=3.0)   # display, SD, ANT, pots, buttons, LED

@@ -6,20 +6,22 @@
 <text x="89.867" y="62.354" font-family="Helvetica, Arial, sans-serif" font-size="2.4" font-weight="bold" text-anchor="middle" fill="#000">1</text>
 <text x="111.080" y="62.354" font-family="Helvetica, Arial, sans-serif" font-size="2.4" font-weight="bold" text-anchor="middle" fill="#000">2</text>
 <text x="138.651" y="43.507" font-family="Helvetica, Arial, sans-serif" font-size="2.2" font-weight="bold" text-anchor="middle" fill="#000">ANT</text>
-<text x="15.400" y="26.600" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">TR1</text>
-<text x="39.400" y="26.600" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">TR2</text>
-<text x="15.400" y="52.000" font-family="Helvetica, Arial, sans-serif" font-size="2.2" font-weight="bold" text-anchor="middle" fill="#000">1  V/OCT</text>
-<text x="39.400" y="52.000" font-family="Helvetica, Arial, sans-serif" font-size="2.2" font-weight="bold" text-anchor="middle" fill="#000">2  V/OCT</text>
-<text x="15.400" y="77.400" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">3  ±5V</text>
-<text x="39.400" y="77.400" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">4  ±5V</text>
-<text x="15.400" y="102.800" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">IN L</text>
-<text x="39.400" y="102.800" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">IN R</text>
+<text x="15.400" y="32.200" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">TR1</text>
+<text x="39.400" y="32.200" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">TR2</text>
+<text x="15.400" y="56.200" font-family="Helvetica, Arial, sans-serif" font-size="2.2" font-weight="bold" text-anchor="middle" fill="#000">1  V/OCT</text>
+<text x="39.400" y="56.200" font-family="Helvetica, Arial, sans-serif" font-size="2.2" font-weight="bold" text-anchor="middle" fill="#000">2  V/OCT</text>
+<text x="15.400" y="80.200" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">3  ±5V</text>
+<text x="39.400" y="80.200" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">4  ±5V</text>
+<text x="15.400" y="104.200" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">IN L</text>
+<text x="39.400" y="104.200" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">IN R</text>
 <text x="15.400" y="128.200" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">OUT L</text>
 <text x="39.400" y="128.200" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">OUT R</text>
 <text x="68.653" y="128.200" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">5</text>
 <text x="89.867" y="128.200" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">6</text>
 <text x="111.080" y="128.200" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">7</text>
 <text x="132.294" y="128.200" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">8</text>
+<text x="15.400" y="26.050" font-family="Helvetica, Arial, sans-serif" font-size="2.2" font-weight="bold" text-anchor="middle" fill="#000">KBD  A/B</text>
+<text x="39.400" y="26.050" font-family="Helvetica, Arial, sans-serif" font-size="2.2" font-weight="bold" text-anchor="middle" fill="#000">TRIG  A/B</text>
 <rect x="56.250" y="13.400" width="88.300" height="82.500" rx="3.000" fill="none" stroke="#2456A6" stroke-width="0.6"/>
 <rect x="56.250" y="122.900" width="88.300" height="20.000" rx="3.000" fill="none" stroke="#2456A6" stroke-width="0.6"/>
 <text x="100.400" y="111.675" font-family="Helvetica, Arial, sans-serif" font-size="6.5" font-weight="bold" text-anchor="middle" fill="#000">CTAG STRÄMPLER</text>
@@ -48,19 +50,21 @@
 <circle cx="100.400" cy="60.921" r="1.600"/>
 <rect x="78.882" y="21.419" width="43.176" height="32.576" rx="1.000"/>
 <rect x="58.238" y="30.193" width="2.507" height="12.985" rx="0.300"/>
-<circle cx="15.400" cy="33.800" r="4.800"/>
-<circle cx="39.400" cy="33.800" r="4.800"/>
-<circle cx="15.400" cy="59.200" r="4.800"/>
-<circle cx="39.400" cy="59.200" r="4.800"/>
-<circle cx="15.400" cy="84.600" r="4.800"/>
-<circle cx="39.400" cy="84.600" r="4.800"/>
-<circle cx="15.400" cy="110.000" r="4.800"/>
-<circle cx="39.400" cy="110.000" r="4.800"/>
+<circle cx="15.400" cy="39.400" r="4.800"/>
+<circle cx="39.400" cy="39.400" r="4.800"/>
+<circle cx="15.400" cy="63.400" r="4.800"/>
+<circle cx="39.400" cy="63.400" r="4.800"/>
+<circle cx="15.400" cy="87.400" r="4.800"/>
+<circle cx="39.400" cy="87.400" r="4.800"/>
+<circle cx="15.400" cy="111.400" r="4.800"/>
+<circle cx="39.400" cy="111.400" r="4.800"/>
 <circle cx="15.400" cy="135.400" r="4.800"/>
 <circle cx="39.400" cy="135.400" r="4.800"/>
 <circle cx="68.653" cy="135.400" r="4.800"/>
 <circle cx="89.867" cy="135.400" r="4.800"/>
 <circle cx="111.080" cy="135.400" r="4.800"/>
 <circle cx="132.294" cy="135.400" r="4.800"/>
+<circle cx="15.400" cy="19.400" r="3.250"/>
+<circle cx="39.400" cy="19.400" r="3.250"/>
 </g>
 </svg>

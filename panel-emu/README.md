@@ -87,16 +87,48 @@ boxes: left field, interface block, CV 5–8 row (box tops aligned); wordmark
 "CTAG STRÄMPLER" alone between. No "CV" label anywhere: CV jacks are just numbered, the four attenuator knobs are unlabelled (jack
 directly below), triggers are TR1/TR2.
 
-Jack field geometry: left field two columns 24 mm apart, five rows at 1"
-pitch; bottom row on the knob spacing (21.2 mm). Ø9.6 holes (3/8"-32
+Jack field geometry: left field two columns 24 mm apart, five rows at 24 mm
+pitch (tightened from 1" to make room for the bus toggles above); bottom row on the knob spacing (21.2 mm). Ø9.6 holes (3/8"-32
 bushing). Plugs clear each other at both pitches. Switchcraft bodies are 0.5" wide × 0.62"
 tall behind the panel — orient the lugs toward the board.
+
+## Bus normalling + toggles (experimental, E-mu keyboard/trigger buses)
+
+The E-mu system carries keyboard CV and trigger on two internal buses (A
+and B). Two inputs are normalled from them so the module plays from the
+system keyboard with nothing patched:
+
+| jack | normalled from | toggle | switching jack |
+|---|---|---|---|
+| **1** (V/oct, J7) | KBD bus A or B | `KBD A/B`, x 15.4 y 133 | Switchcraft **12A** (open) / **112A** (enclosed) — tip-shunt |
+| **TR1** (J5) | TRIG bus A or B | `TRIG A/B`, x 39.4 y 133 | same |
+
+Wiring per input: bus A → toggle up contact, bus B → toggle down contact,
+toggle common → the jack's **shunt (normal) lug**; tip lug → board `IN`
+pad as before; sleeve → `GND`. With no plug the shunt closes to the tip
+and the bus drives the input; a plug opens it. Centre position = off =
+plain un-normalled jack. The toggles are 3-position **ON-OFF-ON SPDT**
+(C&K 7103, ~$6, or a generic MTS-103 mini toggle, <$1); Ø6.5 hole for the
+1/4"-40 bushing. Jack 2 and TR2 stay plain so a second keyboard can be
+patched by hand. To normal all four, add two more entries to `TOGGLES` /
+`NORMALLED` — the padding row has room for four at ~11 mm pitch.
+
+⚠ Check before wiring: (1) how the hackerspace cabinet exposes the buses
+(bus bar, rear connector, or lugs) — two wire pairs come off this panel;
+(2) **trigger polarity** — the board's TR inputs drive an NPN base through
+100 k and want a **positive** gate/trigger; if the E-mu bus carries an
+S-trig (switch-to-ground) it needs a pull-up + inverter in between.
+(3) The KBD bus is 1 V/oct into CVIN0's 180k/47k network — same as a
+patched cable, nothing to scale.
 
 ## Jack sourcing (14 needed, buy 16)
 
 Period-correct is the Switchcraft open-frame family; the panel doesn't
 need the switch contact, so the 2-lug versions are the right ones.
 Prices are 2026 list-ish from the usual dealers — verify at order time.
+
+Of the 14: **12 × plain 2-lug** (rows below) + **2 × switching 12A/112A**
+for the normalled inputs (see Bus normalling).
 
 | option | part | type | ≈ each | notes |
 |---|---|---|---|---|
