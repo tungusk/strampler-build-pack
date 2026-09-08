@@ -62,19 +62,22 @@ the two V/oct inputs get the shortest, tidiest runs.
 | jack | signal | board pad (panel x, y mm) | jack hole (x, y mm) | lead ≈ |
 |---|---|---|---|---|
 | J2 | IN L | 13.89, 41.30 | 113.0, 133.35 | 150 mm |
-| J1 | IN R | 13.89, 28.60 | 113.0, 114.30 | 146 mm |
+| J1 | IN R | 13.89, 28.60 | 137.0, 133.35 | 177 mm |
+| J5 | TRIG 1 | 26.62, 41.30 | 113.0, 114.30 | 128 mm |
+| J6 | TRIG 2 | 26.62, 28.60 | 137.0, 114.30 | 155 mm |
 | J7 | CV 1 (V/oct) | 39.34, 41.30 | 113.0, 95.25 | 106 mm |
-| J8 | CV 2 (V/oct) | 52.00, 41.30 | 113.0, 76.20 | 85 mm |
-| J11 | CV 3 (±5 V) | 64.80, 41.30 | 113.0, 57.15 | 66 mm |
-| J12 | CV 4 (±5 V) | 77.53, 41.30 | 113.0, 38.10 | 51 mm |
-| J5 | TRIG 1 | 26.62, 41.30 | 113.0, 19.05 | 104 mm |
-| J9 | CV 5 (knob) | 39.34, 28.60 | 137.0, 133.35 | 158 mm |
-| J10 | CV 6 (knob) | 52.00, 28.60 | 137.0, 114.30 | 136 mm |
-| J13 | CV 7 (knob) | 64.80, 28.60 | 137.0, 95.25 | 113 mm |
-| J14 | CV 8 (knob) | 77.53, 28.60 | 137.0, 76.20 | 91 mm |
-| J6 | TRIG 2 | 26.62, 28.60 | 137.0, 57.15 | 129 mm |
-| J4 | OUT L | 90.25, 41.30 | 137.0, 38.10 | 62 mm |
+| J8 | CV 2 (V/oct) | 52.00, 41.30 | 137.0, 95.25 | 116 mm |
+| J11 | CV 3 (±5 V) | 64.80, 41.30 | 113.0, 76.20 | 75 mm |
+| J12 | CV 4 (±5 V) | 77.53, 41.30 | 137.0, 76.20 | 84 mm |
+| J9 | CV 5 (knob) | 39.34, 28.60 | 113.0, 57.15 | 94 mm |
+| J10 | CV 6 (knob) | 52.00, 28.60 | 137.0, 57.15 | 105 mm |
+| J13 | CV 7 (knob) | 64.80, 28.60 | 113.0, 38.10 | 64 mm |
+| J14 | CV 8 (knob) | 77.53, 28.60 | 137.0, 38.10 | 75 mm |
+| J4 | OUT L | 90.25, 41.30 | 113.0, 19.05 | 47 mm |
 | J3 | OUT R | 90.25, 28.60 | 137.0, 19.05 | 63 mm |
+
+Layout (Arlo 2026-09-07): signal pairs side by side, top to bottom —
+IN L/R, TRIG 1/2, CV 1/2, CV 3/4, CV 5/6, CV 7/8, OUT L/R.
 
 Signal identities were read off the schematic (`hardware-kicad/project/
 schematic-verification.pdf`): J1/J2 → IC2 → RIN/LIN; J3/J4 ← IC3 ← ROUT/

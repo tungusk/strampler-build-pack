@@ -30,17 +30,16 @@ INCLUDE_SD_SLOT = True              # kept "just in case" (Arlo 2026-09-07)
 BLUE = "#2456A6"                    # E-mu accent blue
 FONT = "Helvetica, Arial, sans-serif"
 
-# jack field: (label, board ref, sublabel) top-to-bottom per column
-JACKS = {
-    0: [("IN L", "J2", ""), ("IN R", "J1", ""),
-        ("CV 1  V/OCT", "J7", ""), ("CV 2  V/OCT", "J8", ""),
-        ("CV 3  ±5V", "J11", ""), ("CV 4  ±5V", "J12", ""),
-        ("TRIG 1", "J5", "")],
-    1: [("CV 5", "J9", ""), ("CV 6", "J10", ""),
-        ("CV 7", "J13", ""), ("CV 8", "J14", ""),
-        ("TRIG 2", "J6", ""),
-        ("OUT L", "J4", ""), ("OUT R", "J3", "")],
-}
+# jack field: rows top-to-bottom, each row = (left jack, right jack) as (label, board ref)
+JACK_ROWS = [
+    (("IN L", "J2"),  ("IN R", "J1")),
+    (("TRIG 1", "J5"), ("TRIG 2", "J6")),
+    (("CV 1  V/OCT", "J7"), ("CV 2  V/OCT", "J8")),
+    (("CV 3  ±5V", "J11"), ("CV 4  ±5V", "J12")),
+    (("CV 5", "J9"),  ("CV 6", "J10")),
+    (("CV 7", "J13"), ("CV 8", "J14")),
+    (("OUT L", "J4"), ("OUT R", "J3")),
+]
 
 # ------------------------------------------------ board-locked geometry (v2_3)
 bx, by = BOARD_ORIGIN
@@ -108,12 +107,14 @@ if INCLUDE_SD_SLOT:
     sx0, sy0, sx1, sy1 = SD_SLOT; rrect(bx + sx0, by + sy0, bx + sx1, by + sy1, 0.3)
 
 # 1/4" jack field
-for col, xs in enumerate(JACK_COLS):
-    rows = JACKS[col]
-    for i, (lab, ref, sub) in enumerate(rows):
-        y = JACK_ROW0 + (len(rows) - 1 - i) * JACK_PITCH
-        circle(xs, y, JACK_HOLE)
-        text(xs, y + JACK_HOLE/2 + 2.4, lab, 2.6 if len(lab) <= 6 else 2.2)
+def jack_positions():
+    for i, row in enumerate(JACK_ROWS):
+        y = JACK_ROW0 + (len(JACK_ROWS) - 1 - i) * JACK_PITCH
+        for xs, (lab, ref) in zip(JACK_COLS, row):
+            yield lab, ref, xs, y
+for lab, ref, xs, y in jack_positions():
+    circle(xs, y, JACK_HOLE)
+    text(xs, y + JACK_HOLE/2 + 2.4, lab, 2.6 if len(lab) <= 6 else 2.2)
 
 # E-mu style dress: blue rules + wordmark block in the vacated jack strip
 strip_x0, strip_x1 = bx + 2, bx + 89
@@ -124,7 +125,7 @@ text((strip_x0 + strip_x1)/2, by + 17.5, "MULTI-MACHINE SAMPLE STREAMER", 2.4, w
 text((strip_x0 + strip_x1)/2, by + 10.5, "6\" E-mu FORMAT · 1/4\" I/O", 1.9, weight="normal", color=BLUE)
 # jack field frame
 fx0, fx1 = JACK_COLS[0] - 10.5, JACK_COLS[1] + 10.5
-fy0, fy1 = JACK_ROW0 - 9.5, JACK_ROW0 + 6*JACK_PITCH + 9.5
+fy0, fy1 = JACK_ROW0 - 9.5, JACK_ROW0 + (len(JACK_ROWS)-1)*JACK_PITCH + 9.5
 for (xa, ya, xb, yb) in [(fx0, fy0, fx1, fy0), (fx0, fy1, fx1, fy1), (fx0, fy0, fx0, fy1), (fx1, fy0, fx1, fy1)]:
     line(xa, ya, xb, yb, 0.5)
 line(bx + 89 + 2, by + 128.5 - 4, bx + 89 + 2, by + 4, 0.5)   # divider board | jacks
@@ -176,9 +177,6 @@ except Exception as e:
 # ------------------------------------------------------------ report
 print(f"panel {W} x {H} mm; board footprint at {BOARD_ORIGIN}; {sum(1 for o in dxf_cut if o[0]=='circle')} round holes")
 print("flying-lead table (pad on board -> 1/4\" jack):")
-for col, xs in enumerate(JACK_COLS):
-    rows = JACKS[col]
-    for i, (lab, ref, sub) in enumerate(rows):
-        y = JACK_ROW0 + (len(rows) - 1 - i) * JACK_PITCH
-        px, py = B(*PADS[ref])
-        print(f"  {ref:>3} {lab:6} pad@({px:6.2f},{py:6.2f}) -> jack@({xs:6.2f},{y:6.2f})  lead ~{math.hypot(xs-px, y-py)+15:.0f} mm")
+for lab, ref, xs, y in jack_positions():
+    px, py = B(*PADS[ref])
+    print(f"  {ref:>3} {lab:12} pad@({px:6.2f},{py:6.2f}) -> jack@({xs:6.2f},{y:6.2f})  lead ~{math.hypot(xs-px, y-py)+15:.0f} mm")

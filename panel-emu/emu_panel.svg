@@ -11,18 +11,18 @@
 <text x="62.680" y="68.404" font-family="Helvetica, Arial, sans-serif" font-size="2.4" font-weight="bold" text-anchor="middle" fill="#000">2</text>
 <text x="90.251" y="49.557" font-family="Helvetica, Arial, sans-serif" font-size="2.2" font-weight="bold" text-anchor="middle" fill="#000">ANT</text>
 <text x="113.000" y="11.850" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">IN L</text>
-<text x="113.000" y="30.900" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">IN R</text>
+<text x="137.000" y="11.850" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">IN R</text>
+<text x="113.000" y="30.900" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">TRIG 1</text>
+<text x="137.000" y="30.900" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">TRIG 2</text>
 <text x="113.000" y="49.950" font-family="Helvetica, Arial, sans-serif" font-size="2.2" font-weight="bold" text-anchor="middle" fill="#000">CV 1  V/OCT</text>
-<text x="113.000" y="69.000" font-family="Helvetica, Arial, sans-serif" font-size="2.2" font-weight="bold" text-anchor="middle" fill="#000">CV 2  V/OCT</text>
-<text x="113.000" y="88.050" font-family="Helvetica, Arial, sans-serif" font-size="2.2" font-weight="bold" text-anchor="middle" fill="#000">CV 3  ±5V</text>
-<text x="113.000" y="107.100" font-family="Helvetica, Arial, sans-serif" font-size="2.2" font-weight="bold" text-anchor="middle" fill="#000">CV 4  ±5V</text>
-<text x="113.000" y="126.150" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">TRIG 1</text>
-<text x="137.000" y="11.850" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">CV 5</text>
-<text x="137.000" y="30.900" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">CV 6</text>
-<text x="137.000" y="49.950" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">CV 7</text>
-<text x="137.000" y="69.000" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">CV 8</text>
-<text x="137.000" y="88.050" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">TRIG 2</text>
-<text x="137.000" y="107.100" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">OUT L</text>
+<text x="137.000" y="49.950" font-family="Helvetica, Arial, sans-serif" font-size="2.2" font-weight="bold" text-anchor="middle" fill="#000">CV 2  V/OCT</text>
+<text x="113.000" y="69.000" font-family="Helvetica, Arial, sans-serif" font-size="2.2" font-weight="bold" text-anchor="middle" fill="#000">CV 3  ±5V</text>
+<text x="137.000" y="69.000" font-family="Helvetica, Arial, sans-serif" font-size="2.2" font-weight="bold" text-anchor="middle" fill="#000">CV 4  ±5V</text>
+<text x="113.000" y="88.050" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">CV 5</text>
+<text x="137.000" y="88.050" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">CV 6</text>
+<text x="113.000" y="107.100" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">CV 7</text>
+<text x="137.000" y="107.100" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">CV 8</text>
+<text x="113.000" y="126.150" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">OUT L</text>
 <text x="137.000" y="126.150" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">OUT R</text>
 <line x1="8.350" y1="100.450" x2="95.350" y2="100.450" stroke="#2456A6" stroke-width="0.6"/>
 <line x1="8.350" y1="134.450" x2="95.350" y2="134.450" stroke="#2456A6" stroke-width="0.6"/>
@@ -59,18 +59,18 @@
 <rect x="30.482" y="27.469" width="43.176" height="32.576" rx="1.000"/>
 <rect x="9.838" y="36.243" width="2.507" height="12.985" rx="0.300"/>
 <circle cx="113.000" cy="19.050" r="4.800"/>
-<circle cx="113.000" cy="38.100" r="4.800"/>
-<circle cx="113.000" cy="57.150" r="4.800"/>
-<circle cx="113.000" cy="76.200" r="4.800"/>
-<circle cx="113.000" cy="95.250" r="4.800"/>
-<circle cx="113.000" cy="114.300" r="4.800"/>
-<circle cx="113.000" cy="133.350" r="4.800"/>
 <circle cx="137.000" cy="19.050" r="4.800"/>
+<circle cx="113.000" cy="38.100" r="4.800"/>
 <circle cx="137.000" cy="38.100" r="4.800"/>
+<circle cx="113.000" cy="57.150" r="4.800"/>
 <circle cx="137.000" cy="57.150" r="4.800"/>
+<circle cx="113.000" cy="76.200" r="4.800"/>
 <circle cx="137.000" cy="76.200" r="4.800"/>
+<circle cx="113.000" cy="95.250" r="4.800"/>
 <circle cx="137.000" cy="95.250" r="4.800"/>
+<circle cx="113.000" cy="114.300" r="4.800"/>
 <circle cx="137.000" cy="114.300" r="4.800"/>
+<circle cx="113.000" cy="133.350" r="4.800"/>
 <circle cx="137.000" cy="133.350" r="4.800"/>
 </g>
 </svg>
