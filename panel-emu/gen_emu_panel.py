@@ -135,24 +135,26 @@ for lab, ref, xs, y in jack_positions():
     circle(xs, y, JACK_HOLE)
     text(xs, y + JACK_HOLE/2 + 2.4, lab, 2.6 if len(lab) <= 6 else 2.2)
 
-# bus toggle + indicator lines to the jacks it normals
+# bus toggles + a light vertical chain line down each column: switch -> TR -> V/OCT jack,
+# broken around the labels and the holes
 def find_jack(ref):
     for lab, r, x, y in jack_positions():
         if r == ref: return x, y
+CHAIN = {15.4: ("J5", "J7"), 39.4: ("J6", "J8")}   # column x -> (TR jack, V/oct jack)
+LABEL_H = 3.4                                       # vertical clearance kept around a jack label
 for (tx, ty, lab, targets) in TOGGLES:
     circle(tx, ty, TOGGLE_HOLE)
-    text(tx, ty + TOGGLE_HOLE/2 + 2.0, lab, 2.0)
+    text(tx, ty + TOGGLE_HOLE/2 + 2.0, lab, 2.2)
     text(tx + TOGGLE_HOLE/2 + 1.2, ty + 2.2, "1", 1.8, anchor="start", weight="normal")
     text(tx + TOGGLE_HOLE/2 + 1.2, ty - 3.4, "2", 1.8, anchor="start", weight="normal")
-    for ref, route in targets:
-        jx, jy = find_jack(ref)
-        if route == "down":
-            pts = [(tx, ty - TOGGLE_HOLE/2), (tx, jy), (jx + (JACK_HOLE/2 + 0.4)*(1 if tx > jx else -1), jy)]
-        else:
-            rx = route[1]; sgn = 1 if rx > tx else -1
-            pts = [(tx + sgn*TOGGLE_HOLE/2, ty), (rx, ty), (rx, jy), (jx + (JACK_HOLE/2 + 0.4)*(1 if rx > jx else -1), jy)]
-        for (xa, ya), (xb, yb) in zip(pts, pts[1:]):
-            line(xa, ya, xb, yb, 0.3)
+    if tx in CHAIN:
+        y_cursor = ty - TOGGLE_HOLE/2 - 0.6
+        for ref in CHAIN[tx]:
+            jx, jy = find_jack(ref)
+            lab_y = jy + JACK_HOLE/2 + 2.4          # label baseline (see jack field)
+            line(tx, y_cursor, tx, lab_y + LABEL_H - 0.6, 0.3)      # down to the label
+            line(tx, lab_y - 1.2, tx, jy + JACK_HOLE/2 + 0.6, 0.3)  # label to hole
+            y_cursor = jy - JACK_HOLE/2 - 0.6                       # continue below the hole
 
 # ±12 V regulators (7812 / 7912, TO-220) bolted flat to the back of the panel — the panel is the heatsink.
 # Tab holes only; bodies lie horizontally in the top strip, pins toward the panel centre.
