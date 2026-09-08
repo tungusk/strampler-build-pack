@@ -63,18 +63,18 @@ the two V/oct inputs get the shortest, tidiest runs.
 |---|---|---|---|---|
 | J5 | TR1 | 75.02, 47.35 | 15.40, 118.60 | 108 mm |
 | J6 | TR2 | 75.02, 34.65 | 39.40, 118.60 | 106 mm |
-| J7 | CV 1 (V/oct) | 87.74, 47.35 | 15.40, 93.20 | 101 mm |
-| J8 | CV 2 (V/oct) | 100.40, 47.35 | 39.40, 93.20 | 91 mm |
-| J11 | CV 3 (±5 V) | 113.20, 47.35 | 15.40, 67.80 | 115 mm |
-| J12 | CV 4 (±5 V) | 125.93, 47.35 | 39.40, 67.80 | 104 mm |
+| J7 | 1 V/OCT = CV 1 | 87.74, 47.35 | 15.40, 93.20 | 101 mm |
+| J8 | 2 V/OCT = CV 2 | 100.40, 47.35 | 39.40, 93.20 | 91 mm |
+| J11 | 3 ±5V = CV 3 | 113.20, 47.35 | 15.40, 67.80 | 115 mm |
+| J12 | 4 ±5V = CV 4 | 125.93, 47.35 | 39.40, 67.80 | 104 mm |
 | J2 | IN L | 62.29, 47.35 | 15.40, 42.40 | 62 mm |
 | J1 | IN R | 62.29, 34.65 | 39.40, 42.40 | 39 mm |
 | J4 | OUT L | 138.65, 47.35 | 15.40, 17.00 | 142 mm |
 | J3 | OUT R | 138.65, 34.65 | 39.40, 17.00 | 116 mm |
-| J9 | CV 5 (knob) | 87.74, 34.65 | 68.65, 17.00 | 41 mm |
-| J10 | CV 6 (knob) | 100.40, 34.65 | 89.87, 17.00 | 36 mm |
-| J13 | CV 7 (knob) | 113.20, 34.65 | 111.08, 17.00 | 33 mm |
-| J14 | CV 8 (knob) | 125.93, 34.65 | 132.29, 17.00 | 34 mm |
+| J9 | 5 = CV 5 (knob above) | 87.74, 34.65 | 68.65, 17.00 | 41 mm |
+| J10 | 6 = CV 6 (knob above) | 100.40, 34.65 | 89.87, 17.00 | 36 mm |
+| J13 | 7 = CV 7 (knob above) | 113.20, 34.65 | 111.08, 17.00 | 33 mm |
+| J14 | 8 = CV 8 (knob above) | 125.93, 34.65 | 132.29, 17.00 | 34 mm |
 
 Layout (Arlo 2026-09-07): **CV 5–8 jacks in a row across the bottom,
 each directly below its knob** (same x as POT2–5), in the strip under the
@@ -83,8 +83,10 @@ region, so the board region is raised to y = 18 and the jack row sits at
 y = 17 with ~5 mm nut clearance to the PCB edge). The other ten jacks are
 a 2 × 5 field on the left at 1" pitch — TR1/TR2, CV 1/2, CV 3/4, IN L/R,
 OUT L/R — with OUT sharing the bottom row's height. Three rounded blue
-boxes: left field, interface block, CV 5–8 row; wordmark "CTAG
-STRÄMPLER" alone between.
+boxes: left field, interface block, CV 5–8 row (box tops aligned); wordmark
+"CTAG STRÄMPLER" alone between. Labels say "CV" once per group (blue tag);
+CV jacks are numbered, the four attenuator knobs are unlabelled (jack
+directly below), triggers are TR1/TR2.
 
 Jack field geometry: left field two columns 24 mm apart, five rows at 1"
 pitch; bottom row on the knob spacing (21.2 mm). Ø9.6 holes (3/8"-32
