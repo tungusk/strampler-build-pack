@@ -225,6 +225,12 @@ it. Details in `hardware-kicad/README.md` (pitfall 2).
 zones refilled, `gerbers/gerbers-panel-strampler_panel_v2_2.zip`
 regenerated and verified (copper ∩ window = 0 on both layers).
 
+**✅ ARRIVED 2026-09-07 (JLCPCB v2_3 run):** LED light window is correct —
+no copper in front of L1, the fix is confirmed on real boards. HASL instead
+of ENIG made the run much cheaper and, as predicted, changes nothing (no
+exposed copper on the panel). Mask-shade verdict vs PCBWay/Pusherman still
+to be recorded.
+
 **Action: ✅ ORDERED 2026-08-30 — at JLCPCB, not PCBWay** (5× panels from
 `gerbers-panel-strampler_panel_v2_3.zip`, ~$19 shipped: $9.70 boards +
 $9.08 Global Standard Direct Line, 8–13 business days). This is a
