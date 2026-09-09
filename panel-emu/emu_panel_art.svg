@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="152.4mm" height="152.4mm" viewBox="0 0 152.4 152.4">
+<g id="ART">
+<text x="68.653" y="78.966" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">CV 5</text>
+<text x="89.867" y="78.966" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">CV 6</text>
+<text x="111.080" y="78.966" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">CV 7</text>
+<text x="132.294" y="78.966" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">CV 8</text>
+<text x="68.653" y="59.704" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">GAIN</text>
+<text x="132.294" y="59.704" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">DATA</text>
+<text x="89.867" y="59.704" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">TR1</text>
+<text x="111.080" y="59.704" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">TR2</text>
+<circle cx="138.651" cy="31.707" r="0.45" fill="#000"/>
+<path d="M 139.570 30.788 A 1.300 1.300 0 0 0 137.732 30.788" fill="none" stroke="#000" stroke-width="0.45" stroke-linecap="round"/>
+<path d="M 140.419 29.939 A 2.500 2.500 0 0 0 136.883 29.939" fill="none" stroke="#000" stroke-width="0.45" stroke-linecap="round"/>
+<path d="M 141.267 29.091 A 3.700 3.700 0 0 0 136.035 29.091" fill="none" stroke="#000" stroke-width="0.45" stroke-linecap="round"/>
+<text x="15.400" y="32.200" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">TR1</text>
+<text x="39.400" y="32.200" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">TR2</text>
+<text x="15.400" y="56.200" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">CV 1</text>
+<text x="39.400" y="56.200" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">CV 2</text>
+<text x="15.400" y="80.200" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">L</text>
+<text x="39.400" y="80.200" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">R</text>
+<text x="15.400" y="104.200" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">L</text>
+<text x="39.400" y="104.200" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">R</text>
+<text x="15.400" y="128.200" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">CV 3</text>
+<text x="39.400" y="128.200" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">CV 4</text>
+<text x="68.653" y="128.200" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">CV 5</text>
+<text x="89.867" y="128.200" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">CV 6</text>
+<text x="111.080" y="128.200" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">CV 7</text>
+<text x="132.294" y="128.200" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">CV 8</text>
+<text x="27.400" y="64.300" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">V/OCT</text>
+<text x="27.400" y="88.300" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">IN</text>
+<text x="27.400" y="112.300" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">OUT</text>
+<text x="27.400" y="136.300" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">±5V</text>
+<text x="19.850" y="18.700" font-family="Helvetica, Arial, sans-serif" font-size="1.8" font-weight="normal" text-anchor="start" fill="#000">1</text>
+<text x="19.850" y="24.300" font-family="Helvetica, Arial, sans-serif" font-size="1.8" font-weight="normal" text-anchor="start" fill="#000">2</text>
+<line x1="15.400" y1="24.750" x2="15.400" y2="29.400" stroke="#2456A6" stroke-width="0.3"/>
+<line x1="15.400" y1="44.800" x2="15.400" y2="53.400" stroke="#2456A6" stroke-width="0.3"/>
+<text x="43.850" y="18.700" font-family="Helvetica, Arial, sans-serif" font-size="1.8" font-weight="normal" text-anchor="start" fill="#000">1</text>
+<text x="43.850" y="24.300" font-family="Helvetica, Arial, sans-serif" font-size="1.8" font-weight="normal" text-anchor="start" fill="#000">2</text>
+<line x1="39.400" y1="24.750" x2="39.400" y2="29.400" stroke="#2456A6" stroke-width="0.3"/>
+<line x1="39.400" y1="44.800" x2="39.400" y2="53.400" stroke="#2456A6" stroke-width="0.3"/>
+<text x="27.400" y="21.800" font-family="Helvetica, Arial, sans-serif" font-size="2.6" font-weight="bold" text-anchor="middle" fill="#000">BUS</text>
+<rect x="56.250" y="13.400" width="88.300" height="82.500" rx="3.000" fill="none" stroke="#2456A6" stroke-width="0.6"/>
+<text x="100.400" y="111.675" font-family="Helvetica, Arial, sans-serif" font-size="6.5" font-weight="bold" font-style="italic" text-anchor="middle" fill="#000">CTAG STRÄMPLER</text>
+<path d="M 4.900 139.900 L 5.002 140.676 L 5.302 141.400 L 5.779 142.021 L 6.400 142.498 L 7.124 142.798 L 7.900 142.900 L 141.550 142.900 L 142.326 142.798 L 143.050 142.498 L 143.671 142.021 L 144.148 141.400 L 144.448 140.676 L 144.550 139.900 L 144.550 125.900 L 144.448 125.124 L 144.148 124.400 L 143.671 123.779 L 143.050 123.302 L 142.326 123.002 L 141.550 122.900 L 52.900 122.900 L 52.124 122.798 L 51.400 122.498 L 50.779 122.021 L 50.302 121.400 L 50.002 120.676 L 49.900 119.900 L 49.900 16.400 L 49.798 15.624 L 49.498 14.900 L 49.021 14.279 L 48.400 13.802 L 47.676 13.502 L 46.900 13.400 L 7.900 13.400 L 7.124 13.502 L 6.400 13.802 L 5.779 14.279 L 5.302 14.900 L 5.002 15.624 L 4.900 16.400 Z" fill="none" stroke="#2456A6" stroke-width="0.6"/>
+<path fill-rule="evenodd" fill="#2456A6" stroke="none" d="M 0 0 H 152.4 V 152.4 H 0 Z M 5.000 2.500 H 147.400 A 2.5 2.5 0 0 1 149.900 5.000 V 147.400 A 2.5 2.5 0 0 1 147.400 149.900 H 5.000 A 2.5 2.5 0 0 1 2.500 147.400 V 5.000 A 2.5 2.5 0 0 1 5.000 2.500 Z"/>
+</g>
+</svg>

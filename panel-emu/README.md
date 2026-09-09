@@ -12,6 +12,8 @@ block, rerun, all files regenerate).
 | `emu_panel_cut.dxf` | outline + every hole, layer `CUT` — the file for the mill / laser |
 | `emu_panel_art.dxf` | text + lines, layer `ART` — for engraving / laser-marking / a print mask |
 | `emu_panel.png` | preview |
+| `emu_panel_art.svg` / `emu_panel_art.png` | artwork only, transparent (PNG 600 dpi) — the file UV-print vendors take |
+| `emu_panel_fpe.fpd` | Front Panel Designer project: cut DXF imported + art PNG placed, 2 mm natural anodized — priced $89.72 on 2026-09-08 |
 
 ## Format facts (E-mu Modular, 1970s)
 
@@ -279,13 +281,82 @@ Keyboard CV's 1 & 2 & Sync Busses 1 & 2"); [AMSynths](https://amsynths.co.uk/hom
 (6" high, 3/6/12" wide); Mos-Lab reissue (2026) exists but publishes no
 mechanical spec.
 
+## Fabrication — one-off vendors (checked 2026-09-08)
+
+Single custom panels are routine in the synth world; no minimums anywhere
+below. The generator already splits the design into CUT (outline + holes)
+and ART (text + blue lines) — that is exactly the split every vendor wants.
+Pick **2 mm** stock (see "Panel thickness" above); all three carry it.
+
+### Front Panel Express — QUOTED 2026-09-08: $63.08 bare / $89.72 printed
+
+US arm of Schaeffer AG (frontpanelexpress.com). CNC-milled anodized Al;
+artwork = engraving with hand-applied colour infill **or** full-colour UV
+print on the anodize. Quotes exist only inside their free *Front Panel
+Designer* app (macOS universal build, `FrontDesign.app`, installed on the
+bench Mac 09-08); the webshop just takes the `.fpd`. Below 29 pieces the
+app price *is* the quote (their FAQ). Price list dated 06/06/2025, ex tax
+and shipping; 5 business days standard.
+
+| item | price |
+|---|---|
+| Preparing/finishing | $14.99 |
+| Material: 2.0 mm aluminum anodized / natural | $12.59 |
+| Frame 152.40 × 152.40 mm | $12.34 |
+| 2 free contours (display window, SD slot) | $3.42 |
+| 43 drill holes ($0.32–0.60 each) | $19.48 |
+| 1 tool change | $2.26 |
+| **Bare panel total** | **$63.08** |
+| UV print, full panel (`emu_panel_art.png`, 152.4 mm square) | $26.64 |
+| **Printed panel total** | **$89.72** |
+
+Quantity breaks on the printed panel: 5–9 pcs $80.75, 10–19 $71.78,
+20–29 $62.80 each.
+
+Files: **`emu_panel_fpe.fpd`** (the priced design, artwork embedded) and
+**`emu_panel_art.png`** (art only, transparent, 600 dpi = 3600 px square).
+To redo it from scratch: File ▸ Import ▸ `emu_panel_cut.dxf` (mm, "entire
+front panel", defaults) → the import ends in *Front panel properties*:
+Aluminum anodized / Natural, **thickness 2.00 mm** (Cancel here discards
+the import) → Insert ▸ Print graphic, press **M**, reference 0/0 → Import
+`emu_panel_art.png`; reference point bottom-left, 100 % → File ▸ Pricing.
+The DXF came in clean: every hole recognised as a drill hole, the display
+window and SD slot as free contours, size 152.40 × 152.40.
+
+Not yet decided in the FPD file: countersinks on the five M3 holes,
+engraving instead of print, and whether the blue border prints well with
+no white under-print on natural anodize (their notes say print stays on
+the surface, aluminium shows through light colours — blue should be fine).
+
+### Meface (UK) — likely cheaper, sub-surface print
+
+meface.co.uk. **Sub-surface** digital print on anodized Al, CNC-cut — the
+print sits under the anodize, closest match to a period silkscreened E-mu
+panel and scratch-proof. Takes any vector file (SVG/PDF) or an `.fpd`.
+1.5 / 2 / 2.5 / 3 mm. Fixed price per HP: a 10 HP 4U 2 mm panel was
+£13 + VAT → 6"×6" ≈ £40–60 + shipping to the US. No setup charge; one-off
+sample with full refund (incl. return postage) if unhappy. Not quoted yet.
+
+### SendCutSend (US) — blank only
+
+Laser-cut 5052 Al blank, ~$15–30; anodizing/powder coat available; **no
+engraving, print or silkscreen**. Artwork becomes a second step — CerMark
+on the hackerspace's CO2 laser gives durable black text on bare or
+clear-anodized Al; the blue lines are hard that way.
+
+Recommendation: Front Panel Express is a known $89.72 with a 5-day turn;
+try Meface for a quote if the ~$40 saving matters more than the wait.
+
 ## Open items before cutting
 
 1. Mounting: wood rails → confirm rail edge positions + neighbours' screw
    inset/head style, then set `MOUNT_HOLES` / `MOUNT_DIA`.
 2. Panel stock thickness (1.6 mm aluminum preferred; period panels were
    1/8" — counterbore the six pot/encoder holes if you go that thick).
-3. Artwork method (fibre laser / CerMark / engrave / print).
+3. Artwork method — see "Fabrication — one-off vendors": Front Panel
+   Express UV print quoted $89.72 (file `emu_panel_fpe.fpd` ready to
+   upload); Meface (sub-surface print) unquoted; CerMark on the hackerspace
+   laser only if you go the blank-panel route.
 4. **Power**: 7812/7912 sub-board behind the PCB (BOM above); still
    needs the cabinet DIP pinout metered.
 5. Bus DIP pinout for GATE/TRIG (pins 5/6/11/12/10): confirm with a meter.

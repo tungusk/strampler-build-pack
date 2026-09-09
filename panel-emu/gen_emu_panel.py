@@ -9,6 +9,7 @@ Outputs (all in mm, panel origin = bottom-left corner, Y up):
   emu_panel_cut.dxf   cut layer only (outline + holes) for a mill / laser
   emu_panel_art.dxf   artwork only (text + lines) for engraving / marking
   emu_panel.png   preview render
+  emu_panel_art.svg / emu_panel_art.png   artwork only (transparent) for UV-print vendors — see README "Fabrication"
 
 Board-locked cutouts come from strampler_panel_v2_3.kicad_pcb (Antumbra 18 HP
 panel, 91.3 x 128.5 mm) and are only translated by BOARD_ORIGIN. Everything
@@ -223,6 +224,9 @@ svg = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}mm" height="{H}mm" vi
        '<g id="CUT" fill="none" stroke="#e00" stroke-width="0.1">', *cut, '</g>',
        '</svg>']
 open(os.path.join(out, "emu_panel.svg"), "w").write("\n".join(svg))
+# art-only SVG (no background, no CUT) — what a print vendor wants (Front Panel Express "Print graphic")
+open(os.path.join(out, "emu_panel_art.svg"), "w").write("\n".join(
+    [svg[0], '<g id="ART">', *art, '</g>', '</svg>']))
 
 # ------------------------------------------------------------ write DXF
 import ezdxf
@@ -260,6 +264,9 @@ try:
     import fitz
     d = fitz.open(os.path.join(out, "emu_panel.svg"))
     d[0].get_pixmap(dpi=200).save(os.path.join(out, "emu_panel.png"))
+    # transparent art-only PNG at 600 dpi (3600 px = 152.4 mm) for UV-print vendors
+    d = fitz.open(os.path.join(out, "emu_panel_art.svg"))
+    d[0].get_pixmap(dpi=600, alpha=True).save(os.path.join(out, "emu_panel_art.png"))
 except Exception as e:
     print("preview skipped:", e)
 
