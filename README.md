@@ -25,6 +25,7 @@ a living format, and documents what it actually takes to build one today.
 | `bom/` | Official Antumbra BOM (Mouser refs), a schematic-derived cross-check BOM, a **Mouser BOM-tool upload file for one kit**, the non-Mouser parts list, and the CTAG RevD reference BOM |
 | `assembly-pcbway/` | Ready-to-upload turnkey assembly package: fab BOM, pick-and-place (CPL), order guide, price estimate |
 | `KIT-GUIDE.md` | Ordering bare boards + parts as DIY kits, per-kit costs, build order, licensing |
+| `KNOB-OPTIONS-20260911.md` | Knob-cap shopping: what is fitted, the panel's 19.27 mm row gap that caps knob diameter, and the Thonk / AliExpress options screened against it |
 
 ## 2026 sourcing notes (the important bits)
 

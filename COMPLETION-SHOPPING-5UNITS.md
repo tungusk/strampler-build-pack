@@ -180,6 +180,10 @@ shafts per unit**. The doc's old "25 needed" line undercounted by missing
 the encoder.
 
 **Resolved 2026-07-25 by giving the encoder its own cap** (Arlo's call).
+
+> **Changing the look later?** `KNOB-OPTIONS-20260911.md` screens the Thonk
+> and AliExpress ranges against the panel's real geometry — the binding limit
+> is the **19.27 mm row-to-row gap**, not the 21.22 mm side pitch.
 So the 30 Davies set-screw knobs now cover only the 25 pot positions,
 which conveniently restores a +5 spare margin on that line.
 
