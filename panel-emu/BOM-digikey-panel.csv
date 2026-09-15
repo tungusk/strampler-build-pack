@@ -3,9 +3,8 @@ Manufacturer Part Number,Manufacturer,Quantity,Description,Reference
 12A,Switchcraft Inc.,5,"1/4"" mono jack, tip shunt (4 + 1 spare)",bus-normalled: CV1 CV2 TR1 TR2
 100DP3T1B1M1QEH,E-Switch,2,"Toggle DPDT ON-OFF-ON, bat, solder lug, 1/4-40",BUS switches
 16-600-10,Aries Electronics,2,"16-pin DIP header plug, solder tails, 0.300in rows (1 + spare)",E-mu bus pickup
-L7812CV,STMicroelectronics,1,"+12 V 1.5 A regulator, TO-220",power sub-board
-L7912CV,STMicroelectronics,1,"-12 V 1.5 A regulator, TO-220",power sub-board
-574502B00000G,Boyd Laconia LLC,1,"Clip-on TO-220 heatsink 21 C/W",on L7812CV
-C322C105K5R5TA,KEMET,2,"1 uF 50 V X7R radial",regulator inputs
-ECA-1EM100,Panasonic,2,"10 uF 25 V electrolytic radial",regulator outputs
-1N4007,,2,"1 A 1000 V rectifier diode",reverse protection across each regulator
+3051 RD005,Alpha Wire,1,"22 AWG stranded hook-up wire, red, 100 ft",flying leads + power
+3051 BK005,Alpha Wire,1,"22 AWG stranded hook-up wire, black, 100 ft",flying leads + power
+3051 WH005,Alpha Wire,1,"22 AWG stranded hook-up wire, white, 100 ft",signal leads
+FP301-3/32 TO 1/2-ASSRTED-5-133 PC KITS,3M,1,"Heat-shrink assortment",flying-lead joints
+SETS-M3-6,NBK America LLC,5,"M3 x 6 mm flat head screw, stainless (Digi-Key Marketplace)",panel to M3 standoffs

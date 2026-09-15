@@ -1,0 +1,7 @@
+Manufacturer Part Number,Manufacturer,Quantity,Description,Reference
+L7812CV,STMicroelectronics,1,"+12 V 1.5 A regulator, TO-220",power sub-board
+L7912CV,STMicroelectronics,1,"-12 V 1.5 A regulator, TO-220",power sub-board
+574502B00000G,Boyd Laconia LLC,1,"Clip-on TO-220 heatsink 21 C/W",on L7812CV
+C322C105K5R5TA,KEMET,2,"1 uF 50 V X7R radial",regulator inputs
+ECA-1EM100,Panasonic,2,"10 uF 25 V electrolytic radial",regulator outputs
+1N4007G,onsemi,2,"1 A 1000 V rectifier diode",reverse protection across each regulator
