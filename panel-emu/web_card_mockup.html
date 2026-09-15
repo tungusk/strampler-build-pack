@@ -1,0 +1,267 @@
+<title>E-mu Panel Card</title>
+<style>
+/* Mockup of the Remote panel card for the E-mu format panel (6" x 6").
+   Geometry is gen_emu_panel.py's CONFIG block, in mm, y measured UP from the
+   panel's bottom edge exactly as the generator does. Nothing here is eyeballed:
+   every control is placed by its mm coordinate times --mm, and every SIZE is in
+   mm too, so the card scales as one piece. TWO COLUMNS wide (502 + 12 + 502 =
+   1016 px, Arlo 09-14): at 6.67 px/mm there is room for a screen bigger than
+   the Eurorack card's enlarged one. */
+:root{--acc:#3fcf8f;--pline:#6e6e6e;--blue:#2456A6}
+body{background:#363636;color:#ccc;font-family:monospace;font-size:13px;margin:0;padding:16px}
+h1{font-size:14px;color:var(--acc);letter-spacing:1.5px;margin:0 0 4px}
+.note{color:#999;max-width:1016px;line-height:1.5;margin:0 0 12px}
+.ctl{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-bottom:12px;color:#aaa;font-size:12px}
+.ctl label{display:inline-flex;gap:5px;align-items:center}
+.cap{color:#777;font-size:11px;margin:6px 0 0}
+
+/* ---- the card ---------------------------------------------------------- */
+.emu{--W:min(502px,calc(100vw - 32px));--mm:calc(var(--W) / 152.4);width:var(--W);aspect-ratio:1;position:relative;
+  background:var(--blue);border-radius:2px;overflow:hidden;
+  --ground:#d6d9dc;--ink:#111;--ink2:#333;--hole:#363636;--track:#aeb3b8;--sock:#101010;--nut:#c9ccd0}
+/* the E-mu edge band: solid blue bleeding off the edge, 2.5 mm, inner radius 2.5 */
+.emu .alu{position:absolute;inset:calc(2.5 * var(--mm));border-radius:calc(2.5 * var(--mm));
+  background:repeating-linear-gradient(90deg,rgba(255,255,255,.05) 0 1px,rgba(0,0,0,.025) 1px 3px),linear-gradient(170deg,#e2e5e8,var(--ground) 60%,#cdd1d5)}
+.emu.dark{--ground:#0b0b0b;--ink:#bbb;--ink2:#888;--track:#2a2a2a;--sock:#0a0a0a;--nut:#3a3a3a}
+.emu.dark .alu{background:#070707}
+.emu svg.art{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.emu svg.art .bx{fill:none;stroke:var(--blue);stroke-width:.6}
+.emu svg.art .chain{stroke:var(--blue);stroke-width:.45;opacity:.75}
+.emu.dark svg.art .bx,.emu.dark svg.art .chain{stroke:#1d3f7a}
+
+/* everything placed by (x,y) mm, centred on its point */
+.at{position:absolute;left:calc(var(--x) * var(--mm));top:calc((152.4 - var(--y)) * var(--mm));transform:translate(-50%,-50%)}
+/* 2.6 mm = the silk's label size */
+.lab{font:bold calc(2.6 * var(--mm)) Helvetica,Arial,sans-serif;color:var(--ink);letter-spacing:.3px;white-space:nowrap;pointer-events:none;user-select:none}
+.lab.mid{color:var(--ink2)}
+.lab.small{font-size:calc(1.9 * var(--mm));font-weight:normal}
+.lab.dim{opacity:.45}
+
+/* corner wood-screw holes: see-through, page ground, like the Eurorack card's slots */
+.mnt{width:calc(4.2 * var(--mm));height:calc(4.2 * var(--mm));border-radius:50%;background:var(--hole);box-shadow:inset 0 1px 2px rgba(0,0,0,.8)}
+/* the five M3 panel screws: countersunk heads */
+.scr{width:calc(3.2 * var(--mm));height:calc(3.2 * var(--mm));border-radius:50%;
+  background:radial-gradient(circle at 40% 35%,#eee,#999 70%);box-shadow:0 0 0 1px rgba(0,0,0,.25)}
+.dark .scr{background:radial-gradient(circle at 40% 35%,#555,#222 70%)}
+
+/* 1/4" jack: the web card's ring meter (270-degree sweep, --v 0..100) round a
+   knurled nut and a dark hole. 11.5 mm = a Switchcraft nut across. */
+.jack{--v:0;--c:#0af;width:calc(11.5 * var(--mm));aspect-ratio:1;border-radius:50%;
+  background:conic-gradient(from 225deg,var(--c) calc(var(--v)*.75%),var(--track) calc(var(--v)*.75%))}
+.jack:before{content:'';position:absolute;inset:calc(1.2 * var(--mm));border-radius:50%;background:var(--sock);
+  box-shadow:inset 0 0 0 calc(1.1 * var(--mm)) var(--nut),inset 0 0 0 calc(1.4 * var(--mm)) rgba(0,0,0,.35)}
+.jack.au{--c:#2a9a60}
+.jack.tr{background:var(--track)}
+.jack.tr.on{background:#e33;box-shadow:0 0 calc(2.4 * var(--mm)) #e33}
+.jack>.jv{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font:calc(2.2 * var(--mm)) monospace;color:#9a9a9a;z-index:1;pointer-events:none}
+.jack.inj{cursor:ns-resize;touch-action:none}
+
+/* knobs: the web card's CV5-8 fader knob, 12.75 mm — the knob row sits only
+   7.3 mm above the interface box line, so this is about the largest that clears */
+.knob{width:calc(12.75 * var(--mm));aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 50% 38%,#2c2c2c,#151515 70%);
+  border:1px solid #3a3a3a;box-shadow:0 2px 4px rgba(0,0,0,.6);cursor:ns-resize;touch-action:none;user-select:none}
+.knob i{position:absolute;left:50%;top:50%;width:calc(.9 * var(--mm));height:calc(6 * var(--mm));margin:calc(-6 * var(--mm)) 0 0 calc(-.45 * var(--mm));transform-origin:50% 100%;
+  background:linear-gradient(to bottom,#0af 50%,transparent 50%);border-radius:2px;pointer-events:none}
+/* GAIN sits in the perform row, whose items must clear the knob-row labels
+   2.7 mm below them: capped at the TR caps' 10.9 mm */
+.knob.dim{cursor:default;opacity:.8;width:calc(10.9 * var(--mm))}
+.knob.dim i{height:calc(5 * var(--mm));margin-top:calc(-5 * var(--mm))}
+.knob.dim i{background:linear-gradient(to bottom,#666 50%,transparent 50%)}
+/* TR caps: top half pulse, bottom half hold, as on the Eurorack card */
+.pbtn{width:calc(10.9 * var(--mm));aspect-ratio:1;border-radius:50%;overflow:hidden;display:flex;flex-direction:column;font:calc(2.3 * var(--mm)) monospace;color:#f0f0f0;
+  background:radial-gradient(circle at 40% 32%,#7a7a7a,#525252 70%);border:1px solid #8a8a8a;box-shadow:0 1px 3px rgba(0,0,0,.6);cursor:pointer;user-select:none}
+.pbtn div{flex:1;display:flex;align-items:center;justify-content:center}
+.pbtn div:first-child{border-bottom:1px solid #3a3a3a}
+.pbtn div:hover{background:rgba(255,255,255,.1)}
+.pbtn.on{border-color:#e33;box-shadow:0 0 calc(2.4 * var(--mm)) #e33}
+/* 3 mm light pipe */
+.led{width:calc(3.2 * var(--mm));height:calc(3.2 * var(--mm));border-radius:50%;background:#5a1010;box-shadow:inset 0 0 0 1px rgba(0,0,0,.5)}
+.led.on{background:#f44;box-shadow:0 0 calc(1.8 * var(--mm)) #f33}
+.enc{width:calc(11.4 * var(--mm));aspect-ratio:1;display:block;filter:drop-shadow(0 1px 3px rgba(0,0,0,.6));cursor:pointer}
+.enc .sec{fill:#1a1a1a;stroke:#2e2e2e;stroke-width:1.5}.enc .sec:hover{fill:#2a2a2a}
+.enc text{fill:#bbb;font-family:monospace;font-size:7.5px;text-anchor:middle;pointer-events:none}
+.enc .arr{font-size:14px;font-weight:bold}
+/* BUS toggles: passive hardware, the firmware never sees them — drawn, dimmed */
+.tog{width:calc(6.5 * var(--mm));height:calc(6.5 * var(--mm));border-radius:50%;background:radial-gradient(circle,#999 30%,var(--nut) 32%);
+  box-shadow:0 0 0 1px rgba(0,0,0,.3);opacity:.75}
+.tog:after{content:'';position:absolute;left:50%;top:50%;width:calc(1.2 * var(--mm));height:calc(4 * var(--mm));margin:calc(-4 * var(--mm)) 0 0 calc(-.6 * var(--mm));border-radius:2px;
+  background:linear-gradient(90deg,#aaa,#eee,#999);box-shadow:0 1px 2px rgba(0,0,0,.4)}
+/* card slot + antenna */
+.slot{width:calc(2.507 * var(--mm));height:calc(12.985 * var(--mm));border-radius:2px;background:#000;box-shadow:0 0 0 1px rgba(0,0,0,.4)}
+.sma{width:calc(7.2 * var(--mm));height:calc(7.2 * var(--mm));border-radius:50%;background:radial-gradient(circle,#d4b050 28%,#8a7030 32%,#b89a50 55%,#6a5a30 60%)}
+.wifi{width:calc(4.8 * var(--mm));display:block;fill:none;stroke:var(--ink);stroke-width:1.6;stroke-linecap:round}
+/* screen: the display cutout (43.176 mm) drawn 20% LARGER, 51.8 mm = 345 px at
+   two columns — the Eurorack card enlarges its screen too (Arlo 09-14: 10%,
+   then "one more step bigger"). Grown about the cutout's centre it would sit on
+   the perform-row labels, so it is also raised 1.5 mm (SCR_LIFT): ~2 mm over the
+   labels, ~3.4 mm under the interface box line, clear of slot, antenna, screws. */
+.scr-win{width:calc(43.176 * 1.20 * var(--mm));aspect-ratio:4/3;background:#000;border:1px solid #333;cursor:zoom-in;z-index:2}
+.scr-win canvas{width:100%;height:100%;display:block;image-rendering:pixelated}
+.scr-win.big{width:calc(96 * var(--mm));cursor:zoom-out;z-index:5;box-shadow:0 4px 24px rgba(0,0,0,.7)}
+.wm{font:italic bold calc(6.5 * var(--mm)) Helvetica,Arial,sans-serif;color:var(--ink);letter-spacing:.5px}
+
+/* one column by default; the 2x button doubles it (the KEYBOARD card's
+   convention: the button says what it WILL do, "2x" / "1/2", and the choice is
+   remembered). Every size above is in mm, so the whole card rescales. */
+.emu.wide{--W:min(1016px,calc(100vw - 32px))}
+/* in the blank top strip, dressed like the panel card's own buttons; a fixed px
+   size — it is page chrome, not panel artwork */
+.wbtn{position:absolute;left:50%;top:calc(4.2 * var(--mm));transform:translate(-50%,-50%);z-index:6;
+  background:#050505;color:#777;border:1px solid #2a2a2a;padding:2px 7px;cursor:pointer;border-radius:2px;font:11px monospace}
+.wbtn:hover{background:#1a1a1a;color:#aaa}
+
+.ref{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:0;z-index:10}
+</style>
+
+<h1>E-MU PANEL CARD — MOCKUP</h1>
+<p class="note">The Remote panel card for the 6" × 6" E-mu panel: one web column, or two with the 2x
+button. Every control sits at its <code>gen_emu_panel.py</code> coordinate (the screen is drawn 20% over scale); the overlay slider
+lays the generator's own render over the card to check it. Static data, animated: nothing here talks to
+a unit. Knobs and the CV 1–4 sockets drag; TR caps pulse; click the screen to zoom.</p>
+<div class="ctl">
+  <label><input type="checkbox" id="dark"> dark ground</label>
+  <label>reference overlay <input type="range" id="refop" min="0" max="100" value="0"></label>
+</div>
+<div class="emu" id="emu"><div class="alu"></div>
+  <button class="wbtn" id="wbtn" title="card width">2x</button>
+  <svg class="art" viewBox="0 0 152.4 152.4" id="art"></svg>
+  <img class="ref" id="ref" src="emu_panel.png" alt="">
+</div>
+<p class="cap">one column (502 px), or two with the 2x button (1016 = 502 + 12 + 502) · flag: CONFIG.JSN <code>settings.panel = "emu"</code> · reference: <code>emu_panel.png</code></p>
+
+<script>
+// ---- geometry: gen_emu_panel.py CONFIG, mm, y up ------------------------------
+const H=152.4, BX=54.75, BY=18.0;
+const COLS=[15.4,39.4], PITCH=24, ROW0=17;
+const rowY=i=>ROW0+(4-i)*PITCH;              // row 0 = top (TR), row 4 = bottom (CV 3/4)
+// left field, [left, right] per row: kind, label, channel
+const ROWS=[
+  [['tr','TR1',0],['tr','TR2',1]],
+  [['cv','CV 1',0],['cv','CV 2',1]],
+  [['au','L','inl'],['au','R','inr']],
+  [['au','L','outl'],['au','R','outr']],
+  [['cv','CV 3',2],['cv','CV 4',3]],
+];
+const MID={1:'V/OCT',2:'IN',3:'OUT',4:'±5V'};
+const KX=[13.903,35.117,56.33,77.544].map(x=>BX+x);   // knob / bottom-jack columns
+const KNOB_Y=BY+45.834, PERF_Y=BY+65.096;
+const JLAB=8.4, PLAB=10.5;                   // label centre above a jack / a knob or cap, from the silk
+const DISP=[24.132,80.405,67.308,112.981].map((v,i)=>v+(i%2?BY:BX));   // x0 y0 x1 y1
+const SCR_LIFT=1.5;                          // the enlarged screen's rise off the cutout centre (see .scr-win)
+const SCR_X=(DISP[0]+DISP[2])/2, SCR_Y=(DISP[1]+DISP[3])/2+SCR_LIFT;
+
+const emu=document.getElementById('emu'), art=document.getElementById('art');
+function put(cls,x,y,html,attrs){
+  const e=document.createElement('div');e.className='at '+cls;
+  e.style.setProperty('--x',x);e.style.setProperty('--y',y);
+  if(html)e.innerHTML=html;
+  if(attrs)for(const k in attrs)e.setAttribute(k,attrs[k]);
+  emu.appendChild(e);return e;
+}
+const S=(t,a)=>{const e=document.createElementNS('http://www.w3.org/2000/svg',t);for(const k in a)e.setAttribute(k,a[k]);art.appendChild(e);return e;};
+const Y=y=>H-y;
+
+// ---- artwork: interface box + the ONE L-shaped jack box (generator lines 204-209)
+S('rect',{class:'bx',x:BX+1.5,y:Y(BY+121),width:88.3,height:82.5,rx:3});
+{ const l=COLS[0]-10.5, r=COLS[1]+10.5, t=Y(BY+121), b=Y(ROW0-7.5), mid=Y(ROW0+12.5), R=BX+89.8, q=3;
+  S('path',{class:'bx',d:`M${l+q} ${t} H${r-q} A${q} ${q} 0 0 1 ${r} ${t+q} V${mid-q} A${q} ${q} 0 0 0 ${r+q} ${mid}
+    H${R-q} A${q} ${q} 0 0 1 ${R} ${mid+q} V${b-q} A${q} ${q} 0 0 1 ${R-q} ${b} H${l+q} A${q} ${q} 0 0 1 ${l} ${b-q} V${t+q} A${q} ${q} 0 0 1 ${l+q} ${t} Z`}); }
+// chain lines, switch -> TR -> V/OCT, broken round the sockets and labels
+COLS.forEach(x=>{
+  S('line',{class:'chain',x1:x,x2:x,y1:Y(131.5-4.1),y2:Y(rowY(0)+JLAB+1.9)});
+  S('line',{class:'chain',x1:x,x2:x,y1:Y(rowY(0)-6.6),y2:Y(rowY(1)+JLAB+1.9)});
+});
+
+// ---- holes and fixings
+[[6.35,6.35],[H-6.35,6.35],[6.35,H-6.35],[H-6.35,H-6.35]].forEach(([x,y])=>put('mnt',x,y,'',{title:'mounting hole'}));
+[[4.741,80.224],[86.723,80.224],[4.741,114.565],[86.723,114.565],[45.65,73.479]].forEach(([x,y])=>put('scr',BX+x,BY+y));
+
+// ---- BUS toggles (hardware only)
+COLS.forEach(x=>{put('tog',x,131.5,'',{title:'bus 1 / off / 2 — panel only'});
+  put('lab small',x+6,134.2,'1');put('lab small',x+6,128.4,'2');});
+put('lab',27.4,131.5,'BUS');
+
+// ---- left jack field
+const J={};
+ROWS.forEach((row,i)=>row.forEach(([k,lab,ch],c)=>{
+  const x=COLS[c], y=rowY(i), inj=k==='cv';
+  put('lab',x,y+JLAB,lab);
+  J[k+ch]=put('jack '+(inj?'inj':k),x,y,inj?'<span class="jv">-</span>':'',
+    inj?{title:'drag to inject','data-ch':ch+1}:{});
+}));
+Object.entries(MID).forEach(([i,t])=>put('lab mid',27.4,rowY(+i),t));
+
+// ---- bottom row: CV 5-8 jacks, each under its knob (read-only; the knob injects)
+KX.forEach((x,i)=>{put('lab',x,ROW0+JLAB,'CV '+(i+5));J['cv'+(i+4)]=put('jack',x,ROW0,'<span class="jv">-</span>');});
+
+// ---- interface block: knob row, perform row, screen, slot, antenna
+const K=[];
+KX.forEach((x,i)=>{put('lab',x,KNOB_Y+PLAB,'CV '+(i+5));K[i]=put('knob',x,KNOB_Y,'<i></i>',{'data-ch':i+5});});
+put('lab dim',KX[0],PERF_Y+PLAB,'GAIN');put('knob dim',KX[0],PERF_Y,'<i style="transform:rotate(20deg)"></i>',{title:'input gain — panel only'});
+const TB=[];
+[1,2].forEach(n=>{put('lab',KX[n],PERF_Y+PLAB,'TR'+n);
+  TB[n]=put('pbtn',KX[n],PERF_Y,'<div data-p>pulse</div><div data-h>hold</div>');});
+const LED=put('led',BX+45.65,BY+65.04,'',{title:'REC'});
+put('lab',KX[3],PERF_Y+PLAB,'DATA');
+put('',KX[3],PERF_Y,`<svg class="enc" viewBox="0 0 60 60">
+  <path class="sec" d="M30 30 L9.5 9.5 A29 29 0 0 1 50.5 9.5 Z"><title>press</title></path>
+  <path class="sec" d="M30 30 L50.5 9.5 A29 29 0 0 1 50.5 50.5 Z"><title>turn right</title></path>
+  <path class="sec" d="M30 30 L50.5 50.5 A29 29 0 0 1 9.5 50.5 Z"><title>hold</title></path>
+  <path class="sec" d="M30 30 L9.5 50.5 A29 29 0 0 1 9.5 9.5 Z"><title>turn left</title></path>
+  <text x="30" y="15.5">press</text><text x="30" y="52">hold</text>
+  <text x="16" y="34" class="arr">&#8249;</text><text x="44" y="34" class="arr">&#8250;</text>
+  <circle cx="30" cy="30" r="3" fill="#2a2a2a" stroke="#111"/></svg>`);
+put('slot',BX+(3.488+5.995)/2,BY+(91.222+104.207)/2,'',{title:'card slot'});
+put('sma',BX+83.901,BY+97.693,'',{title:'antenna'});
+put('',BX+83.901,BY+97.693+6.4,'<svg class="wifi" viewBox="0 0 16 12"><path d="M1.5 4.5a9 9 0 0 1 13 0"/><path d="M4.3 7.3a5 5 0 0 1 7.4 0"/><circle cx="8" cy="10" r="1" fill="currentColor" stroke="none"/></svg>');
+const SCR=put('scr-win',SCR_X,SCR_Y,'<canvas width="320" height="240"></canvas>',{title:'click: toggle size'});
+// zoomed: over the upper card, centred. Set inline, since the placement vars
+// are inline and would beat a class rule.
+SCR.onclick=()=>{const big=SCR.classList.toggle('big');
+  SCR.style.setProperty('--x',big?76.2:SCR_X);SCR.style.setProperty('--y',big?100:SCR_Y);};
+// hostname where the wordmark is, as on the Eurorack card
+put('wm',BX+45.65,43,'STRAMP');
+
+// ---- a fake screen so the zoom has something to show
+{ const c=SCR.querySelector('canvas').getContext('2d');
+  c.fillStyle='#000';c.fillRect(0,0,320,240);
+  c.fillStyle='#0ff';c.font='bold 18px monospace';c.fillText('DECK',10,26);
+  c.fillStyle='#888';c.font='14px monospace';
+  ['A  BEATS_03      120.0','B  AMEN_LOOP     120.0','','XFADE  ====|====','PITCH  +0.00','TEMPO  sync'].forEach((t,i)=>c.fillText(t,10,62+i*24));
+  c.strokeStyle='#333';c.strokeRect(0.5,0.5,319,239); }
+
+// ---- mock data: CV random walk, audio meters, a TR pulse now and then
+const cv=[0.6,-1.2,2.4,0,1.0,3.3,-0.5,0.2], knob=[0.5,0.3,0.7,0.5];
+function knobDraw(i){K[i].firstChild.style.transform='rotate('+(-135+270*knob[i])+'deg)';}
+K.forEach((k,i)=>{knobDraw(i);drag(k,d=>{knob[i]=Math.min(1,Math.max(0,knob[i]+d));knobDraw(i);});});
+document.querySelectorAll('.jack.inj').forEach(j=>{const ch=+j.dataset.ch-1;drag(j,d=>{cv[ch]=Math.min(5,Math.max(-5,cv[ch]+d*10));});});
+function drag(el,fn){let y0=null;
+  el.addEventListener('pointerdown',e=>{y0=e.clientY;el.setPointerCapture(e.pointerId);});
+  el.addEventListener('pointermove',e=>{if(y0===null)return;fn((y0-e.clientY)/150);y0=e.clientY;});
+  el.addEventListener('pointerup',()=>y0=null);}
+function trFlash(n){const j=J['tr'+(n-1)],b=TB[n];j.classList.add('on');b.classList.add('on');
+  setTimeout(()=>{j.classList.remove('on');b.classList.remove('on');},120);}
+TB.forEach((b,n)=>{if(!b)return;b.querySelector('[data-p]').onclick=()=>trFlash(n);});
+let t=0;
+setInterval(()=>{t+=.1;
+  for(let i=0;i<8;i++){ if(i>=4)cv[i]=(knob[i-4]-.5)*10+Math.sin(t*.7+i)*.3;
+    else if(i!==2) cv[i]+= (Math.random()-.5)*.15;
+    const j=J['cv'+i]; if(!j)continue;
+    j.style.setProperty('--v',Math.abs(cv[i])/5*100); j.firstChild.textContent=cv[i].toFixed(1); }
+  cv[2]=Math.sin(t*1.3)*4;
+  const a=Math.abs(Math.sin(t*2.1))*70+15, b=Math.abs(Math.sin(t*1.7+1))*60+20;
+  J.auinl.style.setProperty('--v',a);J.auinr.style.setProperty('--v',b);
+  J.auoutl.style.setProperty('--v',a*.9);J.auoutr.style.setProperty('--v',b*.85);
+  if(Math.random()<.04)trFlash(1+(Math.random()<.5));
+  LED.classList.toggle('on',Math.sin(t*.4)>.6);
+},100);
+
+// 2x / 1/2 — remembered per browser, like the keyboard's web_midiw
+function setWide(w){emu.classList.toggle('wide',w);document.getElementById('wbtn').textContent=w?'1/2':'2x';
+  try{localStorage.setItem('web_panelw',w?'full':'half');}catch(e){}}
+document.getElementById('wbtn').onclick=()=>setWide(!emu.classList.contains('wide'));
+{let w=false;try{w=localStorage.getItem('web_panelw')==='full';}catch(e){} if(location.hash==='#wide')w=true; setWide(w);}
+
+document.getElementById('dark').onchange=e=>emu.classList.toggle('dark',e.target.checked);
+document.getElementById('refop').oninput=e=>document.getElementById('ref').style.opacity=e.target.value/100;
+</script>
