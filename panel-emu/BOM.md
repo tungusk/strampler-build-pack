@@ -133,6 +133,50 @@ on a short 10-way ribbon.
 | **order A, before wire, heat-shrink, screws** | **≈ $93** |
 | **order B, before perfboard and standoffs** | **≈ $5** |
 
-Digi-Key's own quantity breaks at 10+ bring the jacks down a little. Cheapest
-route on jacks: generic open-frame 1/4" TS jacks from AliExpress at under $1
-each — check the bushing is 3/8"-32 and that four of them have the switch lug.
+## Budget alternatives for order A's jacks and switches
+
+The Switchcraft jacks are $77 of order A's $93 — it is the brand. Two cheaper
+tiers, priced **2026-09-14** at [Love My Switches](https://lovemyswitches.com)
+(qty 1; one shop for all of it). Wire, heat-shrink, screws and the Aries DIP
+plug stay as above.
+
+| | tier 1 — Switchcraft (above) | tier 2 — mid | tier 3 — budget |
+|---|---|---|---|
+| 10 + 1 plain jacks | Switchcraft 11, $4.71 → **$51.81** | [Rean NYS229](https://lovemyswitches.com/1-4-mono-jack-neutrik-rean-nys229/), $1.46 → **$16.06** | [generic open frame](https://lovemyswitches.com/1-4-mono-jack-open-frame/), $1.02 → **$11.22** |
+| 4 + 1 switching jacks | Switchcraft 12A, $5.00 → **$25.00** | Switchcraft 12A (Digi-Key), **$25.00** | [generic switched enclosed, threaded](https://lovemyswitches.com/1-4-mono-switched-enclosed-jack-solder-lugs-threaded-bushing/), $0.85 → **$4.25** |
+| 2 BUS switches | E-Switch 100DP3T1B1M1QEH, $5.16 → **$10.32** | [Taiway 100-DP3-T100B1M1QE](https://lovemyswitches.com/taiway-dpdt-on-off-on-switch-solder-lug-long-shaft/), $2.17 → **$4.34** | [generic DPDT ON-OFF-ON, long bat](https://lovemyswitches.com/dpdt-on-off-on-switch-solder-lug-long-shaft/), $1.10 → **$2.20** |
+| **subtotal** | **$87.13** | **$45.40** | **$17.67** |
+| + 2 Aries DIP plugs | $5.70 | $5.70 | $5.70 |
+
+**Tier 2** keeps a known-good switching jack where the normalling depends on it
+(only four of them) and saves on the ten that just carry a signal. The NYS229
+is a Switchcraft-11-style open jack from Neutrik's budget line, panels to
+3.5 mm. Taiway is the name-brand budget toggle (1/4" bushing, 6.35 mm hole —
+the E-Switch's hole). **Tier 3** is the lowest-cost route, with caveats.
+
+**What changes in the cut file** (`gen_emu_panel.py`). It has ONE `JACK_HOLE`
+(9.6) for all fourteen jacks, so a mix of hole sizes — tier 3's 11 mm switched
+jacks beside 10 mm plain ones — needs the generator to take a size per jack:
+
+| part | panel hole | vs the file's 9.6 |
+|---|---|---|
+| Switchcraft 11 / 12A | 3/8" (9.53) | fits |
+| Rean NYS229 | **10 mm** (seller's figure) | open to 10 |
+| generic open-frame jack | not stated — measure the bushing | |
+| generic switched enclosed jack | **11 mm** | open the four normalled holes (CV 1, CV 2, TR1, TR2) to 11 |
+| Taiway / E-Switch toggle | 6.35 mm | fits the 6.5 |
+| generic toggle | 6 mm | fits the 6.5 |
+
+**Tier 3 caveats — check one of each before drilling sixteen holes:**
+- The switched enclosed jack has **four lugs** and the listing does not say
+  which is which, or whether the switch contact is normally closed **to the
+  tip** and opened by a plug — which is what bus normalling needs (README "Bus
+  normalling"). Meter it. If it switches something else, use Switchcraft 12A
+  for those four (tier 2).
+- Neither generic listing gives the bushing thread or length; on a 2 mm panel
+  length is unlikely to matter, but check the nut runs on.
+- The enclosed jack's nut is plastic.
+
+Not priced: Tayda Electronics carries 1/4" jacks and DPDT ON-OFF-ON toggles too,
+but its site blocked every automated lookup. AliExpress open-frame jacks run
+under $1 with the same checks as tier 3.
