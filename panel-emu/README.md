@@ -14,6 +14,8 @@ block, rerun, all files regenerate).
 | `emu_panel.png` | preview |
 | `emu_panel_art.svg` / `emu_panel_art.png` | artwork only, transparent (PNG 600 dpi) — the file UV-print vendors take |
 | `emu_panel_fpe.fpd` | Front Panel Designer project: cut DXF imported + art PNG placed, 2 mm natural anodized — priced $89.72 on 2026-09-08 |
+| `BOM.md` / `BOM-digikey.csv` | parts to buy for the 1/4" jack version, on top of / instead of the standard kit — Digi-Key prices checked 2026-09-14 |
+| `web_card_mockup.html` | mockup of the firmware web page's panel card for this panel (open from disk) |
 
 ## Format facts (E-mu Modular, 1970s)
 
